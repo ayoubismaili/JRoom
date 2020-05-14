@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+package jroom;
+import "com/caporal7/jroom/common/java/proto/JRoomJoinConference.proto";
+
+option java_package = "com.caporal7.jroom.common.java.protoc";
+option java_outer_classname = "JRoomProtos";
+
+/* message type */
+enum Type {
+  INVALID = 0;
+  JOIN_CONFERENCE_PROB = 1;
+  JOIN_CONFERENCE_AUTH = 2;
+}
+
+/* The request message */
+message JRoomRequest {
+  /* JRoom request type */
+  optional Type type = 1 [default = INVALID];
+  /* JRoom join conference request */
+  optional JRoomJoinConferenceProbeRequest join_conference_prob = 2;
+  optional JRoomJoinConferenceAuthRequest join_conference_auth = 3;
+}
+
+/* The response message */
+message JRoomResponse {
+  /* JRoom response type */
+  optional Type type = 1 [default = INVALID];
+  /* JRoom join conference response */
+  optional JRoomJoinConferenceProbeResponse join_conference_prob = 2;
+  optional JRoomJoinConferenceAuthResponse join_conference_auth = 3;
+}

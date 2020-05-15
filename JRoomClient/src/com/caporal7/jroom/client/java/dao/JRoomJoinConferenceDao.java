@@ -14,9 +14,7 @@ import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomResponse;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.net.Socket;
-import java.nio.ByteBuffer;
 
 /**
  *
@@ -36,7 +34,7 @@ public class JRoomJoinConferenceDao {
                 .setConferenceId(conferenceId)
                 .build();
         JRoomRequest request = JRoomRequest.newBuilder()
-                .setType(JRoomProtos.Type.JOIN_CONFERENCE_AUTH)
+                .setType(JRoomProtos.Type.JOIN_CONFERENCE_PROB)
                 .setJoinConferenceProb(probRequest)
                 .build();
         byte[] requestBytes = request.toByteArray();     
@@ -45,8 +43,13 @@ public class JRoomJoinConferenceDao {
         socket.getOutputStream().write(lengthBytes);
         socket.getOutputStream().write(requestBytes);
         socket.getOutputStream().flush();
-
-        JRoomResponse response = JRoomResponse.parseFrom(socket.getInputStream());
+        
+        lengthBytes = socket.getInputStream().readNBytes(4);
+        int length = JRoomUtils.convertBytesToInt(lengthBytes);
+        byte[] responseBytes = socket.getInputStream().readNBytes(length);
+        
+        JRoomResponse response = JRoomResponse.parseFrom(responseBytes);
+        System.out.println(response.getType());
         if (response.getType() != JRoomProtos.Type.JOIN_CONFERENCE_PROB) {
             throw new JRoomException("Invalid response");
         }

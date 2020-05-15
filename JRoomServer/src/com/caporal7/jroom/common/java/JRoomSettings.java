@@ -7,7 +7,7 @@ package com.caporal7.jroom.common.java;
 
 /**
  *
- * @author sphere
+ * @author Ayoub Ismaili
  */
 public class JRoomSettings {
     public static String HOST = "jroom.caporal7.com";

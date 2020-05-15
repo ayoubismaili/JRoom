@@ -5,13 +5,13 @@
  */
 package com.caporal7.jroom.server.java.services;
 
+import com.caporal7.jroom.common.java.JRoomException;
 import com.caporal7.jroom.common.java.JRoomSettings;
-import com.caporal7.jroom.common.java.protoc.JRoomProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.Type;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
+import com.caporal7.jroom.server.java.dao.JRoomJoinConferenceDao;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -31,27 +31,42 @@ public class JRoomServer {
         while (true) 
         {
             Socket socket = serverSocket.accept();
-            System.out.println("[+] New client connected");
             
-            byte[] lengthBytes = socket.getInputStream().readNBytes(4);
-            int length = JRoomUtils.convertBytesToInt(lengthBytes);
-            byte[] bytes = socket.getInputStream().readNBytes(length);
-            
-            JRoomRequest request = JRoomRequest.parseFrom(bytes);
-            System.out.println("[+] Parsed request");
-            Type type = request.getType();
-            switch (type) {
-                case JOIN_CONFERENCE_PROB:
-                    System.out.println("Got JOIN_CONFERENCE_PROB");
-                    break;
-                case JOIN_CONFERENCE_AUTH:
-                    System.out.println("Got JOIN_CONFERENCE_AUTH");
-                    break;
-                default:
-                    throw new AssertionError(type.name());
-            }
-            
-            socket.close();
+            Thread th = new Thread() {
+                public void run() {
+                    try {
+                        handleConnection(socket);
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                }
+            };
+            th.start();
         }
+    }
+    
+    private void handleConnection(Socket socket) throws IOException, JRoomException {
+        
+        System.out.println("[+] New client connected");
+        
+        byte[] lengthBytes = socket.getInputStream().readNBytes(4);
+        int length = JRoomUtils.convertBytesToInt(lengthBytes);
+        byte[] bytes = socket.getInputStream().readNBytes(length);
+        
+        JRoomRequest request = JRoomRequest.parseFrom(bytes);
+        System.out.println("[+] Parsed request");
+        Type type = request.getType();
+        switch (type) {
+            case JOIN_CONFERENCE_PROB:
+                JRoomJoinConferenceDao dao = new JRoomJoinConferenceDao(socket);
+                dao.handleProbe(request);
+                break;
+            case JOIN_CONFERENCE_AUTH:
+                System.out.println("Got JOIN_CONFERENCE_AUTH");
+                break;
+            default:
+                throw new AssertionError(type.name());
+        }
+        socket.close();
     }
 }

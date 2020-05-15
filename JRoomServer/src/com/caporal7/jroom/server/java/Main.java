@@ -5,11 +5,15 @@
  */
 package com.caporal7.jroom.server.java;
 
+import com.caporal7.jroom.common.java.jpa.Conference;
 import com.caporal7.jroom.server.java.services.JRoomServer;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
- * @author sphere
+ * @author Ayoub Ismaili
  */
 public class Main {
 

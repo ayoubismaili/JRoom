@@ -66,6 +66,7 @@ public class JoinConferenceIdController {
                 alert.setHeaderText("Ce N° de réunion n'est pas valide. Veuillez vérifier puis réessayer.");
                 //alert.setContentText("I have a great message for you!");
                 alert.showAndWait();
+                break;
             }
             case SUCCESS:
             {
@@ -74,6 +75,7 @@ public class JoinConferenceIdController {
                 stage.setTitle("Saisir le mot de passe de la réunion");
                 stage.setScene(new Scene(root));
                 stage.show();
+                break;
             }
         }
     }

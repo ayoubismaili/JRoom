@@ -10,15 +10,12 @@ import com.caporal7.jroom.common.java.JRoomSettings;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.Type;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
-import com.caporal7.jroom.server.java.dao.JRoomJoinConferenceDao;
+import com.caporal7.jroom.server.java.dao.ConferenceDao;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- *
- * @author Ayoub Ismaili
- */
 public class JRoomServer {
     
     private ServerSocket serverSocket;
@@ -49,24 +46,26 @@ public class JRoomServer {
         
         System.out.println("[+] New client connected");
         
-        byte[] lengthBytes = socket.getInputStream().readNBytes(4);
-        int length = JRoomUtils.convertBytesToInt(lengthBytes);
-        byte[] bytes = socket.getInputStream().readNBytes(length);
-        
-        JRoomRequest request = JRoomRequest.parseFrom(bytes);
-        System.out.println("[+] Parsed request");
-        Type type = request.getType();
-        switch (type) {
-            case JOIN_CONFERENCE_PROB:
-                JRoomJoinConferenceDao dao = new JRoomJoinConferenceDao(socket);
-                dao.handleProbe(request);
-                break;
-            case JOIN_CONFERENCE_AUTH:
-                System.out.println("Got JOIN_CONFERENCE_AUTH");
-                break;
-            default:
-                throw new AssertionError(type.name());
+        while (true) 
+        {
+            InputStream is = socket.getInputStream();
+            byte[] lengthBytes = is.readNBytes(4);
+            int length = JRoomUtils.convertBytesToInt(lengthBytes);
+            byte[] bytes = socket.getInputStream().readNBytes(length);
+
+            JRoomRequest request = JRoomRequest.parseFrom(bytes);
+            System.out.println("[+] Parsed request");
+            Type type = request.getType();
+            switch (type) {
+                case JOIN_CONFERENCE_PROB:
+                    ConferenceDao.handleProbe(request, socket);
+                    break;
+                case JOIN_CONFERENCE_AUTH:
+                    ConferenceDao.handleAuth(request, socket);
+                    break;
+                default:
+                    throw new AssertionError(type.name());
+            }
         }
-        socket.close();
     }
 }

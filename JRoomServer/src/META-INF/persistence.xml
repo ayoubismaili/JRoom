@@ -12,10 +12,10 @@
     <class>com.caporal7.jroom.common.java.jpa.Message</class>
     <class>com.caporal7.jroom.common.java.jpa.Conference</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/JRoomDB?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.10.10.10:3306/JRoomDB?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="jroom"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="root@2017"/>
+      <property name="javax.persistence.jdbc.password" value="jroom"/>
     </properties>
   </persistence-unit>
 </persistence>

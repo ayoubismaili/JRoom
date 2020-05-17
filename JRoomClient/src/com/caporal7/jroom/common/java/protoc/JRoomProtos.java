@@ -16,7 +16,7 @@ public final class JRoomProtos {
   }
   /**
    * <pre>
-   * message type 
+   * Message type 
    * </pre>
    *
    * Protobuf enum {@code jroom.Type}
@@ -35,6 +35,14 @@ public final class JRoomProtos {
      * <code>JOIN_CONFERENCE_AUTH = 2;</code>
      */
     JOIN_CONFERENCE_AUTH(2),
+    /**
+     * <code>ATTENDEE_REG = 3;</code>
+     */
+    ATTENDEE_REG(3),
+    /**
+     * <code>ATTENDEE_AUTH = 4;</code>
+     */
+    ATTENDEE_AUTH(4),
     ;
 
     /**
@@ -49,6 +57,14 @@ public final class JRoomProtos {
      * <code>JOIN_CONFERENCE_AUTH = 2;</code>
      */
     public static final int JOIN_CONFERENCE_AUTH_VALUE = 2;
+    /**
+     * <code>ATTENDEE_REG = 3;</code>
+     */
+    public static final int ATTENDEE_REG_VALUE = 3;
+    /**
+     * <code>ATTENDEE_AUTH = 4;</code>
+     */
+    public static final int ATTENDEE_AUTH_VALUE = 4;
 
 
     public final int getNumber() {
@@ -74,6 +90,8 @@ public final class JRoomProtos {
         case 0: return INVALID;
         case 1: return JOIN_CONFERENCE_PROB;
         case 2: return JOIN_CONFERENCE_AUTH;
+        case 3: return ATTENDEE_REG;
+        case 4: return ATTENDEE_AUTH;
         default: return null;
       }
     }
@@ -163,7 +181,7 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
      * @return The joinConferenceProb.
      */
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest getJoinConferenceProb();
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest getJoinConferenceProb();
     /**
      * <pre>
      * JRoom join conference request 
@@ -171,7 +189,7 @@ public final class JRoomProtos {
      *
      * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
      */
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder getJoinConferenceProbOrBuilder();
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder getJoinConferenceProbOrBuilder();
 
     /**
      * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
@@ -182,15 +200,45 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
      * @return The joinConferenceAuth.
      */
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest getJoinConferenceAuth();
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest getJoinConferenceAuth();
     /**
      * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
      */
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder getJoinConferenceAuthOrBuilder();
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder getJoinConferenceAuthOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+     * @return Whether the attendeeRegister field is set.
+     */
+    boolean hasAttendeeRegister();
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+     * @return The attendeeRegister.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest getAttendeeRegister();
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequestOrBuilder getAttendeeRegisterOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+     * @return Whether the attendeeAuth field is set.
+     */
+    boolean hasAttendeeAuth();
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+     * @return The attendeeAuth.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest getAttendeeAuth();
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequestOrBuilder getAttendeeAuthOrBuilder();
   }
   /**
    * <pre>
-   * The request message 
+   * Message request 
    * </pre>
    *
    * Protobuf type {@code jroom.JRoomRequest}
@@ -252,11 +300,11 @@ public final class JRoomProtos {
               break;
             }
             case 18: {
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.Builder subBuilder = null;
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) != 0)) {
                 subBuilder = joinConferenceProb_.toBuilder();
               }
-              joinConferenceProb_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.PARSER, extensionRegistry);
+              joinConferenceProb_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(joinConferenceProb_);
                 joinConferenceProb_ = subBuilder.buildPartial();
@@ -265,16 +313,42 @@ public final class JRoomProtos {
               break;
             }
             case 26: {
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.Builder subBuilder = null;
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) != 0)) {
                 subBuilder = joinConferenceAuth_.toBuilder();
               }
-              joinConferenceAuth_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.PARSER, extensionRegistry);
+              joinConferenceAuth_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(joinConferenceAuth_);
                 joinConferenceAuth_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) != 0)) {
+                subBuilder = attendeeRegister_.toBuilder();
+              }
+              attendeeRegister_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attendeeRegister_);
+                attendeeRegister_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 42: {
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) != 0)) {
+                subBuilder = attendeeAuth_.toBuilder();
+              }
+              attendeeAuth_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attendeeAuth_);
+                attendeeAuth_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
               break;
             }
             default: {
@@ -338,7 +412,7 @@ public final class JRoomProtos {
     }
 
     public static final int JOIN_CONFERENCE_PROB_FIELD_NUMBER = 2;
-    private com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest joinConferenceProb_;
+    private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest joinConferenceProb_;
     /**
      * <pre>
      * JRoom join conference request 
@@ -358,8 +432,8 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
      * @return The joinConferenceProb.
      */
-    public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest getJoinConferenceProb() {
-      return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance() : joinConferenceProb_;
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest getJoinConferenceProb() {
+      return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance() : joinConferenceProb_;
     }
     /**
      * <pre>
@@ -368,12 +442,12 @@ public final class JRoomProtos {
      *
      * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
      */
-    public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder getJoinConferenceProbOrBuilder() {
-      return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance() : joinConferenceProb_;
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder getJoinConferenceProbOrBuilder() {
+      return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance() : joinConferenceProb_;
     }
 
     public static final int JOIN_CONFERENCE_AUTH_FIELD_NUMBER = 3;
-    private com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest joinConferenceAuth_;
+    private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest joinConferenceAuth_;
     /**
      * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
      * @return Whether the joinConferenceAuth field is set.
@@ -385,14 +459,60 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
      * @return The joinConferenceAuth.
      */
-    public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest getJoinConferenceAuth() {
-      return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance() : joinConferenceAuth_;
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest getJoinConferenceAuth() {
+      return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance() : joinConferenceAuth_;
     }
     /**
      * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
      */
-    public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder getJoinConferenceAuthOrBuilder() {
-      return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance() : joinConferenceAuth_;
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder getJoinConferenceAuthOrBuilder() {
+      return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance() : joinConferenceAuth_;
+    }
+
+    public static final int ATTENDEE_REGISTER_FIELD_NUMBER = 4;
+    private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest attendeeRegister_;
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+     * @return Whether the attendeeRegister field is set.
+     */
+    public boolean hasAttendeeRegister() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+     * @return The attendeeRegister.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest getAttendeeRegister() {
+      return attendeeRegister_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.getDefaultInstance() : attendeeRegister_;
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequestOrBuilder getAttendeeRegisterOrBuilder() {
+      return attendeeRegister_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.getDefaultInstance() : attendeeRegister_;
+    }
+
+    public static final int ATTENDEE_AUTH_FIELD_NUMBER = 5;
+    private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest attendeeAuth_;
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+     * @return Whether the attendeeAuth field is set.
+     */
+    public boolean hasAttendeeAuth() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+     * @return The attendeeAuth.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest getAttendeeAuth() {
+      return attendeeAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.getDefaultInstance() : attendeeAuth_;
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequestOrBuilder getAttendeeAuthOrBuilder() {
+      return attendeeAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.getDefaultInstance() : attendeeAuth_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -418,6 +538,12 @@ public final class JRoomProtos {
       if (((bitField0_ & 0x00000004) != 0)) {
         output.writeMessage(3, getJoinConferenceAuth());
       }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeMessage(4, getAttendeeRegister());
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeMessage(5, getAttendeeAuth());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -438,6 +564,14 @@ public final class JRoomProtos {
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getJoinConferenceAuth());
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getAttendeeRegister());
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getAttendeeAuth());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -468,6 +602,16 @@ public final class JRoomProtos {
         if (!getJoinConferenceAuth()
             .equals(other.getJoinConferenceAuth())) return false;
       }
+      if (hasAttendeeRegister() != other.hasAttendeeRegister()) return false;
+      if (hasAttendeeRegister()) {
+        if (!getAttendeeRegister()
+            .equals(other.getAttendeeRegister())) return false;
+      }
+      if (hasAttendeeAuth() != other.hasAttendeeAuth()) return false;
+      if (hasAttendeeAuth()) {
+        if (!getAttendeeAuth()
+            .equals(other.getAttendeeAuth())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -490,6 +634,14 @@ public final class JRoomProtos {
       if (hasJoinConferenceAuth()) {
         hash = (37 * hash) + JOIN_CONFERENCE_AUTH_FIELD_NUMBER;
         hash = (53 * hash) + getJoinConferenceAuth().hashCode();
+      }
+      if (hasAttendeeRegister()) {
+        hash = (37 * hash) + ATTENDEE_REGISTER_FIELD_NUMBER;
+        hash = (53 * hash) + getAttendeeRegister().hashCode();
+      }
+      if (hasAttendeeAuth()) {
+        hash = (37 * hash) + ATTENDEE_AUTH_FIELD_NUMBER;
+        hash = (53 * hash) + getAttendeeAuth().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -588,7 +740,7 @@ public final class JRoomProtos {
     }
     /**
      * <pre>
-     * The request message 
+     * Message request 
      * </pre>
      *
      * Protobuf type {@code jroom.JRoomRequest}
@@ -625,6 +777,8 @@ public final class JRoomProtos {
                 .alwaysUseFieldBuilders) {
           getJoinConferenceProbFieldBuilder();
           getJoinConferenceAuthFieldBuilder();
+          getAttendeeRegisterFieldBuilder();
+          getAttendeeAuthFieldBuilder();
         }
       }
       @java.lang.Override
@@ -644,6 +798,18 @@ public final class JRoomProtos {
           joinConferenceAuthBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
+        if (attendeeRegisterBuilder_ == null) {
+          attendeeRegister_ = null;
+        } else {
+          attendeeRegisterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (attendeeAuthBuilder_ == null) {
+          attendeeAuth_ = null;
+        } else {
+          attendeeAuthBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -691,6 +857,22 @@ public final class JRoomProtos {
             result.joinConferenceAuth_ = joinConferenceAuthBuilder_.build();
           }
           to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          if (attendeeRegisterBuilder_ == null) {
+            result.attendeeRegister_ = attendeeRegister_;
+          } else {
+            result.attendeeRegister_ = attendeeRegisterBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          if (attendeeAuthBuilder_ == null) {
+            result.attendeeAuth_ = attendeeAuth_;
+          } else {
+            result.attendeeAuth_ = attendeeAuthBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000010;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -749,6 +931,12 @@ public final class JRoomProtos {
         }
         if (other.hasJoinConferenceAuth()) {
           mergeJoinConferenceAuth(other.getJoinConferenceAuth());
+        }
+        if (other.hasAttendeeRegister()) {
+          mergeAttendeeRegister(other.getAttendeeRegister());
+        }
+        if (other.hasAttendeeAuth()) {
+          mergeAttendeeAuth(other.getAttendeeAuth());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -838,9 +1026,9 @@ public final class JRoomProtos {
         return this;
       }
 
-      private com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest joinConferenceProb_;
+      private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest joinConferenceProb_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder> joinConferenceProbBuilder_;
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder> joinConferenceProbBuilder_;
       /**
        * <pre>
        * JRoom join conference request 
@@ -860,9 +1048,9 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
        * @return The joinConferenceProb.
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest getJoinConferenceProb() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest getJoinConferenceProb() {
         if (joinConferenceProbBuilder_ == null) {
-          return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance() : joinConferenceProb_;
+          return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance() : joinConferenceProb_;
         } else {
           return joinConferenceProbBuilder_.getMessage();
         }
@@ -874,7 +1062,7 @@ public final class JRoomProtos {
        *
        * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
        */
-      public Builder setJoinConferenceProb(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest value) {
+      public Builder setJoinConferenceProb(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest value) {
         if (joinConferenceProbBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -895,7 +1083,7 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
        */
       public Builder setJoinConferenceProb(
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.Builder builderForValue) {
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.Builder builderForValue) {
         if (joinConferenceProbBuilder_ == null) {
           joinConferenceProb_ = builderForValue.build();
           onChanged();
@@ -912,13 +1100,13 @@ public final class JRoomProtos {
        *
        * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
        */
-      public Builder mergeJoinConferenceProb(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest value) {
+      public Builder mergeJoinConferenceProb(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest value) {
         if (joinConferenceProbBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0) &&
               joinConferenceProb_ != null &&
-              joinConferenceProb_ != com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance()) {
+              joinConferenceProb_ != com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance()) {
             joinConferenceProb_ =
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.newBuilder(joinConferenceProb_).mergeFrom(value).buildPartial();
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.newBuilder(joinConferenceProb_).mergeFrom(value).buildPartial();
           } else {
             joinConferenceProb_ = value;
           }
@@ -953,7 +1141,7 @@ public final class JRoomProtos {
        *
        * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.Builder getJoinConferenceProbBuilder() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.Builder getJoinConferenceProbBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getJoinConferenceProbFieldBuilder().getBuilder();
@@ -965,12 +1153,12 @@ public final class JRoomProtos {
        *
        * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder getJoinConferenceProbOrBuilder() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder getJoinConferenceProbOrBuilder() {
         if (joinConferenceProbBuilder_ != null) {
           return joinConferenceProbBuilder_.getMessageOrBuilder();
         } else {
           return joinConferenceProb_ == null ?
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance() : joinConferenceProb_;
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.getDefaultInstance() : joinConferenceProb_;
         }
       }
       /**
@@ -981,11 +1169,11 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceProbeRequest join_conference_prob = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder> 
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder> 
           getJoinConferenceProbFieldBuilder() {
         if (joinConferenceProbBuilder_ == null) {
           joinConferenceProbBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder>(
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequestOrBuilder>(
                   getJoinConferenceProb(),
                   getParentForChildren(),
                   isClean());
@@ -994,9 +1182,9 @@ public final class JRoomProtos {
         return joinConferenceProbBuilder_;
       }
 
-      private com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest joinConferenceAuth_;
+      private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest joinConferenceAuth_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder> joinConferenceAuthBuilder_;
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder> joinConferenceAuthBuilder_;
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
        * @return Whether the joinConferenceAuth field is set.
@@ -1008,9 +1196,9 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
        * @return The joinConferenceAuth.
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest getJoinConferenceAuth() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest getJoinConferenceAuth() {
         if (joinConferenceAuthBuilder_ == null) {
-          return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance() : joinConferenceAuth_;
+          return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance() : joinConferenceAuth_;
         } else {
           return joinConferenceAuthBuilder_.getMessage();
         }
@@ -1018,7 +1206,7 @@ public final class JRoomProtos {
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
        */
-      public Builder setJoinConferenceAuth(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest value) {
+      public Builder setJoinConferenceAuth(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest value) {
         if (joinConferenceAuthBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1035,7 +1223,7 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
        */
       public Builder setJoinConferenceAuth(
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.Builder builderForValue) {
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.Builder builderForValue) {
         if (joinConferenceAuthBuilder_ == null) {
           joinConferenceAuth_ = builderForValue.build();
           onChanged();
@@ -1048,13 +1236,13 @@ public final class JRoomProtos {
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
        */
-      public Builder mergeJoinConferenceAuth(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest value) {
+      public Builder mergeJoinConferenceAuth(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest value) {
         if (joinConferenceAuthBuilder_ == null) {
           if (((bitField0_ & 0x00000004) != 0) &&
               joinConferenceAuth_ != null &&
-              joinConferenceAuth_ != com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance()) {
+              joinConferenceAuth_ != com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance()) {
             joinConferenceAuth_ =
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.newBuilder(joinConferenceAuth_).mergeFrom(value).buildPartial();
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.newBuilder(joinConferenceAuth_).mergeFrom(value).buildPartial();
           } else {
             joinConferenceAuth_ = value;
           }
@@ -1081,7 +1269,7 @@ public final class JRoomProtos {
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.Builder getJoinConferenceAuthBuilder() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.Builder getJoinConferenceAuthBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getJoinConferenceAuthFieldBuilder().getBuilder();
@@ -1089,29 +1277,269 @@ public final class JRoomProtos {
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder getJoinConferenceAuthOrBuilder() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder getJoinConferenceAuthOrBuilder() {
         if (joinConferenceAuthBuilder_ != null) {
           return joinConferenceAuthBuilder_.getMessageOrBuilder();
         } else {
           return joinConferenceAuth_ == null ?
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance() : joinConferenceAuth_;
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.getDefaultInstance() : joinConferenceAuth_;
         }
       }
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthRequest join_conference_auth = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder> 
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder> 
           getJoinConferenceAuthFieldBuilder() {
         if (joinConferenceAuthBuilder_ == null) {
           joinConferenceAuthBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder>(
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequestOrBuilder>(
                   getJoinConferenceAuth(),
                   getParentForChildren(),
                   isClean());
           joinConferenceAuth_ = null;
         }
         return joinConferenceAuthBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest attendeeRegister_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequestOrBuilder> attendeeRegisterBuilder_;
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       * @return Whether the attendeeRegister field is set.
+       */
+      public boolean hasAttendeeRegister() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       * @return The attendeeRegister.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest getAttendeeRegister() {
+        if (attendeeRegisterBuilder_ == null) {
+          return attendeeRegister_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.getDefaultInstance() : attendeeRegister_;
+        } else {
+          return attendeeRegisterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       */
+      public Builder setAttendeeRegister(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest value) {
+        if (attendeeRegisterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attendeeRegister_ = value;
+          onChanged();
+        } else {
+          attendeeRegisterBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       */
+      public Builder setAttendeeRegister(
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.Builder builderForValue) {
+        if (attendeeRegisterBuilder_ == null) {
+          attendeeRegister_ = builderForValue.build();
+          onChanged();
+        } else {
+          attendeeRegisterBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       */
+      public Builder mergeAttendeeRegister(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest value) {
+        if (attendeeRegisterBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+              attendeeRegister_ != null &&
+              attendeeRegister_ != com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.getDefaultInstance()) {
+            attendeeRegister_ =
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.newBuilder(attendeeRegister_).mergeFrom(value).buildPartial();
+          } else {
+            attendeeRegister_ = value;
+          }
+          onChanged();
+        } else {
+          attendeeRegisterBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       */
+      public Builder clearAttendeeRegister() {
+        if (attendeeRegisterBuilder_ == null) {
+          attendeeRegister_ = null;
+          onChanged();
+        } else {
+          attendeeRegisterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.Builder getAttendeeRegisterBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getAttendeeRegisterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequestOrBuilder getAttendeeRegisterOrBuilder() {
+        if (attendeeRegisterBuilder_ != null) {
+          return attendeeRegisterBuilder_.getMessageOrBuilder();
+        } else {
+          return attendeeRegister_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.getDefaultInstance() : attendeeRegister_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterRequest attendee_register = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequestOrBuilder> 
+          getAttendeeRegisterFieldBuilder() {
+        if (attendeeRegisterBuilder_ == null) {
+          attendeeRegisterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequestOrBuilder>(
+                  getAttendeeRegister(),
+                  getParentForChildren(),
+                  isClean());
+          attendeeRegister_ = null;
+        }
+        return attendeeRegisterBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest attendeeAuth_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequestOrBuilder> attendeeAuthBuilder_;
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       * @return Whether the attendeeAuth field is set.
+       */
+      public boolean hasAttendeeAuth() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       * @return The attendeeAuth.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest getAttendeeAuth() {
+        if (attendeeAuthBuilder_ == null) {
+          return attendeeAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.getDefaultInstance() : attendeeAuth_;
+        } else {
+          return attendeeAuthBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       */
+      public Builder setAttendeeAuth(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest value) {
+        if (attendeeAuthBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attendeeAuth_ = value;
+          onChanged();
+        } else {
+          attendeeAuthBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       */
+      public Builder setAttendeeAuth(
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.Builder builderForValue) {
+        if (attendeeAuthBuilder_ == null) {
+          attendeeAuth_ = builderForValue.build();
+          onChanged();
+        } else {
+          attendeeAuthBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       */
+      public Builder mergeAttendeeAuth(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest value) {
+        if (attendeeAuthBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) != 0) &&
+              attendeeAuth_ != null &&
+              attendeeAuth_ != com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.getDefaultInstance()) {
+            attendeeAuth_ =
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.newBuilder(attendeeAuth_).mergeFrom(value).buildPartial();
+          } else {
+            attendeeAuth_ = value;
+          }
+          onChanged();
+        } else {
+          attendeeAuthBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       */
+      public Builder clearAttendeeAuth() {
+        if (attendeeAuthBuilder_ == null) {
+          attendeeAuth_ = null;
+          onChanged();
+        } else {
+          attendeeAuthBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.Builder getAttendeeAuthBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getAttendeeAuthFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequestOrBuilder getAttendeeAuthOrBuilder() {
+        if (attendeeAuthBuilder_ != null) {
+          return attendeeAuthBuilder_.getMessageOrBuilder();
+        } else {
+          return attendeeAuth_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.getDefaultInstance() : attendeeAuth_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequestOrBuilder> 
+          getAttendeeAuthFieldBuilder() {
+        if (attendeeAuthBuilder_ == null) {
+          attendeeAuthBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequestOrBuilder>(
+                  getAttendeeAuth(),
+                  getParentForChildren(),
+                  isClean());
+          attendeeAuth_ = null;
+        }
+        return attendeeAuthBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1206,7 +1634,7 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
      * @return The joinConferenceProb.
      */
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse getJoinConferenceProb();
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse getJoinConferenceProb();
     /**
      * <pre>
      * JRoom join conference response 
@@ -1214,7 +1642,7 @@ public final class JRoomProtos {
      *
      * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
      */
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder getJoinConferenceProbOrBuilder();
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder getJoinConferenceProbOrBuilder();
 
     /**
      * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
@@ -1225,15 +1653,45 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
      * @return The joinConferenceAuth.
      */
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse getJoinConferenceAuth();
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse getJoinConferenceAuth();
     /**
      * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
      */
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder getJoinConferenceAuthOrBuilder();
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder getJoinConferenceAuthOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+     * @return Whether the attendeeRegister field is set.
+     */
+    boolean hasAttendeeRegister();
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+     * @return The attendeeRegister.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse getAttendeeRegister();
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponseOrBuilder getAttendeeRegisterOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+     * @return Whether the attendeeAuth field is set.
+     */
+    boolean hasAttendeeAuth();
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+     * @return The attendeeAuth.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse getAttendeeAuth();
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponseOrBuilder getAttendeeAuthOrBuilder();
   }
   /**
    * <pre>
-   * The response message 
+   * Message response 
    * </pre>
    *
    * Protobuf type {@code jroom.JRoomResponse}
@@ -1295,11 +1753,11 @@ public final class JRoomProtos {
               break;
             }
             case 18: {
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.Builder subBuilder = null;
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) != 0)) {
                 subBuilder = joinConferenceProb_.toBuilder();
               }
-              joinConferenceProb_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.PARSER, extensionRegistry);
+              joinConferenceProb_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(joinConferenceProb_);
                 joinConferenceProb_ = subBuilder.buildPartial();
@@ -1308,16 +1766,42 @@ public final class JRoomProtos {
               break;
             }
             case 26: {
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.Builder subBuilder = null;
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) != 0)) {
                 subBuilder = joinConferenceAuth_.toBuilder();
               }
-              joinConferenceAuth_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.PARSER, extensionRegistry);
+              joinConferenceAuth_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(joinConferenceAuth_);
                 joinConferenceAuth_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) != 0)) {
+                subBuilder = attendeeRegister_.toBuilder();
+              }
+              attendeeRegister_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attendeeRegister_);
+                attendeeRegister_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 42: {
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) != 0)) {
+                subBuilder = attendeeAuth_.toBuilder();
+              }
+              attendeeAuth_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attendeeAuth_);
+                attendeeAuth_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
               break;
             }
             default: {
@@ -1381,7 +1865,7 @@ public final class JRoomProtos {
     }
 
     public static final int JOIN_CONFERENCE_PROB_FIELD_NUMBER = 2;
-    private com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse joinConferenceProb_;
+    private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse joinConferenceProb_;
     /**
      * <pre>
      * JRoom join conference response 
@@ -1401,8 +1885,8 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
      * @return The joinConferenceProb.
      */
-    public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse getJoinConferenceProb() {
-      return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance() : joinConferenceProb_;
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse getJoinConferenceProb() {
+      return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance() : joinConferenceProb_;
     }
     /**
      * <pre>
@@ -1411,12 +1895,12 @@ public final class JRoomProtos {
      *
      * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
      */
-    public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder getJoinConferenceProbOrBuilder() {
-      return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance() : joinConferenceProb_;
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder getJoinConferenceProbOrBuilder() {
+      return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance() : joinConferenceProb_;
     }
 
     public static final int JOIN_CONFERENCE_AUTH_FIELD_NUMBER = 3;
-    private com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse joinConferenceAuth_;
+    private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse joinConferenceAuth_;
     /**
      * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
      * @return Whether the joinConferenceAuth field is set.
@@ -1428,14 +1912,60 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
      * @return The joinConferenceAuth.
      */
-    public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse getJoinConferenceAuth() {
-      return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance() : joinConferenceAuth_;
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse getJoinConferenceAuth() {
+      return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance() : joinConferenceAuth_;
     }
     /**
      * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
      */
-    public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder getJoinConferenceAuthOrBuilder() {
-      return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance() : joinConferenceAuth_;
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder getJoinConferenceAuthOrBuilder() {
+      return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance() : joinConferenceAuth_;
+    }
+
+    public static final int ATTENDEE_REGISTER_FIELD_NUMBER = 4;
+    private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse attendeeRegister_;
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+     * @return Whether the attendeeRegister field is set.
+     */
+    public boolean hasAttendeeRegister() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+     * @return The attendeeRegister.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse getAttendeeRegister() {
+      return attendeeRegister_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.getDefaultInstance() : attendeeRegister_;
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponseOrBuilder getAttendeeRegisterOrBuilder() {
+      return attendeeRegister_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.getDefaultInstance() : attendeeRegister_;
+    }
+
+    public static final int ATTENDEE_AUTH_FIELD_NUMBER = 5;
+    private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse attendeeAuth_;
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+     * @return Whether the attendeeAuth field is set.
+     */
+    public boolean hasAttendeeAuth() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+     * @return The attendeeAuth.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse getAttendeeAuth() {
+      return attendeeAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.getDefaultInstance() : attendeeAuth_;
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponseOrBuilder getAttendeeAuthOrBuilder() {
+      return attendeeAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.getDefaultInstance() : attendeeAuth_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1461,6 +1991,12 @@ public final class JRoomProtos {
       if (((bitField0_ & 0x00000004) != 0)) {
         output.writeMessage(3, getJoinConferenceAuth());
       }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeMessage(4, getAttendeeRegister());
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeMessage(5, getAttendeeAuth());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1481,6 +2017,14 @@ public final class JRoomProtos {
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getJoinConferenceAuth());
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getAttendeeRegister());
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getAttendeeAuth());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1511,6 +2055,16 @@ public final class JRoomProtos {
         if (!getJoinConferenceAuth()
             .equals(other.getJoinConferenceAuth())) return false;
       }
+      if (hasAttendeeRegister() != other.hasAttendeeRegister()) return false;
+      if (hasAttendeeRegister()) {
+        if (!getAttendeeRegister()
+            .equals(other.getAttendeeRegister())) return false;
+      }
+      if (hasAttendeeAuth() != other.hasAttendeeAuth()) return false;
+      if (hasAttendeeAuth()) {
+        if (!getAttendeeAuth()
+            .equals(other.getAttendeeAuth())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1533,6 +2087,14 @@ public final class JRoomProtos {
       if (hasJoinConferenceAuth()) {
         hash = (37 * hash) + JOIN_CONFERENCE_AUTH_FIELD_NUMBER;
         hash = (53 * hash) + getJoinConferenceAuth().hashCode();
+      }
+      if (hasAttendeeRegister()) {
+        hash = (37 * hash) + ATTENDEE_REGISTER_FIELD_NUMBER;
+        hash = (53 * hash) + getAttendeeRegister().hashCode();
+      }
+      if (hasAttendeeAuth()) {
+        hash = (37 * hash) + ATTENDEE_AUTH_FIELD_NUMBER;
+        hash = (53 * hash) + getAttendeeAuth().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -1631,7 +2193,7 @@ public final class JRoomProtos {
     }
     /**
      * <pre>
-     * The response message 
+     * Message response 
      * </pre>
      *
      * Protobuf type {@code jroom.JRoomResponse}
@@ -1668,6 +2230,8 @@ public final class JRoomProtos {
                 .alwaysUseFieldBuilders) {
           getJoinConferenceProbFieldBuilder();
           getJoinConferenceAuthFieldBuilder();
+          getAttendeeRegisterFieldBuilder();
+          getAttendeeAuthFieldBuilder();
         }
       }
       @java.lang.Override
@@ -1687,6 +2251,18 @@ public final class JRoomProtos {
           joinConferenceAuthBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
+        if (attendeeRegisterBuilder_ == null) {
+          attendeeRegister_ = null;
+        } else {
+          attendeeRegisterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (attendeeAuthBuilder_ == null) {
+          attendeeAuth_ = null;
+        } else {
+          attendeeAuthBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -1734,6 +2310,22 @@ public final class JRoomProtos {
             result.joinConferenceAuth_ = joinConferenceAuthBuilder_.build();
           }
           to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          if (attendeeRegisterBuilder_ == null) {
+            result.attendeeRegister_ = attendeeRegister_;
+          } else {
+            result.attendeeRegister_ = attendeeRegisterBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          if (attendeeAuthBuilder_ == null) {
+            result.attendeeAuth_ = attendeeAuth_;
+          } else {
+            result.attendeeAuth_ = attendeeAuthBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000010;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -1792,6 +2384,12 @@ public final class JRoomProtos {
         }
         if (other.hasJoinConferenceAuth()) {
           mergeJoinConferenceAuth(other.getJoinConferenceAuth());
+        }
+        if (other.hasAttendeeRegister()) {
+          mergeAttendeeRegister(other.getAttendeeRegister());
+        }
+        if (other.hasAttendeeAuth()) {
+          mergeAttendeeAuth(other.getAttendeeAuth());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1881,9 +2479,9 @@ public final class JRoomProtos {
         return this;
       }
 
-      private com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse joinConferenceProb_;
+      private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse joinConferenceProb_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder> joinConferenceProbBuilder_;
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder> joinConferenceProbBuilder_;
       /**
        * <pre>
        * JRoom join conference response 
@@ -1903,9 +2501,9 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
        * @return The joinConferenceProb.
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse getJoinConferenceProb() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse getJoinConferenceProb() {
         if (joinConferenceProbBuilder_ == null) {
-          return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance() : joinConferenceProb_;
+          return joinConferenceProb_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance() : joinConferenceProb_;
         } else {
           return joinConferenceProbBuilder_.getMessage();
         }
@@ -1917,7 +2515,7 @@ public final class JRoomProtos {
        *
        * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
        */
-      public Builder setJoinConferenceProb(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse value) {
+      public Builder setJoinConferenceProb(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse value) {
         if (joinConferenceProbBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1938,7 +2536,7 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
        */
       public Builder setJoinConferenceProb(
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.Builder builderForValue) {
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.Builder builderForValue) {
         if (joinConferenceProbBuilder_ == null) {
           joinConferenceProb_ = builderForValue.build();
           onChanged();
@@ -1955,13 +2553,13 @@ public final class JRoomProtos {
        *
        * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
        */
-      public Builder mergeJoinConferenceProb(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse value) {
+      public Builder mergeJoinConferenceProb(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse value) {
         if (joinConferenceProbBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0) &&
               joinConferenceProb_ != null &&
-              joinConferenceProb_ != com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance()) {
+              joinConferenceProb_ != com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance()) {
             joinConferenceProb_ =
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.newBuilder(joinConferenceProb_).mergeFrom(value).buildPartial();
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.newBuilder(joinConferenceProb_).mergeFrom(value).buildPartial();
           } else {
             joinConferenceProb_ = value;
           }
@@ -1996,7 +2594,7 @@ public final class JRoomProtos {
        *
        * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.Builder getJoinConferenceProbBuilder() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.Builder getJoinConferenceProbBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getJoinConferenceProbFieldBuilder().getBuilder();
@@ -2008,12 +2606,12 @@ public final class JRoomProtos {
        *
        * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder getJoinConferenceProbOrBuilder() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder getJoinConferenceProbOrBuilder() {
         if (joinConferenceProbBuilder_ != null) {
           return joinConferenceProbBuilder_.getMessageOrBuilder();
         } else {
           return joinConferenceProb_ == null ?
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance() : joinConferenceProb_;
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.getDefaultInstance() : joinConferenceProb_;
         }
       }
       /**
@@ -2024,11 +2622,11 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceProbeResponse join_conference_prob = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder> 
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder> 
           getJoinConferenceProbFieldBuilder() {
         if (joinConferenceProbBuilder_ == null) {
           joinConferenceProbBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder>(
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponseOrBuilder>(
                   getJoinConferenceProb(),
                   getParentForChildren(),
                   isClean());
@@ -2037,9 +2635,9 @@ public final class JRoomProtos {
         return joinConferenceProbBuilder_;
       }
 
-      private com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse joinConferenceAuth_;
+      private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse joinConferenceAuth_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder> joinConferenceAuthBuilder_;
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder> joinConferenceAuthBuilder_;
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
        * @return Whether the joinConferenceAuth field is set.
@@ -2051,9 +2649,9 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
        * @return The joinConferenceAuth.
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse getJoinConferenceAuth() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse getJoinConferenceAuth() {
         if (joinConferenceAuthBuilder_ == null) {
-          return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance() : joinConferenceAuth_;
+          return joinConferenceAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance() : joinConferenceAuth_;
         } else {
           return joinConferenceAuthBuilder_.getMessage();
         }
@@ -2061,7 +2659,7 @@ public final class JRoomProtos {
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
        */
-      public Builder setJoinConferenceAuth(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse value) {
+      public Builder setJoinConferenceAuth(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse value) {
         if (joinConferenceAuthBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2078,7 +2676,7 @@ public final class JRoomProtos {
        * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
        */
       public Builder setJoinConferenceAuth(
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.Builder builderForValue) {
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.Builder builderForValue) {
         if (joinConferenceAuthBuilder_ == null) {
           joinConferenceAuth_ = builderForValue.build();
           onChanged();
@@ -2091,13 +2689,13 @@ public final class JRoomProtos {
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
        */
-      public Builder mergeJoinConferenceAuth(com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse value) {
+      public Builder mergeJoinConferenceAuth(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse value) {
         if (joinConferenceAuthBuilder_ == null) {
           if (((bitField0_ & 0x00000004) != 0) &&
               joinConferenceAuth_ != null &&
-              joinConferenceAuth_ != com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance()) {
+              joinConferenceAuth_ != com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance()) {
             joinConferenceAuth_ =
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.newBuilder(joinConferenceAuth_).mergeFrom(value).buildPartial();
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.newBuilder(joinConferenceAuth_).mergeFrom(value).buildPartial();
           } else {
             joinConferenceAuth_ = value;
           }
@@ -2124,7 +2722,7 @@ public final class JRoomProtos {
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.Builder getJoinConferenceAuthBuilder() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.Builder getJoinConferenceAuthBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getJoinConferenceAuthFieldBuilder().getBuilder();
@@ -2132,29 +2730,269 @@ public final class JRoomProtos {
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
        */
-      public com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder getJoinConferenceAuthOrBuilder() {
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder getJoinConferenceAuthOrBuilder() {
         if (joinConferenceAuthBuilder_ != null) {
           return joinConferenceAuthBuilder_.getMessageOrBuilder();
         } else {
           return joinConferenceAuth_ == null ?
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance() : joinConferenceAuth_;
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.getDefaultInstance() : joinConferenceAuth_;
         }
       }
       /**
        * <code>optional .jroom.JRoomJoinConferenceAuthResponse join_conference_auth = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder> 
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder> 
           getJoinConferenceAuthFieldBuilder() {
         if (joinConferenceAuthBuilder_ == null) {
           joinConferenceAuthBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder>(
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponseOrBuilder>(
                   getJoinConferenceAuth(),
                   getParentForChildren(),
                   isClean());
           joinConferenceAuth_ = null;
         }
         return joinConferenceAuthBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse attendeeRegister_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponseOrBuilder> attendeeRegisterBuilder_;
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       * @return Whether the attendeeRegister field is set.
+       */
+      public boolean hasAttendeeRegister() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       * @return The attendeeRegister.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse getAttendeeRegister() {
+        if (attendeeRegisterBuilder_ == null) {
+          return attendeeRegister_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.getDefaultInstance() : attendeeRegister_;
+        } else {
+          return attendeeRegisterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       */
+      public Builder setAttendeeRegister(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse value) {
+        if (attendeeRegisterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attendeeRegister_ = value;
+          onChanged();
+        } else {
+          attendeeRegisterBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       */
+      public Builder setAttendeeRegister(
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.Builder builderForValue) {
+        if (attendeeRegisterBuilder_ == null) {
+          attendeeRegister_ = builderForValue.build();
+          onChanged();
+        } else {
+          attendeeRegisterBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       */
+      public Builder mergeAttendeeRegister(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse value) {
+        if (attendeeRegisterBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+              attendeeRegister_ != null &&
+              attendeeRegister_ != com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.getDefaultInstance()) {
+            attendeeRegister_ =
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.newBuilder(attendeeRegister_).mergeFrom(value).buildPartial();
+          } else {
+            attendeeRegister_ = value;
+          }
+          onChanged();
+        } else {
+          attendeeRegisterBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       */
+      public Builder clearAttendeeRegister() {
+        if (attendeeRegisterBuilder_ == null) {
+          attendeeRegister_ = null;
+          onChanged();
+        } else {
+          attendeeRegisterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.Builder getAttendeeRegisterBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getAttendeeRegisterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponseOrBuilder getAttendeeRegisterOrBuilder() {
+        if (attendeeRegisterBuilder_ != null) {
+          return attendeeRegisterBuilder_.getMessageOrBuilder();
+        } else {
+          return attendeeRegister_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.getDefaultInstance() : attendeeRegister_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeRegisterResponse attendee_register = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponseOrBuilder> 
+          getAttendeeRegisterFieldBuilder() {
+        if (attendeeRegisterBuilder_ == null) {
+          attendeeRegisterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponseOrBuilder>(
+                  getAttendeeRegister(),
+                  getParentForChildren(),
+                  isClean());
+          attendeeRegister_ = null;
+        }
+        return attendeeRegisterBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse attendeeAuth_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponseOrBuilder> attendeeAuthBuilder_;
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       * @return Whether the attendeeAuth field is set.
+       */
+      public boolean hasAttendeeAuth() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       * @return The attendeeAuth.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse getAttendeeAuth() {
+        if (attendeeAuthBuilder_ == null) {
+          return attendeeAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.getDefaultInstance() : attendeeAuth_;
+        } else {
+          return attendeeAuthBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       */
+      public Builder setAttendeeAuth(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse value) {
+        if (attendeeAuthBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attendeeAuth_ = value;
+          onChanged();
+        } else {
+          attendeeAuthBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       */
+      public Builder setAttendeeAuth(
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.Builder builderForValue) {
+        if (attendeeAuthBuilder_ == null) {
+          attendeeAuth_ = builderForValue.build();
+          onChanged();
+        } else {
+          attendeeAuthBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       */
+      public Builder mergeAttendeeAuth(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse value) {
+        if (attendeeAuthBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) != 0) &&
+              attendeeAuth_ != null &&
+              attendeeAuth_ != com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.getDefaultInstance()) {
+            attendeeAuth_ =
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.newBuilder(attendeeAuth_).mergeFrom(value).buildPartial();
+          } else {
+            attendeeAuth_ = value;
+          }
+          onChanged();
+        } else {
+          attendeeAuthBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       */
+      public Builder clearAttendeeAuth() {
+        if (attendeeAuthBuilder_ == null) {
+          attendeeAuth_ = null;
+          onChanged();
+        } else {
+          attendeeAuthBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.Builder getAttendeeAuthBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getAttendeeAuthFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponseOrBuilder getAttendeeAuthOrBuilder() {
+        if (attendeeAuthBuilder_ != null) {
+          return attendeeAuthBuilder_.getMessageOrBuilder();
+        } else {
+          return attendeeAuth_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.getDefaultInstance() : attendeeAuth_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponseOrBuilder> 
+          getAttendeeAuthFieldBuilder() {
+        if (attendeeAuthBuilder_ == null) {
+          attendeeAuthBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponseOrBuilder>(
+                  getAttendeeAuth(),
+                  getParentForChildren(),
+                  isClean());
+          attendeeAuth_ = null;
+        }
+        return attendeeAuthBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2229,40 +3067,51 @@ public final class JRoomProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n0com/caporal7/jroom/common/java/proto/J" +
-      "Room.proto\022\005jroom\032>com/caporal7/jroom/co" +
-      "mmon/java/proto/JRoomJoinConference.prot" +
-      "o\"\275\001\n\014JRoomRequest\022\"\n\004type\030\001 \001(\0162\013.jroom" +
-      ".Type:\007INVALID\022D\n\024join_conference_prob\030\002" +
-      " \001(\0132&.jroom.JRoomJoinConferenceProbeReq" +
-      "uest\022C\n\024join_conference_auth\030\003 \001(\0132%.jro" +
-      "om.JRoomJoinConferenceAuthRequest\"\300\001\n\rJR" +
-      "oomResponse\022\"\n\004type\030\001 \001(\0162\013.jroom.Type:\007" +
-      "INVALID\022E\n\024join_conference_prob\030\002 \001(\0132\'." +
-      "jroom.JRoomJoinConferenceProbeResponse\022D" +
-      "\n\024join_conference_auth\030\003 \001(\0132&.jroom.JRo" +
-      "omJoinConferenceAuthResponse*G\n\004Type\022\013\n\007" +
-      "INVALID\020\000\022\030\n\024JOIN_CONFERENCE_PROB\020\001\022\030\n\024J" +
-      "OIN_CONFERENCE_AUTH\020\002B4\n%com.caporal7.jr" +
-      "oom.common.java.protocB\013JRoomProtos"
+      "Room.proto\022\005jroom\032:com/caporal7/jroom/co" +
+      "mmon/java/proto/JRoomConference.proto\0328c" +
+      "om/caporal7/jroom/common/java/proto/JRoo" +
+      "mAttendee.proto\"\265\002\n\014JRoomRequest\022\"\n\004type" +
+      "\030\001 \001(\0162\013.jroom.Type:\007INVALID\022D\n\024join_con" +
+      "ference_prob\030\002 \001(\0132&.jroom.JRoomJoinConf" +
+      "erenceProbeRequest\022C\n\024join_conference_au" +
+      "th\030\003 \001(\0132%.jroom.JRoomJoinConferenceAuth" +
+      "Request\022>\n\021attendee_register\030\004 \001(\0132#.jro" +
+      "om.JRoomAttendeeRegisterRequest\0226\n\ratten" +
+      "dee_auth\030\005 \001(\0132\037.jroom.JRoomAttendeeAuth" +
+      "Request\"\272\002\n\rJRoomResponse\022\"\n\004type\030\001 \001(\0162" +
+      "\013.jroom.Type:\007INVALID\022E\n\024join_conference" +
+      "_prob\030\002 \001(\0132\'.jroom.JRoomJoinConferenceP" +
+      "robeResponse\022D\n\024join_conference_auth\030\003 \001" +
+      "(\0132&.jroom.JRoomJoinConferenceAuthRespon" +
+      "se\022?\n\021attendee_register\030\004 \001(\0132$.jroom.JR" +
+      "oomAttendeeRegisterResponse\0227\n\rattendee_" +
+      "auth\030\005 \001(\0132 .jroom.JRoomAttendeeAuthResp" +
+      "onse*l\n\004Type\022\013\n\007INVALID\020\000\022\030\n\024JOIN_CONFER" +
+      "ENCE_PROB\020\001\022\030\n\024JOIN_CONFERENCE_AUTH\020\002\022\020\n" +
+      "\014ATTENDEE_REG\020\003\022\021\n\rATTENDEE_AUTH\020\004B4\n%co" +
+      "m.caporal7.jroom.common.java.protocB\013JRo" +
+      "omProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.getDescriptor(),
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.getDescriptor(),
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.getDescriptor(),
         });
     internal_static_jroom_JRoomRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_jroom_JRoomRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_jroom_JRoomRequest_descriptor,
-        new java.lang.String[] { "Type", "JoinConferenceProb", "JoinConferenceAuth", });
+        new java.lang.String[] { "Type", "JoinConferenceProb", "JoinConferenceAuth", "AttendeeRegister", "AttendeeAuth", });
     internal_static_jroom_JRoomResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_jroom_JRoomResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_jroom_JRoomResponse_descriptor,
-        new java.lang.String[] { "Type", "JoinConferenceProb", "JoinConferenceAuth", });
-    com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.getDescriptor();
+        new java.lang.String[] { "Type", "JoinConferenceProb", "JoinConferenceAuth", "AttendeeRegister", "AttendeeAuth", });
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.getDescriptor();
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

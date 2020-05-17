@@ -5,11 +5,9 @@
  */
 package com.caporal7.jroom.common.java;
 
-/**
- *
- * @author Ayoub Ismaili
- */
 public class JRoomSettings {
-    public static String HOST = "jroom.caporal7.com";
+    public static String VERSION = "0.1.0";
+    //public static String HOST = "127.0.0.1";
     public static int PORT = 8803;
+    public static boolean USE_SSL = false;
 }

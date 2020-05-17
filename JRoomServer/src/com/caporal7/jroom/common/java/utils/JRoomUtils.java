@@ -6,6 +6,9 @@
 package com.caporal7.jroom.common.java.utils;
 
 import java.nio.ByteBuffer;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -22,6 +25,17 @@ public class JRoomUtils {
     public static int convertBytesToInt(byte[] bytes){
         ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
         return byteBuffer.getInt();
+    }
+    
+    private static EntityManager em = null;
+    
+    public static EntityManager getEntityManager() 
+    {
+        if (em == null) {
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("JRoomServerPU");
+            em = emf.createEntityManager();
+        }
+        return em;
     }
 }
 

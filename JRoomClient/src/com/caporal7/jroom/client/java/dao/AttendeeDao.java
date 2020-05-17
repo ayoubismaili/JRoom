@@ -27,33 +27,34 @@ package com.caporal7.jroom.client.java.dao;
 import com.caporal7.jroom.client.java.services.JRoomClient;
 import com.caporal7.jroom.common.java.JRoomSettings;
 import com.caporal7.jroom.common.java.JRoomException;
-import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest;
-import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType;
-import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest;
-import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.ProbeResponseType;
+import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest;
+import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse;
+import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest;
+import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomResponse;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
 import java.io.IOException;
 
-public class ConferenceDao {
+public class AttendeeDao {
     
     private JRoomClient client;
     
-    public ConferenceDao() throws IOException {
+    public AttendeeDao() throws IOException {
         client = new JRoomClient(JRoomSettings.HOST, JRoomSettings.PORT);
     }
     
-    public ProbeResponseType probe(int conferenceId) 
-            throws IOException, JRoomException {
-        JRoomJoinConferenceProbeRequest probRequest = 
-                JRoomJoinConferenceProbeRequest.newBuilder()
-                .setConferenceId(conferenceId)
+    public JRoomAttendeeRegisterResponse register(
+            String email, String password) throws IOException, JRoomException {
+        JRoomAttendeeRegisterRequest innerRequest = 
+                JRoomAttendeeRegisterRequest.newBuilder()
+                .setEmail(email)
+                .setPassword(password)
                 .build();
         JRoomRequest request = JRoomRequest.newBuilder()
-                .setType(JRoomProtos.Type.JOIN_CONFERENCE_PROB)
-                .setJoinConferenceProb(probRequest)
+                .setType(JRoomProtos.Type.ATTENDEE_REG)
+                .setAttendeeRegister(innerRequest)
                 .build();
         byte[] requestBytes = request.toByteArray();     
         byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
@@ -67,24 +68,22 @@ public class ConferenceDao {
         byte[] responseBytes = client.readNBytes(length);
         
         JRoomResponse response = JRoomResponse.parseFrom(responseBytes);
-        if (response.getType() != JRoomProtos.Type.JOIN_CONFERENCE_PROB) {
+        if (response.getType() != JRoomProtos.Type.ATTENDEE_REG) {
             throw new JRoomException("Invalid response");
         }
-        return response.getJoinConferenceProb().getResponse();
+        return response.getAttendeeRegister();
     }
     
-    public AuthResponseType auth(int conferenceId, int password, boolean isGuest, String sessionCookie) 
-            throws IOException, JRoomException {
-        JRoomJoinConferenceAuthRequest authRequest = 
-                JRoomJoinConferenceAuthRequest.newBuilder()
-                .setConferenceId(conferenceId)
+    public JRoomAttendeeAuthResponse auth(
+            String email, String password) throws IOException, JRoomException {
+        JRoomAttendeeAuthRequest innerRequest = 
+                JRoomAttendeeAuthRequest.newBuilder()
+                .setEmail(email)
                 .setPassword(password)
-                .setIsGuest(isGuest)
-                .setSessionCookie(sessionCookie)
                 .build();
         JRoomRequest request = JRoomRequest.newBuilder()
-                .setType(JRoomProtos.Type.JOIN_CONFERENCE_AUTH)
-                .setJoinConferenceAuth(authRequest)
+                .setType(JRoomProtos.Type.ATTENDEE_AUTH)
+                .setAttendeeAuth(innerRequest)
                 .build();
         byte[] requestBytes = request.toByteArray();     
         byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
@@ -98,9 +97,9 @@ public class ConferenceDao {
         byte[] responseBytes = client.readNBytes(length);
         
         JRoomResponse response = JRoomResponse.parseFrom(responseBytes);
-        if (response.getType() != JRoomProtos.Type.JOIN_CONFERENCE_AUTH) {
+        if (response.getType() != JRoomProtos.Type.ATTENDEE_AUTH) {
             throw new JRoomException("Invalid response");
         }
-        return response.getJoinConferenceAuth().getResponse();
+        return response.getAttendeeAuth();
     }
 }

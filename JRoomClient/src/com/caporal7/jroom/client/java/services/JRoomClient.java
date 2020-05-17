@@ -22,56 +22,37 @@
  * THE SOFTWARE.
  */
 
-package com.caporal7.jroom.client.java.controllers;
+package com.caporal7.jroom.client.java.services;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import com.caporal7.jroom.common.java.JRoomSettings;
+import java.io.IOException;
+import java.net.Socket;
 
-public class JoinConferencePasswordController {
 
-    @FXML
-    private TextField txtPassword;
+public class JRoomClient {
     
-    private int conferenceId;
-    private boolean isGuest;
-    private String sessionCookie;
+    private Socket socket;
     
-    public void initialize() {
-        
-    }
-    
-    @FXML
-    private void btnJoinConferenceClick(MouseEvent e) throws Exception {
-        
+    public JRoomClient(String host, int port) throws IOException {
+        if (JRoomSettings.USE_SSL)
+        {
+            /* TODO: implement SSL */
+        }
+        else
+        {
+            socket = new Socket(host, port);
+        }
     }
     
-    @FXML
-    private void btnCancelClick(MouseEvent e) throws Exception {
-        
+    public byte[] readNBytes(int n) throws IOException {
+        return socket.getInputStream().readNBytes(n);
     }
-
-    public int getConferenceId() {
-        return conferenceId;
+    
+    public void write(byte[] data) throws IOException {
+        socket.getOutputStream().write(data);
     }
-
-    public void setConferenceId(int conferenceId) {
-        this.conferenceId = conferenceId;
-    }
-
-    public boolean isIsGuest() {
-        return isGuest;
-    }
-
-    public void setIsGuest(boolean isGuest) {
-        this.isGuest = isGuest;
-    }
-
-    public String getSessionCookie() {
-        return sessionCookie;
-    }
-
-    public void setSessionCookie(String sessionCookie) {
-        this.sessionCookie = sessionCookie;
+    
+    public void flush() throws IOException {
+        socket.getOutputStream().flush();
     }
 }

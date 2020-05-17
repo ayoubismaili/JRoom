@@ -25,9 +25,11 @@
 package com.caporal7.jroom.client.java.controllers;
 
 import com.caporal7.jroom.client.java.dao.ConferenceDao;
-import com.caporal7.jroom.common.java.protoc.JRoomJoinConferenceProtos.JRoomJoinConferenceProbeResponse.ProbeResponseType;
+import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.ProbeResponseType;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -50,9 +52,10 @@ public class JoinConferenceIdController {
     private CheckBox cbDontConnectSound;
     @FXML
     private CheckBox cbStopMyVideo;
+    private ConferenceDao dao;
     
-    public void initialize() {
-        
+    public void initialize() throws IOException {
+        dao = new ConferenceDao();
     }
     
     @FXML
@@ -69,7 +72,6 @@ public class JoinConferenceIdController {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "", btnQuit);
                 alert.setTitle("Quitter la réunion");
                 alert.setHeaderText("Ce N° de réunion n'est pas valide. Veuillez vérifier puis réessayer.");
-                //alert.setContentText("I have a great message for you!");
                 alert.showAndWait();
             return;
         }
@@ -78,7 +80,6 @@ public class JoinConferenceIdController {
         boolean dontConnectSound = cbDontConnectSound.isSelected();
         boolean stopMyVideo = cbStopMyVideo.isSelected();
         
-        ConferenceDao dao = new ConferenceDao();
         ProbeResponseType responseType = dao.probe(conferenceId);
         switch(responseType) 
         {
@@ -88,17 +89,23 @@ public class JoinConferenceIdController {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "", btnQuit);
                 alert.setTitle("Quitter la réunion");
                 alert.setHeaderText("Ce N° de réunion n'est pas valide. Veuillez vérifier puis réessayer.");
-                //alert.setContentText("I have a great message for you!");
                 alert.showAndWait();
                 break;
             }
             case SUCCESS:
             {
-                Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/join-conference-password.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/view/join-conference-password.fxml"));
+                
+                JoinConferencePasswordController controller = new JoinConferencePasswordController();
+                controller.setConferenceId(conferenceId);
+                controller.setIsGuest(true);
+                loader.setController(controller);
+                Parent root = loader.load();
+                
                 Stage stage = new Stage();
                 stage.setTitle("Saisir le mot de passe de la réunion");
                 stage.setScene(new Scene(root));
-                stage.show();
+                stage.showAndWait();
                 break;
             }
         }
@@ -106,7 +113,7 @@ public class JoinConferenceIdController {
     
     @FXML
     private void btnCancelClick(MouseEvent e) throws Exception {
-        
+        ((Node)(e.getSource())).getScene().getWindow().hide();
     }
     
 }

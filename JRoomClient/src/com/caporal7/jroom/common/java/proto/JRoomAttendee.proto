@@ -25,39 +25,46 @@
 syntax = "proto2";
 
 package jroom;
-import "com/caporal7/jroom/common/java/proto/JRoomConference.proto";
-import "com/caporal7/jroom/common/java/proto/JRoomAttendee.proto";
 
 option java_package = "com.caporal7.jroom.common.java.protoc";
-option java_outer_classname = "JRoomProtos";
+option java_outer_classname = "JRoomAttendeeProtos";
 
-/* Message type */
-enum Type {
-  INVALID = 0;
-  JOIN_CONFERENCE_PROB = 1;
-  JOIN_CONFERENCE_AUTH = 2;
-  ATTENDEE_REG         = 3;
-  ATTENDEE_AUTH        = 4;
+/* Attendee register request */
+message JRoomAttendeeRegisterRequest {
+  optional string email = 1;
+  optional string password = 2;
 }
 
-/* Message request */
-message JRoomRequest {
-  /* JRoom request type */
-  optional Type type = 1 [default = INVALID];
-  /* JRoom join conference request */
-  optional JRoomJoinConferenceProbeRequest join_conference_prob = 2;
-  optional JRoomJoinConferenceAuthRequest join_conference_auth = 3;
-  optional JRoomAttendeeRegisterRequest attendee_register = 4;
-  optional JRoomAttendeeAuthRequest attendee_auth = 5;
+/* Attendee register response */
+message JRoomAttendeeRegisterResponse {
+  /* Conference register response type */
+  enum ResponseType {
+    INVALID_REQUEST    = 0;
+    ALREADY_REGISTERED = 1;
+    SUCCESS            = 2;
+    TOO_MANY_REQUESTS  = 3;
+  }
+
+  optional ResponseType type = 1 [default = INVALID_REQUEST];
 }
 
-/* Message response */
-message JRoomResponse {
-  /* JRoom response type */
-  optional Type type = 1 [default = INVALID];
-  /* JRoom join conference response */
-  optional JRoomJoinConferenceProbeResponse join_conference_prob = 2;
-  optional JRoomJoinConferenceAuthResponse join_conference_auth = 3;
-  optional JRoomAttendeeRegisterResponse attendee_register = 4;
-  optional JRoomAttendeeAuthResponse attendee_auth = 5;
+/* Attendee authentication request */
+message JRoomAttendeeAuthRequest {
+  optional string email = 1;
+  optional string password = 2;
 }
+
+/* Attendee authentication response */
+message JRoomAttendeeAuthResponse {
+  /* Attendee authentication response type */
+  enum ResponseType {
+    INVALID_REQUEST    = 0;
+    INVALID_EMAIL_AND_OR_PASSWORD = 1;
+    SUCCESS            = 2;
+    TOO_MANY_REQUESTS  = 3;
+  }
+
+  optional ResponseType type = 1 [default = INVALID_REQUEST];
+  optional string access_token = 2;
+}
+

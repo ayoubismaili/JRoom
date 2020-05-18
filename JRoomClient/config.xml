@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+  <host>127.0.0.1</host>
+  <port>8803</port>
+  <use-ssl>false</use-ssl>
+  <session-cookie>0DB1826C0FC37068453F281A8BF8D737CA4798D84BBAD1F4CB</session-cookie>
+</configuration>

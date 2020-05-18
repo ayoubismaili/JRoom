@@ -24,22 +24,34 @@
 
 package com.caporal7.jroom.client.java.services;
 
+import com.caporal7.jroom.common.java.JRoomException;
 import com.caporal7.jroom.common.java.JRoomSettings;
 import java.io.IOException;
 import java.net.Socket;
-
+import org.apache.commons.configuration2.XMLConfiguration;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 
 public class JRoomClient {
     
     private Socket socket;
     
-    public JRoomClient(String host, int port) throws IOException {
-        if (JRoomSettings.USE_SSL)
-        {
+    public JRoomClient() throws IOException, ConfigurationException, JRoomException {
+        XMLConfiguration config = JRoomSettings.getSettings();
+        boolean useSSL = config.getBoolean("use-ssl", JRoomSettings.DEFAULT_USE_SSL);
+        if (useSSL) {
             /* TODO: implement SSL */
+        } else {
+            socket = new Socket(
+                config.getString("host", JRoomSettings.DEFAULT_HOST), 
+                config.getInt("port", JRoomSettings.DEFAULT_PORT)
+            );
         }
-        else
-        {
+    }
+    
+    public JRoomClient(String host, int port, boolean useSSL) throws IOException {
+        if (useSSL) {
+            /* TODO: implement SSL */
+        } else {
             socket = new Socket(host, port);
         }
     }

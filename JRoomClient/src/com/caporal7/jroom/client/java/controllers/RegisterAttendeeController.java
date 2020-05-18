@@ -24,6 +24,10 @@
 
 package com.caporal7.jroom.client.java.controllers;
 
+import com.caporal7.jroom.client.java.dao.AttendeeDao;
+import com.caporal7.jroom.common.java.JRoomException;
+import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos;
+import java.io.IOException;
 import java.net.URL;
 import java.time.Period;
 import java.util.Calendar;
@@ -33,7 +37,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -64,6 +72,8 @@ public class RegisterAttendeeController implements Initializable {
     @FXML
     private PasswordField txtConfirmPassword;
     
+    private AttendeeDao attendeeDao;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         /* Initialize day */
@@ -87,7 +97,17 @@ public class RegisterAttendeeController implements Initializable {
             olYear.add(String.valueOf(i));
         }
         cboYear.setItems(olYear);
-    }    
+        reconnect();
+    }
+    
+    private boolean reconnect() {
+        try {
+            attendeeDao = new AttendeeDao();
+            return true;
+        } catch(Exception ex) {
+            return false;
+        }
+    }
 
     @FXML
     private void btnContinueClick(MouseEvent event) {
@@ -118,7 +138,72 @@ public class RegisterAttendeeController implements Initializable {
 
     @FXML
     private void btnRegisterClick(MouseEvent event) {
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
+        String passwordConfirm = txtConfirmPassword.getText();
+        if (!password.equals(passwordConfirm)) {
+            ButtonType btnQuit = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "", btnQuit);
+            alert.setTitle("Erreur de mot de passe");
+            alert.setHeaderText("Les mots de passe doivent être identiques. Veuillez vérifier puis réessayer.");
+            alert.showAndWait();
+            return;
+        }
         
+        try {
+            JRoomAttendeeProtos.JRoomAttendeeRegisterResponse response = attendeeDao.register(email, password);
+            switch(response.getType())
+            {
+                case INVALID_REQUEST: {
+                    ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
+                    alert.setTitle("Requête invalide");
+                    alert.setHeaderText("Le serveur a détecté que la requête est invalide. Veuillez vérifier puis réessayer.");
+                    alert.showAndWait();
+                    break;
+                }
+                case ALREADY_REGISTERED: {
+                    ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
+                    alert.setTitle("Compte déjà existe");
+                    alert.setHeaderText("L'adresse mail spécifiée est déjà enregistrée. Veuillez vérifier puis réessayer.");
+                    alert.showAndWait();
+                    break;
+                }
+                case SUCCESS: {
+                    ButtonType btnQuit = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "", btnQuit);
+                    alert.setTitle("Inscription réussie");
+                    alert.setHeaderText("Votre compte a été crée avec succès.");
+                    alert.showAndWait();
+                    ((Node)(event.getSource())).getScene().getWindow().hide();
+                    break;
+                }
+                case TOO_MANY_REQUESTS:{
+                    ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "", btnQuit);
+                    alert.setTitle("Comportement suspect");
+                    alert.setHeaderText("Le serveur a détecté l'envoi de plusieurs requêtes depuis votre adresse IP. Veuillez vérifier puis réessayer.");
+                    alert.showAndWait();
+                    break;
+                }
+                default:
+                    throw new AssertionError(response.getType().name());
+            }
+        } catch(IOException ex) {
+            ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
+                alert.setTitle("Connexion échouée");
+                alert.setHeaderText("Echec de la communication avec le serveur distant. Veuillez vérifier puis réessayer.");
+                alert.showAndWait();
+            reconnect();
+        } catch (JRoomException ex) {
+            ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
+                alert.setTitle("Erreur de protocole");
+                alert.setHeaderText("La réponse envoyée par le serveur est invalide. Veuillez vérifier puis réessayer.");
+                alert.showAndWait();
+        }
     }
 
     @FXML
@@ -129,5 +214,4 @@ public class RegisterAttendeeController implements Initializable {
                 || cboYear.getSelectionModel().isEmpty();
         btnContinue.setDisable(all);
     }
-    
 }

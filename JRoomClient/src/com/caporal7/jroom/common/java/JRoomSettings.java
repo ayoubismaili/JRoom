@@ -24,9 +24,69 @@
 
 package com.caporal7.jroom.common.java;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import org.apache.commons.configuration2.XMLConfiguration;
+import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
+import org.apache.commons.configuration2.builder.fluent.Parameters;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+
 public class JRoomSettings {
-    public static String VERSION = "0.1.0";
-    public static String HOST = "127.0.0.1";
-    public static int PORT = 8803;
-    public static boolean USE_SSL = false;
+    /* Global settings */
+    public static final String VERSION = "0.1.0";
+    /* Some default settings */
+    public static final String DEFAULT_HOST = "127.0.0.1";
+    public static final int DEFAULT_PORT = 8803;
+    public static final boolean DEFAULT_USE_SSL = false;
+    /* XML configuration file */
+    public static String CONFIG_XML = "config.xml";
+    
+    private static XMLConfiguration xmlConfig = null;
+    
+    public static XMLConfiguration getSettings()
+            throws IOException, ConfigurationException, JRoomException {
+        if (xmlConfig == null) {
+            xmlConfig = new XMLConfiguration();
+            File xmlFile = new File(CONFIG_XML);
+            if (xmlFile.isDirectory()) {
+                throw new JRoomException("File " + CONFIG_XML + " must not be a directory");
+            }
+            if(!xmlFile.exists()) {
+                xmlConfig.addProperty("host", DEFAULT_HOST);
+                xmlConfig.addProperty("port", DEFAULT_PORT);
+                xmlConfig.addProperty("use-ssl", DEFAULT_USE_SSL);
+                saveSettings();
+            }
+            Parameters params = new Parameters();
+            FileBasedConfigurationBuilder<XMLConfiguration> builder =
+                new FileBasedConfigurationBuilder<>(XMLConfiguration.class)
+                .configure(params.fileBased()
+                    .setFile(xmlFile));
+            builder.setAutoSave(true);
+            xmlConfig = builder.getConfiguration();
+            
+            if(!xmlConfig.containsKey("host")){
+                xmlConfig.addProperty("host", DEFAULT_HOST);
+            }
+            if(!xmlConfig.containsKey("port")){
+                xmlConfig.addProperty("port", DEFAULT_PORT);
+            }
+            if(!xmlConfig.containsKey("use-ssl")){
+                xmlConfig.addProperty("use-ssl", DEFAULT_USE_SSL);
+            }
+        }
+        return xmlConfig;
+    }
+    
+    public static void saveSettings()
+            throws IOException, ConfigurationException {
+        if (xmlConfig != null) {
+            try (Writer writer = new FileWriter(CONFIG_XML)) {
+                xmlConfig.write(writer);
+            }
+        }
+    }
 }
+

@@ -2269,21 +2269,21 @@ public final class JRoomAttendeeProtos {
     com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.ResponseType getType();
 
     /**
-     * <code>optional string access_token = 2;</code>
-     * @return Whether the accessToken field is set.
+     * <code>optional string session_cookie = 2;</code>
+     * @return Whether the sessionCookie field is set.
      */
-    boolean hasAccessToken();
+    boolean hasSessionCookie();
     /**
-     * <code>optional string access_token = 2;</code>
-     * @return The accessToken.
+     * <code>optional string session_cookie = 2;</code>
+     * @return The sessionCookie.
      */
-    java.lang.String getAccessToken();
+    java.lang.String getSessionCookie();
     /**
-     * <code>optional string access_token = 2;</code>
-     * @return The bytes for accessToken.
+     * <code>optional string session_cookie = 2;</code>
+     * @return The bytes for sessionCookie.
      */
     com.google.protobuf.ByteString
-        getAccessTokenBytes();
+        getSessionCookieBytes();
   }
   /**
    * <pre>
@@ -2303,7 +2303,7 @@ public final class JRoomAttendeeProtos {
     }
     private JRoomAttendeeAuthResponse() {
       type_ = 0;
-      accessToken_ = "";
+      sessionCookie_ = "";
     }
 
     @java.lang.Override
@@ -2352,7 +2352,7 @@ public final class JRoomAttendeeProtos {
             case 18: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
-              accessToken_ = bs;
+              sessionCookie_ = bs;
               break;
             }
             default: {
@@ -2525,21 +2525,21 @@ public final class JRoomAttendeeProtos {
       return result == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.ResponseType.INVALID_REQUEST : result;
     }
 
-    public static final int ACCESS_TOKEN_FIELD_NUMBER = 2;
-    private volatile java.lang.Object accessToken_;
+    public static final int SESSION_COOKIE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object sessionCookie_;
     /**
-     * <code>optional string access_token = 2;</code>
-     * @return Whether the accessToken field is set.
+     * <code>optional string session_cookie = 2;</code>
+     * @return Whether the sessionCookie field is set.
      */
-    public boolean hasAccessToken() {
+    public boolean hasSessionCookie() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional string access_token = 2;</code>
-     * @return The accessToken.
+     * <code>optional string session_cookie = 2;</code>
+     * @return The sessionCookie.
      */
-    public java.lang.String getAccessToken() {
-      java.lang.Object ref = accessToken_;
+    public java.lang.String getSessionCookie() {
+      java.lang.Object ref = sessionCookie_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -2547,23 +2547,23 @@ public final class JRoomAttendeeProtos {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          accessToken_ = s;
+          sessionCookie_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>optional string access_token = 2;</code>
-     * @return The bytes for accessToken.
+     * <code>optional string session_cookie = 2;</code>
+     * @return The bytes for sessionCookie.
      */
     public com.google.protobuf.ByteString
-        getAccessTokenBytes() {
-      java.lang.Object ref = accessToken_;
+        getSessionCookieBytes() {
+      java.lang.Object ref = sessionCookie_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        accessToken_ = b;
+        sessionCookie_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -2588,7 +2588,7 @@ public final class JRoomAttendeeProtos {
         output.writeEnum(1, type_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, accessToken_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sessionCookie_);
       }
       unknownFields.writeTo(output);
     }
@@ -2604,7 +2604,7 @@ public final class JRoomAttendeeProtos {
           .computeEnumSize(1, type_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, accessToken_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sessionCookie_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2625,10 +2625,10 @@ public final class JRoomAttendeeProtos {
       if (hasType()) {
         if (type_ != other.type_) return false;
       }
-      if (hasAccessToken() != other.hasAccessToken()) return false;
-      if (hasAccessToken()) {
-        if (!getAccessToken()
-            .equals(other.getAccessToken())) return false;
+      if (hasSessionCookie() != other.hasSessionCookie()) return false;
+      if (hasSessionCookie()) {
+        if (!getSessionCookie()
+            .equals(other.getSessionCookie())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -2645,9 +2645,9 @@ public final class JRoomAttendeeProtos {
         hash = (37 * hash) + TYPE_FIELD_NUMBER;
         hash = (53 * hash) + type_;
       }
-      if (hasAccessToken()) {
-        hash = (37 * hash) + ACCESS_TOKEN_FIELD_NUMBER;
-        hash = (53 * hash) + getAccessToken().hashCode();
+      if (hasSessionCookie()) {
+        hash = (37 * hash) + SESSION_COOKIE_FIELD_NUMBER;
+        hash = (53 * hash) + getSessionCookie().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2788,7 +2788,7 @@ public final class JRoomAttendeeProtos {
         super.clear();
         type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        accessToken_ = "";
+        sessionCookie_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -2825,7 +2825,7 @@ public final class JRoomAttendeeProtos {
         if (((from_bitField0_ & 0x00000002) != 0)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.accessToken_ = accessToken_;
+        result.sessionCookie_ = sessionCookie_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2878,9 +2878,9 @@ public final class JRoomAttendeeProtos {
         if (other.hasType()) {
           setType(other.getType());
         }
-        if (other.hasAccessToken()) {
+        if (other.hasSessionCookie()) {
           bitField0_ |= 0x00000002;
-          accessToken_ = other.accessToken_;
+          sessionCookie_ = other.sessionCookie_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -2955,26 +2955,26 @@ public final class JRoomAttendeeProtos {
         return this;
       }
 
-      private java.lang.Object accessToken_ = "";
+      private java.lang.Object sessionCookie_ = "";
       /**
-       * <code>optional string access_token = 2;</code>
-       * @return Whether the accessToken field is set.
+       * <code>optional string session_cookie = 2;</code>
+       * @return Whether the sessionCookie field is set.
        */
-      public boolean hasAccessToken() {
+      public boolean hasSessionCookie() {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>optional string access_token = 2;</code>
-       * @return The accessToken.
+       * <code>optional string session_cookie = 2;</code>
+       * @return The sessionCookie.
        */
-      public java.lang.String getAccessToken() {
-        java.lang.Object ref = accessToken_;
+      public java.lang.String getSessionCookie() {
+        java.lang.Object ref = sessionCookie_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            accessToken_ = s;
+            sessionCookie_ = s;
           }
           return s;
         } else {
@@ -2982,59 +2982,59 @@ public final class JRoomAttendeeProtos {
         }
       }
       /**
-       * <code>optional string access_token = 2;</code>
-       * @return The bytes for accessToken.
+       * <code>optional string session_cookie = 2;</code>
+       * @return The bytes for sessionCookie.
        */
       public com.google.protobuf.ByteString
-          getAccessTokenBytes() {
-        java.lang.Object ref = accessToken_;
+          getSessionCookieBytes() {
+        java.lang.Object ref = sessionCookie_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          accessToken_ = b;
+          sessionCookie_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string access_token = 2;</code>
-       * @param value The accessToken to set.
+       * <code>optional string session_cookie = 2;</code>
+       * @param value The sessionCookie to set.
        * @return This builder for chaining.
        */
-      public Builder setAccessToken(
+      public Builder setSessionCookie(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-        accessToken_ = value;
+        sessionCookie_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string access_token = 2;</code>
+       * <code>optional string session_cookie = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearAccessToken() {
+      public Builder clearSessionCookie() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        accessToken_ = getDefaultInstance().getAccessToken();
+        sessionCookie_ = getDefaultInstance().getSessionCookie();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string access_token = 2;</code>
-       * @param value The bytes for accessToken to set.
+       * <code>optional string session_cookie = 2;</code>
+       * @param value The bytes for sessionCookie to set.
        * @return This builder for chaining.
        */
-      public Builder setAccessTokenBytes(
+      public Builder setSessionCookieBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-        accessToken_ = value;
+        sessionCookie_ = value;
         onChanged();
         return this;
       }
@@ -3130,14 +3130,14 @@ public final class JRoomAttendeeProtos {
       "T\020\000\022\026\n\022ALREADY_REGISTERED\020\001\022\013\n\007SUCCESS\020\002" +
       "\022\025\n\021TOO_MANY_REQUESTS\020\003\";\n\030JRoomAttendee" +
       "AuthRequest\022\r\n\005email\030\001 \001(\t\022\020\n\010password\030\002" +
-      " \001(\t\"\353\001\n\031JRoomAttendeeAuthResponse\022L\n\004ty" +
+      " \001(\t\"\355\001\n\031JRoomAttendeeAuthResponse\022L\n\004ty" +
       "pe\030\001 \001(\0162-.jroom.JRoomAttendeeAuthRespon" +
-      "se.ResponseType:\017INVALID_REQUEST\022\024\n\014acce" +
-      "ss_token\030\002 \001(\t\"j\n\014ResponseType\022\023\n\017INVALI" +
-      "D_REQUEST\020\000\022!\n\035INVALID_EMAIL_AND_OR_PASS" +
-      "WORD\020\001\022\013\n\007SUCCESS\020\002\022\025\n\021TOO_MANY_REQUESTS" +
-      "\020\003B<\n%com.caporal7.jroom.common.java.pro" +
-      "tocB\023JRoomAttendeeProtos"
+      "se.ResponseType:\017INVALID_REQUEST\022\026\n\016sess" +
+      "ion_cookie\030\002 \001(\t\"j\n\014ResponseType\022\023\n\017INVA" +
+      "LID_REQUEST\020\000\022!\n\035INVALID_EMAIL_AND_OR_PA" +
+      "SSWORD\020\001\022\013\n\007SUCCESS\020\002\022\025\n\021TOO_MANY_REQUES" +
+      "TS\020\003B<\n%com.caporal7.jroom.common.java.p" +
+      "rotocB\023JRoomAttendeeProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3166,7 +3166,7 @@ public final class JRoomAttendeeProtos {
     internal_static_jroom_JRoomAttendeeAuthResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_jroom_JRoomAttendeeAuthResponse_descriptor,
-        new java.lang.String[] { "Type", "AccessToken", });
+        new java.lang.String[] { "Type", "SessionCookie", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

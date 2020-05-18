@@ -25,7 +25,6 @@
 package com.caporal7.jroom.client.java.dao;
 
 import com.caporal7.jroom.client.java.services.JRoomClient;
-import com.caporal7.jroom.common.java.JRoomSettings;
 import com.caporal7.jroom.common.java.JRoomException;
 import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse;
@@ -36,13 +35,14 @@ import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomResponse;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
 import java.io.IOException;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 
 public class AttendeeDao {
     
     private JRoomClient client;
     
-    public AttendeeDao() throws IOException {
-        client = new JRoomClient(JRoomSettings.HOST, JRoomSettings.PORT);
+    public AttendeeDao() throws IOException, ConfigurationException, JRoomException {
+        client = new JRoomClient();
     }
     
     public JRoomAttendeeRegisterResponse register(

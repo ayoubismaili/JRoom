@@ -22,49 +22,17 @@
  * THE SOFTWARE.
  */
 
-syntax = "proto2";
+package com.caporal7.jroom.client.java.controllers;
 
-package jroom;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 
-option java_package = "com.caporal7.jroom.common.java.protoc";
-option java_outer_classname = "JRoomAttendeeProtos";
+public class PrincipalInterfaceController implements Initializable {
 
-/* Attendee register request */
-message JRoomAttendeeRegisterRequest {
-  optional string email = 1;
-  optional string password = 2;
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        
+    }    
+    
 }
-
-/* Attendee register response */
-message JRoomAttendeeRegisterResponse {
-  /* Conference register response type */
-  enum ResponseType {
-    INVALID_REQUEST    = 0;
-    ALREADY_REGISTERED = 1;
-    SUCCESS            = 2;
-    TOO_MANY_REQUESTS  = 3;
-  }
-
-  optional ResponseType type = 1 [default = INVALID_REQUEST];
-}
-
-/* Attendee authentication request */
-message JRoomAttendeeAuthRequest {
-  optional string email = 1;
-  optional string password = 2;
-}
-
-/* Attendee authentication response */
-message JRoomAttendeeAuthResponse {
-  /* Attendee authentication response type */
-  enum ResponseType {
-    INVALID_REQUEST    = 0;
-    INVALID_EMAIL_AND_OR_PASSWORD = 1;
-    SUCCESS            = 2;
-    TOO_MANY_REQUESTS  = 3;
-  }
-
-  optional ResponseType type = 1 [default = INVALID_REQUEST];
-  optional string session_cookie = 2;
-}
-

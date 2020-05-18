@@ -25,8 +25,10 @@
 package com.caporal7.jroom.client.java.controllers;
 
 import com.caporal7.jroom.client.java.dao.ConferenceDao;
+import com.caporal7.jroom.common.java.JRoomSettings;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.ProbeResponseType;
-import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -54,8 +56,13 @@ public class JoinConferenceIdController {
     private CheckBox cbStopMyVideo;
     private ConferenceDao dao;
     
-    public void initialize() throws IOException {
-        dao = new ConferenceDao();
+    public void initialize() {
+        try {
+            txtName.setText(JRoomSettings.getSettings().getString("attendee-name", ""));
+            dao = new ConferenceDao();
+        } catch (Exception ex) {
+            Logger.getLogger(JoinConferenceIdController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @FXML
@@ -77,6 +84,9 @@ public class JoinConferenceIdController {
         }
         String attendeeName = txtName.getText();
         boolean rememberName = cbRememberName.isSelected();
+        if (rememberName) {
+            JRoomSettings.getSettings().addProperty("attendee-name", attendeeName);
+        }
         boolean dontConnectSound = cbDontConnectSound.isSelected();
         boolean stopMyVideo = cbStopMyVideo.isSelected();
         
@@ -115,5 +125,4 @@ public class JoinConferenceIdController {
     private void btnCancelClick(MouseEvent e) throws Exception {
         ((Node)(e.getSource())).getScene().getWindow().hide();
     }
-    
 }

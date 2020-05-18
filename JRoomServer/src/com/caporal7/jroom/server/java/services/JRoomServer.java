@@ -10,6 +10,7 @@ import com.caporal7.jroom.common.java.JRoomSettings;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.Type;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
+import com.caporal7.jroom.server.java.dao.AttendeeDao;
 import com.caporal7.jroom.server.java.dao.ConferenceDao;
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,6 +63,12 @@ public class JRoomServer {
                     break;
                 case JOIN_CONFERENCE_AUTH:
                     ConferenceDao.handleAuth(request, socket);
+                    break;
+                case ATTENDEE_REG: 
+                    AttendeeDao.handleRegister(request, socket);
+                    break;
+                case ATTENDEE_AUTH:
+                    AttendeeDao.handleAuth(request, socket);
                     break;
                 default:
                     throw new AssertionError(type.name());

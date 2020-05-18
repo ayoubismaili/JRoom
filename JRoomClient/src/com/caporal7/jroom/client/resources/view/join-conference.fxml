@@ -21,7 +21,7 @@
 
 <Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.caporal7.jroom.client.java.controllers.JoinConferenceController">
    <children>
-      <HBox fx:id="hbLogin" alignment="CENTER" prefHeight="366.0" prefWidth="568.0">
+      <HBox fx:id="hbLogin" alignment="CENTER" prefHeight="366.0" prefWidth="568.0" visible="false">
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="300.0">
                <children>
@@ -88,7 +88,7 @@
                </HBox.margin></VBox>
          </children>
       </HBox>
-      <StackPane fx:id="spMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="568.0" visible="false">
+      <StackPane fx:id="spMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="568.0">
          <children>
             <GridPane prefHeight="323.0" prefWidth="524.0">
               <columnConstraints>

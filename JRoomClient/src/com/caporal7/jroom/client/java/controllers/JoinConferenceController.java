@@ -31,6 +31,7 @@ import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAu
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -46,6 +47,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.apache.commons.configuration2.XMLConfiguration;
+import org.apache.commons.configuration2.ex.ConfigurationException;
 
 public class JoinConferenceController {
 
@@ -81,12 +84,7 @@ public class JoinConferenceController {
         try {
             attendeeDao = new AttendeeDao();
             return true;
-        } catch(IOException ex) {
-            ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
-                Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
-                alert.setTitle("Connexion échouée");
-                alert.setHeaderText("Echec de la communication avec le serveur distant. Veuillez vérifier puis réessayer.");
-                alert.showAndWait();
+        } catch(Exception ex) {
             return false;
         }
     }
@@ -118,7 +116,8 @@ public class JoinConferenceController {
         String password = txtPassword.getText();
         
         try {
-            JRoomAttendeeAuthResponse response = attendeeDao.auth(email, password);
+            JRoomAttendeeAuthResponse response = attendeeDao.auth(
+                    email, password);
             switch(response.getType())
             {
                 case INVALID_REQUEST: {
@@ -137,10 +136,20 @@ public class JoinConferenceController {
                     alert.showAndWait();
                     break;
                 }
-                case SUCCESS:
+                case SUCCESS: {
+                    /* Successful authentication, store session cookie */
+                    XMLConfiguration config = JRoomSettings.getSettings();
+                    config.setProperty("session-cookie", response.getSessionCookie());
                     
+                    Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/principal-interface.fxml"));
+                    Stage stage = new Stage();
+                    stage.setTitle("JRoom");
+                    stage.setScene(new Scene(root));
+                    stage.show();
                     
+                    ((Node)(e.getSource())).getScene().getWindow().hide();
                     break;
+                }
                 case TOO_MANY_REQUESTS:{
                     ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
                     Alert alert = new Alert(Alert.AlertType.WARNING, "", btnQuit);
@@ -158,11 +167,19 @@ public class JoinConferenceController {
                 alert.setTitle("Connexion échouée");
                 alert.setHeaderText("Echec de la communication avec le serveur distant. Veuillez vérifier puis réessayer.");
                 alert.showAndWait();
+                /* Try to reconnect to server */
+                reconnect();
         } catch (JRoomException ex) {
             ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
                 Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
                 alert.setTitle("Erreur de protocole");
                 alert.setHeaderText("La réponse envoyée par le serveur est invalide. Veuillez vérifier puis réessayer.");
+                alert.showAndWait();
+        } catch (ConfigurationException ex) {
+            ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
+                alert.setTitle("Erreur de configuration");
+                alert.setHeaderText("Un problème a été rencontré lors de l'accès au fichier de configuration. Veuillez vérifier puis réessayer.");
                 alert.showAndWait();
         }
     }

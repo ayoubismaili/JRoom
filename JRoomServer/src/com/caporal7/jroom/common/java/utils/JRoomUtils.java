@@ -6,6 +6,7 @@
 package com.caporal7.jroom.common.java.utils;
 
 import java.nio.ByteBuffer;
+import java.security.SecureRandom;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,6 +16,9 @@ import javax.persistence.Persistence;
  * @author Ayoub Ismaili <ayoubismaili1@gmail.com>
  */
 public class JRoomUtils {
+    
+    private static EntityManager em = null;
+    private static SecureRandom secureRandom = new SecureRandom();
     
     public static byte[] convertIntToBytes(int i) {
         ByteBuffer bb = ByteBuffer.allocate(4); 
@@ -27,8 +31,6 @@ public class JRoomUtils {
         return byteBuffer.getInt();
     }
     
-    private static EntityManager em = null;
-    
     public static EntityManager getEntityManager() 
     {
         if (em == null) {
@@ -36,6 +38,16 @@ public class JRoomUtils {
             em = emf.createEntityManager();
         }
         return em;
+    }
+    
+    public static String getNewSessionCookie() {
+        byte[] bytes = new byte[25];
+        secureRandom.nextBytes(bytes);
+        StringBuffer sb = new StringBuffer(50);
+        for (byte b : bytes) {
+            sb.append(String.format("%02X", b));
+        }
+        return sb.toString();
     }
 }
 

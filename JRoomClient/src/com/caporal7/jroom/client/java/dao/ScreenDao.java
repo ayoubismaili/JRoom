@@ -26,98 +26,41 @@ package com.caporal7.jroom.client.java.dao;
 
 import com.caporal7.jroom.client.java.services.JRoomClient;
 import com.caporal7.jroom.common.java.JRoomException;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse;
-import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomResponse;
+import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest;
+import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse;
+import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest;
+import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
+import com.google.protobuf.ByteString;
 import java.io.IOException;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 
-public class AttendeeDao {
+public class ScreenDao {
     
     private JRoomClient client;
     
-    public AttendeeDao() throws IOException, ConfigurationException, JRoomException {
+    public ScreenDao() throws IOException, ConfigurationException, JRoomException {
         client = new JRoomClient();
     }
     
-    public JRoomAttendeeRegisterResponse register(
-            String email, String password) throws IOException, JRoomException {
-        JRoomAttendeeRegisterRequest innerRequest = 
-                JRoomAttendeeRegisterRequest.newBuilder()
-                .setEmail(email)
-                .setPassword(password)
-                .build();
-        JRoomRequest request = JRoomRequest.newBuilder()
-                .setType(JRoomProtos.Type.ATTENDEE_REG)
-                .setAttendeeRegister(innerRequest)
-                .build();
-        byte[] requestBytes = request.toByteArray();     
-        byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
-        
-        client.write(lengthBytes);
-        client.write(requestBytes);
-        client.flush();
-        
-        lengthBytes = client.readNBytes(4);
-        int length = JRoomUtils.convertBytesToInt(lengthBytes);
-        byte[] responseBytes = client.readNBytes(length);
-        
-        JRoomResponse response = JRoomResponse.parseFrom(responseBytes);
-        if (response.getType() != JRoomProtos.Type.ATTENDEE_REG) {
-            throw new JRoomException("Invalid response");
-        }
-        return response.getAttendeeRegister();
-    }
-    
-    public JRoomAttendeeAuthResponse auth(
-            String email, String password) throws IOException, JRoomException {
-        JRoomAttendeeAuthRequest innerRequest = 
-                JRoomAttendeeAuthRequest.newBuilder()
-                .setEmail(email)
-                .setPassword(password)
-                .build();
-        JRoomRequest request = JRoomRequest.newBuilder()
-                .setType(JRoomProtos.Type.ATTENDEE_AUTH)
-                .setAttendeeAuth(innerRequest)
-                .build();
-        byte[] requestBytes = request.toByteArray();     
-        byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
-        
-        client.write(lengthBytes);
-        client.write(requestBytes);
-        client.flush();
-        
-        lengthBytes = client.readNBytes(4);
-        int length = JRoomUtils.convertBytesToInt(lengthBytes);
-        byte[] responseBytes = client.readNBytes(length);
-        
-        JRoomResponse response = JRoomResponse.parseFrom(responseBytes);
-        if (response.getType() != JRoomProtos.Type.ATTENDEE_AUTH) {
-            throw new JRoomException("Invalid response");
-        }
-        return response.getAttendeeAuth();
-    }
-    
-    public JRoomAttendeeSessionHeartbeatResponse.ResponseType sessionHeartbeat(
-            int registeredAttendeeId, String sessionCookie) 
-                throws IOException, JRoomException {
-        JRoomAttendeeSessionHeartbeatRequest innerRequest = 
-                JRoomAttendeeSessionHeartbeatRequest.newBuilder()
+    public JRoomScreenIncomingResponse incoming(int conferenceId, String guestAttendeeGuid, 
+            int registeredAttendeeId, boolean isGuest, String sessionCookie, 
+            String accessToken) throws IOException, JRoomException {
+        JRoomScreenIncomingRequest innerRequest = 
+                JRoomScreenIncomingRequest.newBuilder()
+                .setConferenceId(conferenceId)
+                .setGuestAttendeeGuid(guestAttendeeGuid)
                 .setRegisteredAttendeeId(registeredAttendeeId)
+                .setIsGuest(isGuest)
                 .setSessionCookie(sessionCookie)
+                .setAccessToken(accessToken)
                 .build();
         JRoomRequest request = JRoomRequest.newBuilder()
-                .setType(JRoomProtos.Type.ATTENDEE_SESSION_HEARTBEAT)
-                .setAttendeeSessionHeartbeat(innerRequest)
+                .setType(JRoomProtos.Type.SCREEN_IN)
+                .setScreenIn(innerRequest)
                 .build();
         byte[] requestBytes = request.toByteArray();     
         byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
@@ -131,9 +74,44 @@ public class AttendeeDao {
         byte[] responseBytes = client.readNBytes(length);
         
         JRoomResponse response = JRoomResponse.parseFrom(responseBytes);
-        if (response.getType() != JRoomProtos.Type.ATTENDEE_SESSION_HEARTBEAT) {
+        if (response.getType() != JRoomProtos.Type.SCREEN_IN) {
             throw new JRoomException("Invalid response");
         }
-        return response.getAttendeeSessionHeartbeat().getType();
+        return response.getScreenIn();
+    }
+    
+    public JRoomScreenOutgoingResponse outgoing(int conferenceId, String guestAttendeeGuid, 
+            int registeredAttendeeId, boolean isGuest, String sessionCookie, 
+            String accessToken, byte[] data) throws IOException, JRoomException {
+        JRoomScreenOutgoingRequest innerRequest = 
+                JRoomScreenOutgoingRequest.newBuilder()
+                .setConferenceId(conferenceId)
+                .setGuestAttendeeGuid(guestAttendeeGuid)
+                .setRegisteredAttendeeId(registeredAttendeeId)
+                .setIsGuest(isGuest)
+                .setSessionCookie(sessionCookie)
+                .setAccessToken(accessToken)
+                .setData(ByteString.copyFrom(data))
+                .build();
+        JRoomRequest request = JRoomRequest.newBuilder()
+                .setType(JRoomProtos.Type.SCREEN_OUT)
+                .setScreenOut(innerRequest)
+                .build();
+        byte[] requestBytes = request.toByteArray();     
+        byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
+        
+        client.write(lengthBytes);
+        client.write(requestBytes);
+        client.flush();
+        
+        lengthBytes = client.readNBytes(4);
+        int length = JRoomUtils.convertBytesToInt(lengthBytes);
+        byte[] responseBytes = client.readNBytes(length);
+        
+        JRoomResponse response = JRoomResponse.parseFrom(responseBytes);
+        if (response.getType() != JRoomProtos.Type.SCREEN_OUT) {
+            throw new JRoomException("Invalid response");
+        }
+        return response.getScreenOut();
     }
 }

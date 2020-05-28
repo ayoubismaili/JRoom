@@ -42,6 +42,10 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "RegisteredAttendee.findByLastActivityDate", query = "SELECT r FROM RegisteredAttendee r WHERE r.lastActivityDate = :lastActivityDate")})
 public class RegisteredAttendee implements Serializable {
 
+    @JoinColumn(name = "personal_conference_id", referencedColumnName = "id")
+    @ManyToOne
+    private Conference personalConferenceId;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -223,6 +227,14 @@ public class RegisteredAttendee implements Serializable {
     @Override
     public String toString() {
         return "com.caporal7.jroom.common.java.jpa.RegisteredAttendee[ id=" + id + " ]";
+    }
+
+    public Conference getPersonalConferenceId() {
+        return personalConferenceId;
+    }
+
+    public void setPersonalConferenceId(Conference personalConferenceId) {
+        this.personalConferenceId = personalConferenceId;
     }
     
 }

@@ -137,8 +137,9 @@ public class JoinConferenceController {
                     break;
                 }
                 case SUCCESS: {
-                    /* Successful authentication, store session cookie */
+                    /* Successful authentication, store Registered Attendee Id & Session Cookie */
                     XMLConfiguration config = JRoomSettings.getSettings();
+                    config.setProperty("registered-attendee-id", response.getRegisteredAttendeeId());
                     config.setProperty("session-cookie", response.getSessionCookie());
                     
                     Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/principal-interface.fxml"));
@@ -197,5 +198,4 @@ public class JoinConferenceController {
         stage.setScene(new Scene(root));
         stage.show();
     }
-    
 }

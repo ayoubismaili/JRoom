@@ -43,6 +43,38 @@ public final class JRoomProtos {
      * <code>ATTENDEE_AUTH = 4;</code>
      */
     ATTENDEE_AUTH(4),
+    /**
+     * <code>SCREEN_IN = 5;</code>
+     */
+    SCREEN_IN(5),
+    /**
+     * <code>SCREEN_OUT = 6;</code>
+     */
+    SCREEN_OUT(6),
+    /**
+     * <code>CAMERA_IN = 7;</code>
+     */
+    CAMERA_IN(7),
+    /**
+     * <code>CAMERA_OUT = 8;</code>
+     */
+    CAMERA_OUT(8),
+    /**
+     * <code>VOICE_IN = 9;</code>
+     */
+    VOICE_IN(9),
+    /**
+     * <code>VOICE_OUT = 10;</code>
+     */
+    VOICE_OUT(10),
+    /**
+     * <code>GET_PERSONAL_CONFERENCE = 11;</code>
+     */
+    GET_PERSONAL_CONFERENCE(11),
+    /**
+     * <code>ATTENDEE_SESSION_HEARTBEAT = 12;</code>
+     */
+    ATTENDEE_SESSION_HEARTBEAT(12),
     ;
 
     /**
@@ -65,6 +97,38 @@ public final class JRoomProtos {
      * <code>ATTENDEE_AUTH = 4;</code>
      */
     public static final int ATTENDEE_AUTH_VALUE = 4;
+    /**
+     * <code>SCREEN_IN = 5;</code>
+     */
+    public static final int SCREEN_IN_VALUE = 5;
+    /**
+     * <code>SCREEN_OUT = 6;</code>
+     */
+    public static final int SCREEN_OUT_VALUE = 6;
+    /**
+     * <code>CAMERA_IN = 7;</code>
+     */
+    public static final int CAMERA_IN_VALUE = 7;
+    /**
+     * <code>CAMERA_OUT = 8;</code>
+     */
+    public static final int CAMERA_OUT_VALUE = 8;
+    /**
+     * <code>VOICE_IN = 9;</code>
+     */
+    public static final int VOICE_IN_VALUE = 9;
+    /**
+     * <code>VOICE_OUT = 10;</code>
+     */
+    public static final int VOICE_OUT_VALUE = 10;
+    /**
+     * <code>GET_PERSONAL_CONFERENCE = 11;</code>
+     */
+    public static final int GET_PERSONAL_CONFERENCE_VALUE = 11;
+    /**
+     * <code>ATTENDEE_SESSION_HEARTBEAT = 12;</code>
+     */
+    public static final int ATTENDEE_SESSION_HEARTBEAT_VALUE = 12;
 
 
     public final int getNumber() {
@@ -92,6 +156,14 @@ public final class JRoomProtos {
         case 2: return JOIN_CONFERENCE_AUTH;
         case 3: return ATTENDEE_REG;
         case 4: return ATTENDEE_AUTH;
+        case 5: return SCREEN_IN;
+        case 6: return SCREEN_OUT;
+        case 7: return CAMERA_IN;
+        case 8: return CAMERA_OUT;
+        case 9: return VOICE_IN;
+        case 10: return VOICE_OUT;
+        case 11: return GET_PERSONAL_CONFERENCE;
+        case 12: return ATTENDEE_SESSION_HEARTBEAT;
         default: return null;
       }
     }
@@ -235,6 +307,126 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomAttendeeAuthRequest attendee_auth = 5;</code>
      */
     com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequestOrBuilder getAttendeeAuthOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+     * @return Whether the screenIn field is set.
+     */
+    boolean hasScreenIn();
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+     * @return The screenIn.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest getScreenIn();
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequestOrBuilder getScreenInOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+     * @return Whether the screenOut field is set.
+     */
+    boolean hasScreenOut();
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+     * @return The screenOut.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest getScreenOut();
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequestOrBuilder getScreenOutOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+     * @return Whether the cameraIn field is set.
+     */
+    boolean hasCameraIn();
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+     * @return The cameraIn.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest getCameraIn();
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequestOrBuilder getCameraInOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+     * @return Whether the cameraOut field is set.
+     */
+    boolean hasCameraOut();
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+     * @return The cameraOut.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest getCameraOut();
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequestOrBuilder getCameraOutOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+     * @return Whether the voiceIn field is set.
+     */
+    boolean hasVoiceIn();
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+     * @return The voiceIn.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest getVoiceIn();
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequestOrBuilder getVoiceInOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+     * @return Whether the voiceOut field is set.
+     */
+    boolean hasVoiceOut();
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+     * @return The voiceOut.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest getVoiceOut();
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequestOrBuilder getVoiceOutOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+     * @return Whether the getPersoConf field is set.
+     */
+    boolean hasGetPersoConf();
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+     * @return The getPersoConf.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest getGetPersoConf();
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequestOrBuilder getGetPersoConfOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+     * @return Whether the attendeeSessionHeartbeat field is set.
+     */
+    boolean hasAttendeeSessionHeartbeat();
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+     * @return The attendeeSessionHeartbeat.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest getAttendeeSessionHeartbeat();
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequestOrBuilder getAttendeeSessionHeartbeatOrBuilder();
   }
   /**
    * <pre>
@@ -349,6 +541,110 @@ public final class JRoomProtos {
                 attendeeAuth_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000010;
+              break;
+            }
+            case 50: {
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) != 0)) {
+                subBuilder = screenIn_.toBuilder();
+              }
+              screenIn_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(screenIn_);
+                screenIn_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+            case 58: {
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) != 0)) {
+                subBuilder = screenOut_.toBuilder();
+              }
+              screenOut_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(screenOut_);
+                screenOut_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+            case 66: {
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) != 0)) {
+                subBuilder = cameraIn_.toBuilder();
+              }
+              cameraIn_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cameraIn_);
+                cameraIn_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
+              break;
+            }
+            case 74: {
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000100) != 0)) {
+                subBuilder = cameraOut_.toBuilder();
+              }
+              cameraOut_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cameraOut_);
+                cameraOut_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
+              break;
+            }
+            case 82: {
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000200) != 0)) {
+                subBuilder = voiceIn_.toBuilder();
+              }
+              voiceIn_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(voiceIn_);
+                voiceIn_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000200;
+              break;
+            }
+            case 90: {
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000400) != 0)) {
+                subBuilder = voiceOut_.toBuilder();
+              }
+              voiceOut_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(voiceOut_);
+                voiceOut_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000400;
+              break;
+            }
+            case 98: {
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000800) != 0)) {
+                subBuilder = getPersoConf_.toBuilder();
+              }
+              getPersoConf_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(getPersoConf_);
+                getPersoConf_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000800;
+              break;
+            }
+            case 106: {
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00001000) != 0)) {
+                subBuilder = attendeeSessionHeartbeat_.toBuilder();
+              }
+              attendeeSessionHeartbeat_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attendeeSessionHeartbeat_);
+                attendeeSessionHeartbeat_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00001000;
               break;
             }
             default: {
@@ -515,6 +811,190 @@ public final class JRoomProtos {
       return attendeeAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest.getDefaultInstance() : attendeeAuth_;
     }
 
+    public static final int SCREEN_IN_FIELD_NUMBER = 6;
+    private com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest screenIn_;
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+     * @return Whether the screenIn field is set.
+     */
+    public boolean hasScreenIn() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+     * @return The screenIn.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest getScreenIn() {
+      return screenIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.getDefaultInstance() : screenIn_;
+    }
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequestOrBuilder getScreenInOrBuilder() {
+      return screenIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.getDefaultInstance() : screenIn_;
+    }
+
+    public static final int SCREEN_OUT_FIELD_NUMBER = 7;
+    private com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest screenOut_;
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+     * @return Whether the screenOut field is set.
+     */
+    public boolean hasScreenOut() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+     * @return The screenOut.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest getScreenOut() {
+      return screenOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.getDefaultInstance() : screenOut_;
+    }
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequestOrBuilder getScreenOutOrBuilder() {
+      return screenOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.getDefaultInstance() : screenOut_;
+    }
+
+    public static final int CAMERA_IN_FIELD_NUMBER = 8;
+    private com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest cameraIn_;
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+     * @return Whether the cameraIn field is set.
+     */
+    public boolean hasCameraIn() {
+      return ((bitField0_ & 0x00000080) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+     * @return The cameraIn.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest getCameraIn() {
+      return cameraIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.getDefaultInstance() : cameraIn_;
+    }
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequestOrBuilder getCameraInOrBuilder() {
+      return cameraIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.getDefaultInstance() : cameraIn_;
+    }
+
+    public static final int CAMERA_OUT_FIELD_NUMBER = 9;
+    private com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest cameraOut_;
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+     * @return Whether the cameraOut field is set.
+     */
+    public boolean hasCameraOut() {
+      return ((bitField0_ & 0x00000100) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+     * @return The cameraOut.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest getCameraOut() {
+      return cameraOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.getDefaultInstance() : cameraOut_;
+    }
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequestOrBuilder getCameraOutOrBuilder() {
+      return cameraOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.getDefaultInstance() : cameraOut_;
+    }
+
+    public static final int VOICE_IN_FIELD_NUMBER = 10;
+    private com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest voiceIn_;
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+     * @return Whether the voiceIn field is set.
+     */
+    public boolean hasVoiceIn() {
+      return ((bitField0_ & 0x00000200) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+     * @return The voiceIn.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest getVoiceIn() {
+      return voiceIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.getDefaultInstance() : voiceIn_;
+    }
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequestOrBuilder getVoiceInOrBuilder() {
+      return voiceIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.getDefaultInstance() : voiceIn_;
+    }
+
+    public static final int VOICE_OUT_FIELD_NUMBER = 11;
+    private com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest voiceOut_;
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+     * @return Whether the voiceOut field is set.
+     */
+    public boolean hasVoiceOut() {
+      return ((bitField0_ & 0x00000400) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+     * @return The voiceOut.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest getVoiceOut() {
+      return voiceOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.getDefaultInstance() : voiceOut_;
+    }
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequestOrBuilder getVoiceOutOrBuilder() {
+      return voiceOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.getDefaultInstance() : voiceOut_;
+    }
+
+    public static final int GET_PERSO_CONF_FIELD_NUMBER = 12;
+    private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest getPersoConf_;
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+     * @return Whether the getPersoConf field is set.
+     */
+    public boolean hasGetPersoConf() {
+      return ((bitField0_ & 0x00000800) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+     * @return The getPersoConf.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest getGetPersoConf() {
+      return getPersoConf_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.getDefaultInstance() : getPersoConf_;
+    }
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequestOrBuilder getGetPersoConfOrBuilder() {
+      return getPersoConf_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.getDefaultInstance() : getPersoConf_;
+    }
+
+    public static final int ATTENDEE_SESSION_HEARTBEAT_FIELD_NUMBER = 13;
+    private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest attendeeSessionHeartbeat_;
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+     * @return Whether the attendeeSessionHeartbeat field is set.
+     */
+    public boolean hasAttendeeSessionHeartbeat() {
+      return ((bitField0_ & 0x00001000) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+     * @return The attendeeSessionHeartbeat.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest getAttendeeSessionHeartbeat() {
+      return attendeeSessionHeartbeat_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.getDefaultInstance() : attendeeSessionHeartbeat_;
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequestOrBuilder getAttendeeSessionHeartbeatOrBuilder() {
+      return attendeeSessionHeartbeat_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.getDefaultInstance() : attendeeSessionHeartbeat_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -544,6 +1024,30 @@ public final class JRoomProtos {
       if (((bitField0_ & 0x00000010) != 0)) {
         output.writeMessage(5, getAttendeeAuth());
       }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        output.writeMessage(6, getScreenIn());
+      }
+      if (((bitField0_ & 0x00000040) != 0)) {
+        output.writeMessage(7, getScreenOut());
+      }
+      if (((bitField0_ & 0x00000080) != 0)) {
+        output.writeMessage(8, getCameraIn());
+      }
+      if (((bitField0_ & 0x00000100) != 0)) {
+        output.writeMessage(9, getCameraOut());
+      }
+      if (((bitField0_ & 0x00000200) != 0)) {
+        output.writeMessage(10, getVoiceIn());
+      }
+      if (((bitField0_ & 0x00000400) != 0)) {
+        output.writeMessage(11, getVoiceOut());
+      }
+      if (((bitField0_ & 0x00000800) != 0)) {
+        output.writeMessage(12, getGetPersoConf());
+      }
+      if (((bitField0_ & 0x00001000) != 0)) {
+        output.writeMessage(13, getAttendeeSessionHeartbeat());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -572,6 +1076,38 @@ public final class JRoomProtos {
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getAttendeeAuth());
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getScreenIn());
+      }
+      if (((bitField0_ & 0x00000040) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getScreenOut());
+      }
+      if (((bitField0_ & 0x00000080) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getCameraIn());
+      }
+      if (((bitField0_ & 0x00000100) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getCameraOut());
+      }
+      if (((bitField0_ & 0x00000200) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, getVoiceIn());
+      }
+      if (((bitField0_ & 0x00000400) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getVoiceOut());
+      }
+      if (((bitField0_ & 0x00000800) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, getGetPersoConf());
+      }
+      if (((bitField0_ & 0x00001000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getAttendeeSessionHeartbeat());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -612,6 +1148,46 @@ public final class JRoomProtos {
         if (!getAttendeeAuth()
             .equals(other.getAttendeeAuth())) return false;
       }
+      if (hasScreenIn() != other.hasScreenIn()) return false;
+      if (hasScreenIn()) {
+        if (!getScreenIn()
+            .equals(other.getScreenIn())) return false;
+      }
+      if (hasScreenOut() != other.hasScreenOut()) return false;
+      if (hasScreenOut()) {
+        if (!getScreenOut()
+            .equals(other.getScreenOut())) return false;
+      }
+      if (hasCameraIn() != other.hasCameraIn()) return false;
+      if (hasCameraIn()) {
+        if (!getCameraIn()
+            .equals(other.getCameraIn())) return false;
+      }
+      if (hasCameraOut() != other.hasCameraOut()) return false;
+      if (hasCameraOut()) {
+        if (!getCameraOut()
+            .equals(other.getCameraOut())) return false;
+      }
+      if (hasVoiceIn() != other.hasVoiceIn()) return false;
+      if (hasVoiceIn()) {
+        if (!getVoiceIn()
+            .equals(other.getVoiceIn())) return false;
+      }
+      if (hasVoiceOut() != other.hasVoiceOut()) return false;
+      if (hasVoiceOut()) {
+        if (!getVoiceOut()
+            .equals(other.getVoiceOut())) return false;
+      }
+      if (hasGetPersoConf() != other.hasGetPersoConf()) return false;
+      if (hasGetPersoConf()) {
+        if (!getGetPersoConf()
+            .equals(other.getGetPersoConf())) return false;
+      }
+      if (hasAttendeeSessionHeartbeat() != other.hasAttendeeSessionHeartbeat()) return false;
+      if (hasAttendeeSessionHeartbeat()) {
+        if (!getAttendeeSessionHeartbeat()
+            .equals(other.getAttendeeSessionHeartbeat())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -642,6 +1218,38 @@ public final class JRoomProtos {
       if (hasAttendeeAuth()) {
         hash = (37 * hash) + ATTENDEE_AUTH_FIELD_NUMBER;
         hash = (53 * hash) + getAttendeeAuth().hashCode();
+      }
+      if (hasScreenIn()) {
+        hash = (37 * hash) + SCREEN_IN_FIELD_NUMBER;
+        hash = (53 * hash) + getScreenIn().hashCode();
+      }
+      if (hasScreenOut()) {
+        hash = (37 * hash) + SCREEN_OUT_FIELD_NUMBER;
+        hash = (53 * hash) + getScreenOut().hashCode();
+      }
+      if (hasCameraIn()) {
+        hash = (37 * hash) + CAMERA_IN_FIELD_NUMBER;
+        hash = (53 * hash) + getCameraIn().hashCode();
+      }
+      if (hasCameraOut()) {
+        hash = (37 * hash) + CAMERA_OUT_FIELD_NUMBER;
+        hash = (53 * hash) + getCameraOut().hashCode();
+      }
+      if (hasVoiceIn()) {
+        hash = (37 * hash) + VOICE_IN_FIELD_NUMBER;
+        hash = (53 * hash) + getVoiceIn().hashCode();
+      }
+      if (hasVoiceOut()) {
+        hash = (37 * hash) + VOICE_OUT_FIELD_NUMBER;
+        hash = (53 * hash) + getVoiceOut().hashCode();
+      }
+      if (hasGetPersoConf()) {
+        hash = (37 * hash) + GET_PERSO_CONF_FIELD_NUMBER;
+        hash = (53 * hash) + getGetPersoConf().hashCode();
+      }
+      if (hasAttendeeSessionHeartbeat()) {
+        hash = (37 * hash) + ATTENDEE_SESSION_HEARTBEAT_FIELD_NUMBER;
+        hash = (53 * hash) + getAttendeeSessionHeartbeat().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -779,6 +1387,14 @@ public final class JRoomProtos {
           getJoinConferenceAuthFieldBuilder();
           getAttendeeRegisterFieldBuilder();
           getAttendeeAuthFieldBuilder();
+          getScreenInFieldBuilder();
+          getScreenOutFieldBuilder();
+          getCameraInFieldBuilder();
+          getCameraOutFieldBuilder();
+          getVoiceInFieldBuilder();
+          getVoiceOutFieldBuilder();
+          getGetPersoConfFieldBuilder();
+          getAttendeeSessionHeartbeatFieldBuilder();
         }
       }
       @java.lang.Override
@@ -810,6 +1426,54 @@ public final class JRoomProtos {
           attendeeAuthBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (screenInBuilder_ == null) {
+          screenIn_ = null;
+        } else {
+          screenInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (screenOutBuilder_ == null) {
+          screenOut_ = null;
+        } else {
+          screenOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (cameraInBuilder_ == null) {
+          cameraIn_ = null;
+        } else {
+          cameraInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        if (cameraOutBuilder_ == null) {
+          cameraOut_ = null;
+        } else {
+          cameraOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        if (voiceInBuilder_ == null) {
+          voiceIn_ = null;
+        } else {
+          voiceInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        if (voiceOutBuilder_ == null) {
+          voiceOut_ = null;
+        } else {
+          voiceOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000400);
+        if (getPersoConfBuilder_ == null) {
+          getPersoConf_ = null;
+        } else {
+          getPersoConfBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000800);
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          attendeeSessionHeartbeat_ = null;
+        } else {
+          attendeeSessionHeartbeatBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -874,6 +1538,70 @@ public final class JRoomProtos {
           }
           to_bitField0_ |= 0x00000010;
         }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          if (screenInBuilder_ == null) {
+            result.screenIn_ = screenIn_;
+          } else {
+            result.screenIn_ = screenInBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000020;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          if (screenOutBuilder_ == null) {
+            result.screenOut_ = screenOut_;
+          } else {
+            result.screenOut_ = screenOutBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000040;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          if (cameraInBuilder_ == null) {
+            result.cameraIn_ = cameraIn_;
+          } else {
+            result.cameraIn_ = cameraInBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000080;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          if (cameraOutBuilder_ == null) {
+            result.cameraOut_ = cameraOut_;
+          } else {
+            result.cameraOut_ = cameraOutBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000100;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          if (voiceInBuilder_ == null) {
+            result.voiceIn_ = voiceIn_;
+          } else {
+            result.voiceIn_ = voiceInBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000200;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          if (voiceOutBuilder_ == null) {
+            result.voiceOut_ = voiceOut_;
+          } else {
+            result.voiceOut_ = voiceOutBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000400;
+        }
+        if (((from_bitField0_ & 0x00000800) != 0)) {
+          if (getPersoConfBuilder_ == null) {
+            result.getPersoConf_ = getPersoConf_;
+          } else {
+            result.getPersoConf_ = getPersoConfBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000800;
+        }
+        if (((from_bitField0_ & 0x00001000) != 0)) {
+          if (attendeeSessionHeartbeatBuilder_ == null) {
+            result.attendeeSessionHeartbeat_ = attendeeSessionHeartbeat_;
+          } else {
+            result.attendeeSessionHeartbeat_ = attendeeSessionHeartbeatBuilder_.build();
+          }
+          to_bitField0_ |= 0x00001000;
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -937,6 +1665,30 @@ public final class JRoomProtos {
         }
         if (other.hasAttendeeAuth()) {
           mergeAttendeeAuth(other.getAttendeeAuth());
+        }
+        if (other.hasScreenIn()) {
+          mergeScreenIn(other.getScreenIn());
+        }
+        if (other.hasScreenOut()) {
+          mergeScreenOut(other.getScreenOut());
+        }
+        if (other.hasCameraIn()) {
+          mergeCameraIn(other.getCameraIn());
+        }
+        if (other.hasCameraOut()) {
+          mergeCameraOut(other.getCameraOut());
+        }
+        if (other.hasVoiceIn()) {
+          mergeVoiceIn(other.getVoiceIn());
+        }
+        if (other.hasVoiceOut()) {
+          mergeVoiceOut(other.getVoiceOut());
+        }
+        if (other.hasGetPersoConf()) {
+          mergeGetPersoConf(other.getGetPersoConf());
+        }
+        if (other.hasAttendeeSessionHeartbeat()) {
+          mergeAttendeeSessionHeartbeat(other.getAttendeeSessionHeartbeat());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1541,6 +2293,966 @@ public final class JRoomProtos {
         }
         return attendeeAuthBuilder_;
       }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest screenIn_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequestOrBuilder> screenInBuilder_;
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       * @return Whether the screenIn field is set.
+       */
+      public boolean hasScreenIn() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       * @return The screenIn.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest getScreenIn() {
+        if (screenInBuilder_ == null) {
+          return screenIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.getDefaultInstance() : screenIn_;
+        } else {
+          return screenInBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       */
+      public Builder setScreenIn(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest value) {
+        if (screenInBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          screenIn_ = value;
+          onChanged();
+        } else {
+          screenInBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       */
+      public Builder setScreenIn(
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.Builder builderForValue) {
+        if (screenInBuilder_ == null) {
+          screenIn_ = builderForValue.build();
+          onChanged();
+        } else {
+          screenInBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       */
+      public Builder mergeScreenIn(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest value) {
+        if (screenInBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) != 0) &&
+              screenIn_ != null &&
+              screenIn_ != com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.getDefaultInstance()) {
+            screenIn_ =
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.newBuilder(screenIn_).mergeFrom(value).buildPartial();
+          } else {
+            screenIn_ = value;
+          }
+          onChanged();
+        } else {
+          screenInBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       */
+      public Builder clearScreenIn() {
+        if (screenInBuilder_ == null) {
+          screenIn_ = null;
+          onChanged();
+        } else {
+          screenInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.Builder getScreenInBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getScreenInFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequestOrBuilder getScreenInOrBuilder() {
+        if (screenInBuilder_ != null) {
+          return screenInBuilder_.getMessageOrBuilder();
+        } else {
+          return screenIn_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.getDefaultInstance() : screenIn_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingRequest screen_in = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequestOrBuilder> 
+          getScreenInFieldBuilder() {
+        if (screenInBuilder_ == null) {
+          screenInBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequestOrBuilder>(
+                  getScreenIn(),
+                  getParentForChildren(),
+                  isClean());
+          screenIn_ = null;
+        }
+        return screenInBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest screenOut_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequestOrBuilder> screenOutBuilder_;
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       * @return Whether the screenOut field is set.
+       */
+      public boolean hasScreenOut() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       * @return The screenOut.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest getScreenOut() {
+        if (screenOutBuilder_ == null) {
+          return screenOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.getDefaultInstance() : screenOut_;
+        } else {
+          return screenOutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       */
+      public Builder setScreenOut(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest value) {
+        if (screenOutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          screenOut_ = value;
+          onChanged();
+        } else {
+          screenOutBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       */
+      public Builder setScreenOut(
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.Builder builderForValue) {
+        if (screenOutBuilder_ == null) {
+          screenOut_ = builderForValue.build();
+          onChanged();
+        } else {
+          screenOutBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       */
+      public Builder mergeScreenOut(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest value) {
+        if (screenOutBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) != 0) &&
+              screenOut_ != null &&
+              screenOut_ != com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.getDefaultInstance()) {
+            screenOut_ =
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.newBuilder(screenOut_).mergeFrom(value).buildPartial();
+          } else {
+            screenOut_ = value;
+          }
+          onChanged();
+        } else {
+          screenOutBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       */
+      public Builder clearScreenOut() {
+        if (screenOutBuilder_ == null) {
+          screenOut_ = null;
+          onChanged();
+        } else {
+          screenOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.Builder getScreenOutBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return getScreenOutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequestOrBuilder getScreenOutOrBuilder() {
+        if (screenOutBuilder_ != null) {
+          return screenOutBuilder_.getMessageOrBuilder();
+        } else {
+          return screenOut_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.getDefaultInstance() : screenOut_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingRequest screen_out = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequestOrBuilder> 
+          getScreenOutFieldBuilder() {
+        if (screenOutBuilder_ == null) {
+          screenOutBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequestOrBuilder>(
+                  getScreenOut(),
+                  getParentForChildren(),
+                  isClean());
+          screenOut_ = null;
+        }
+        return screenOutBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest cameraIn_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequestOrBuilder> cameraInBuilder_;
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       * @return Whether the cameraIn field is set.
+       */
+      public boolean hasCameraIn() {
+        return ((bitField0_ & 0x00000080) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       * @return The cameraIn.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest getCameraIn() {
+        if (cameraInBuilder_ == null) {
+          return cameraIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.getDefaultInstance() : cameraIn_;
+        } else {
+          return cameraInBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       */
+      public Builder setCameraIn(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest value) {
+        if (cameraInBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          cameraIn_ = value;
+          onChanged();
+        } else {
+          cameraInBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       */
+      public Builder setCameraIn(
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.Builder builderForValue) {
+        if (cameraInBuilder_ == null) {
+          cameraIn_ = builderForValue.build();
+          onChanged();
+        } else {
+          cameraInBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       */
+      public Builder mergeCameraIn(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest value) {
+        if (cameraInBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) != 0) &&
+              cameraIn_ != null &&
+              cameraIn_ != com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.getDefaultInstance()) {
+            cameraIn_ =
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.newBuilder(cameraIn_).mergeFrom(value).buildPartial();
+          } else {
+            cameraIn_ = value;
+          }
+          onChanged();
+        } else {
+          cameraInBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       */
+      public Builder clearCameraIn() {
+        if (cameraInBuilder_ == null) {
+          cameraIn_ = null;
+          onChanged();
+        } else {
+          cameraInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.Builder getCameraInBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getCameraInFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequestOrBuilder getCameraInOrBuilder() {
+        if (cameraInBuilder_ != null) {
+          return cameraInBuilder_.getMessageOrBuilder();
+        } else {
+          return cameraIn_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.getDefaultInstance() : cameraIn_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingRequest camera_in = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequestOrBuilder> 
+          getCameraInFieldBuilder() {
+        if (cameraInBuilder_ == null) {
+          cameraInBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingRequestOrBuilder>(
+                  getCameraIn(),
+                  getParentForChildren(),
+                  isClean());
+          cameraIn_ = null;
+        }
+        return cameraInBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest cameraOut_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequestOrBuilder> cameraOutBuilder_;
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       * @return Whether the cameraOut field is set.
+       */
+      public boolean hasCameraOut() {
+        return ((bitField0_ & 0x00000100) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       * @return The cameraOut.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest getCameraOut() {
+        if (cameraOutBuilder_ == null) {
+          return cameraOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.getDefaultInstance() : cameraOut_;
+        } else {
+          return cameraOutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       */
+      public Builder setCameraOut(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest value) {
+        if (cameraOutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          cameraOut_ = value;
+          onChanged();
+        } else {
+          cameraOutBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       */
+      public Builder setCameraOut(
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.Builder builderForValue) {
+        if (cameraOutBuilder_ == null) {
+          cameraOut_ = builderForValue.build();
+          onChanged();
+        } else {
+          cameraOutBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       */
+      public Builder mergeCameraOut(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest value) {
+        if (cameraOutBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) != 0) &&
+              cameraOut_ != null &&
+              cameraOut_ != com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.getDefaultInstance()) {
+            cameraOut_ =
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.newBuilder(cameraOut_).mergeFrom(value).buildPartial();
+          } else {
+            cameraOut_ = value;
+          }
+          onChanged();
+        } else {
+          cameraOutBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       */
+      public Builder clearCameraOut() {
+        if (cameraOutBuilder_ == null) {
+          cameraOut_ = null;
+          onChanged();
+        } else {
+          cameraOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.Builder getCameraOutBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return getCameraOutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequestOrBuilder getCameraOutOrBuilder() {
+        if (cameraOutBuilder_ != null) {
+          return cameraOutBuilder_.getMessageOrBuilder();
+        } else {
+          return cameraOut_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.getDefaultInstance() : cameraOut_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingRequest camera_out = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequestOrBuilder> 
+          getCameraOutFieldBuilder() {
+        if (cameraOutBuilder_ == null) {
+          cameraOutBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingRequestOrBuilder>(
+                  getCameraOut(),
+                  getParentForChildren(),
+                  isClean());
+          cameraOut_ = null;
+        }
+        return cameraOutBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest voiceIn_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequestOrBuilder> voiceInBuilder_;
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       * @return Whether the voiceIn field is set.
+       */
+      public boolean hasVoiceIn() {
+        return ((bitField0_ & 0x00000200) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       * @return The voiceIn.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest getVoiceIn() {
+        if (voiceInBuilder_ == null) {
+          return voiceIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.getDefaultInstance() : voiceIn_;
+        } else {
+          return voiceInBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       */
+      public Builder setVoiceIn(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest value) {
+        if (voiceInBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          voiceIn_ = value;
+          onChanged();
+        } else {
+          voiceInBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       */
+      public Builder setVoiceIn(
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.Builder builderForValue) {
+        if (voiceInBuilder_ == null) {
+          voiceIn_ = builderForValue.build();
+          onChanged();
+        } else {
+          voiceInBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       */
+      public Builder mergeVoiceIn(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest value) {
+        if (voiceInBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) != 0) &&
+              voiceIn_ != null &&
+              voiceIn_ != com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.getDefaultInstance()) {
+            voiceIn_ =
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.newBuilder(voiceIn_).mergeFrom(value).buildPartial();
+          } else {
+            voiceIn_ = value;
+          }
+          onChanged();
+        } else {
+          voiceInBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       */
+      public Builder clearVoiceIn() {
+        if (voiceInBuilder_ == null) {
+          voiceIn_ = null;
+          onChanged();
+        } else {
+          voiceInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.Builder getVoiceInBuilder() {
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return getVoiceInFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequestOrBuilder getVoiceInOrBuilder() {
+        if (voiceInBuilder_ != null) {
+          return voiceInBuilder_.getMessageOrBuilder();
+        } else {
+          return voiceIn_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.getDefaultInstance() : voiceIn_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingRequest voice_in = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequestOrBuilder> 
+          getVoiceInFieldBuilder() {
+        if (voiceInBuilder_ == null) {
+          voiceInBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingRequestOrBuilder>(
+                  getVoiceIn(),
+                  getParentForChildren(),
+                  isClean());
+          voiceIn_ = null;
+        }
+        return voiceInBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest voiceOut_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequestOrBuilder> voiceOutBuilder_;
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       * @return Whether the voiceOut field is set.
+       */
+      public boolean hasVoiceOut() {
+        return ((bitField0_ & 0x00000400) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       * @return The voiceOut.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest getVoiceOut() {
+        if (voiceOutBuilder_ == null) {
+          return voiceOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.getDefaultInstance() : voiceOut_;
+        } else {
+          return voiceOutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       */
+      public Builder setVoiceOut(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest value) {
+        if (voiceOutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          voiceOut_ = value;
+          onChanged();
+        } else {
+          voiceOutBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       */
+      public Builder setVoiceOut(
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.Builder builderForValue) {
+        if (voiceOutBuilder_ == null) {
+          voiceOut_ = builderForValue.build();
+          onChanged();
+        } else {
+          voiceOutBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       */
+      public Builder mergeVoiceOut(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest value) {
+        if (voiceOutBuilder_ == null) {
+          if (((bitField0_ & 0x00000400) != 0) &&
+              voiceOut_ != null &&
+              voiceOut_ != com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.getDefaultInstance()) {
+            voiceOut_ =
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.newBuilder(voiceOut_).mergeFrom(value).buildPartial();
+          } else {
+            voiceOut_ = value;
+          }
+          onChanged();
+        } else {
+          voiceOutBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       */
+      public Builder clearVoiceOut() {
+        if (voiceOutBuilder_ == null) {
+          voiceOut_ = null;
+          onChanged();
+        } else {
+          voiceOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000400);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.Builder getVoiceOutBuilder() {
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return getVoiceOutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequestOrBuilder getVoiceOutOrBuilder() {
+        if (voiceOutBuilder_ != null) {
+          return voiceOutBuilder_.getMessageOrBuilder();
+        } else {
+          return voiceOut_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.getDefaultInstance() : voiceOut_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingRequest voice_out = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequestOrBuilder> 
+          getVoiceOutFieldBuilder() {
+        if (voiceOutBuilder_ == null) {
+          voiceOutBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingRequestOrBuilder>(
+                  getVoiceOut(),
+                  getParentForChildren(),
+                  isClean());
+          voiceOut_ = null;
+        }
+        return voiceOutBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest getPersoConf_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequestOrBuilder> getPersoConfBuilder_;
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       * @return Whether the getPersoConf field is set.
+       */
+      public boolean hasGetPersoConf() {
+        return ((bitField0_ & 0x00000800) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       * @return The getPersoConf.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest getGetPersoConf() {
+        if (getPersoConfBuilder_ == null) {
+          return getPersoConf_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.getDefaultInstance() : getPersoConf_;
+        } else {
+          return getPersoConfBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       */
+      public Builder setGetPersoConf(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest value) {
+        if (getPersoConfBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          getPersoConf_ = value;
+          onChanged();
+        } else {
+          getPersoConfBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       */
+      public Builder setGetPersoConf(
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.Builder builderForValue) {
+        if (getPersoConfBuilder_ == null) {
+          getPersoConf_ = builderForValue.build();
+          onChanged();
+        } else {
+          getPersoConfBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       */
+      public Builder mergeGetPersoConf(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest value) {
+        if (getPersoConfBuilder_ == null) {
+          if (((bitField0_ & 0x00000800) != 0) &&
+              getPersoConf_ != null &&
+              getPersoConf_ != com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.getDefaultInstance()) {
+            getPersoConf_ =
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.newBuilder(getPersoConf_).mergeFrom(value).buildPartial();
+          } else {
+            getPersoConf_ = value;
+          }
+          onChanged();
+        } else {
+          getPersoConfBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       */
+      public Builder clearGetPersoConf() {
+        if (getPersoConfBuilder_ == null) {
+          getPersoConf_ = null;
+          onChanged();
+        } else {
+          getPersoConfBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000800);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.Builder getGetPersoConfBuilder() {
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return getGetPersoConfFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequestOrBuilder getGetPersoConfOrBuilder() {
+        if (getPersoConfBuilder_ != null) {
+          return getPersoConfBuilder_.getMessageOrBuilder();
+        } else {
+          return getPersoConf_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.getDefaultInstance() : getPersoConf_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceRequest get_perso_conf = 12;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequestOrBuilder> 
+          getGetPersoConfFieldBuilder() {
+        if (getPersoConfBuilder_ == null) {
+          getPersoConfBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequestOrBuilder>(
+                  getGetPersoConf(),
+                  getParentForChildren(),
+                  isClean());
+          getPersoConf_ = null;
+        }
+        return getPersoConfBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest attendeeSessionHeartbeat_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequestOrBuilder> attendeeSessionHeartbeatBuilder_;
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       * @return Whether the attendeeSessionHeartbeat field is set.
+       */
+      public boolean hasAttendeeSessionHeartbeat() {
+        return ((bitField0_ & 0x00001000) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       * @return The attendeeSessionHeartbeat.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest getAttendeeSessionHeartbeat() {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          return attendeeSessionHeartbeat_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.getDefaultInstance() : attendeeSessionHeartbeat_;
+        } else {
+          return attendeeSessionHeartbeatBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       */
+      public Builder setAttendeeSessionHeartbeat(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest value) {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attendeeSessionHeartbeat_ = value;
+          onChanged();
+        } else {
+          attendeeSessionHeartbeatBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       */
+      public Builder setAttendeeSessionHeartbeat(
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.Builder builderForValue) {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          attendeeSessionHeartbeat_ = builderForValue.build();
+          onChanged();
+        } else {
+          attendeeSessionHeartbeatBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       */
+      public Builder mergeAttendeeSessionHeartbeat(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest value) {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          if (((bitField0_ & 0x00001000) != 0) &&
+              attendeeSessionHeartbeat_ != null &&
+              attendeeSessionHeartbeat_ != com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.getDefaultInstance()) {
+            attendeeSessionHeartbeat_ =
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.newBuilder(attendeeSessionHeartbeat_).mergeFrom(value).buildPartial();
+          } else {
+            attendeeSessionHeartbeat_ = value;
+          }
+          onChanged();
+        } else {
+          attendeeSessionHeartbeatBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       */
+      public Builder clearAttendeeSessionHeartbeat() {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          attendeeSessionHeartbeat_ = null;
+          onChanged();
+        } else {
+          attendeeSessionHeartbeatBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00001000);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.Builder getAttendeeSessionHeartbeatBuilder() {
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return getAttendeeSessionHeartbeatFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequestOrBuilder getAttendeeSessionHeartbeatOrBuilder() {
+        if (attendeeSessionHeartbeatBuilder_ != null) {
+          return attendeeSessionHeartbeatBuilder_.getMessageOrBuilder();
+        } else {
+          return attendeeSessionHeartbeat_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.getDefaultInstance() : attendeeSessionHeartbeat_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequestOrBuilder> 
+          getAttendeeSessionHeartbeatFieldBuilder() {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          attendeeSessionHeartbeatBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequestOrBuilder>(
+                  getAttendeeSessionHeartbeat(),
+                  getParentForChildren(),
+                  isClean());
+          attendeeSessionHeartbeat_ = null;
+        }
+        return attendeeSessionHeartbeatBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1688,6 +3400,126 @@ public final class JRoomProtos {
      * <code>optional .jroom.JRoomAttendeeAuthResponse attendee_auth = 5;</code>
      */
     com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponseOrBuilder getAttendeeAuthOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+     * @return Whether the screenIn field is set.
+     */
+    boolean hasScreenIn();
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+     * @return The screenIn.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse getScreenIn();
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponseOrBuilder getScreenInOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+     * @return Whether the screenOut field is set.
+     */
+    boolean hasScreenOut();
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+     * @return The screenOut.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse getScreenOut();
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponseOrBuilder getScreenOutOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+     * @return Whether the cameraIn field is set.
+     */
+    boolean hasCameraIn();
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+     * @return The cameraIn.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse getCameraIn();
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponseOrBuilder getCameraInOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+     * @return Whether the cameraOut field is set.
+     */
+    boolean hasCameraOut();
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+     * @return The cameraOut.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse getCameraOut();
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponseOrBuilder getCameraOutOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+     * @return Whether the voiceIn field is set.
+     */
+    boolean hasVoiceIn();
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+     * @return The voiceIn.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse getVoiceIn();
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponseOrBuilder getVoiceInOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+     * @return Whether the voiceOut field is set.
+     */
+    boolean hasVoiceOut();
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+     * @return The voiceOut.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse getVoiceOut();
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponseOrBuilder getVoiceOutOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+     * @return Whether the getPersoConf field is set.
+     */
+    boolean hasGetPersoConf();
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+     * @return The getPersoConf.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse getGetPersoConf();
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponseOrBuilder getGetPersoConfOrBuilder();
+
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+     * @return Whether the attendeeSessionHeartbeat field is set.
+     */
+    boolean hasAttendeeSessionHeartbeat();
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+     * @return The attendeeSessionHeartbeat.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse getAttendeeSessionHeartbeat();
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponseOrBuilder getAttendeeSessionHeartbeatOrBuilder();
   }
   /**
    * <pre>
@@ -1802,6 +3634,110 @@ public final class JRoomProtos {
                 attendeeAuth_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000010;
+              break;
+            }
+            case 50: {
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) != 0)) {
+                subBuilder = screenIn_.toBuilder();
+              }
+              screenIn_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(screenIn_);
+                screenIn_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+            case 58: {
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) != 0)) {
+                subBuilder = screenOut_.toBuilder();
+              }
+              screenOut_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(screenOut_);
+                screenOut_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+            case 66: {
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) != 0)) {
+                subBuilder = cameraIn_.toBuilder();
+              }
+              cameraIn_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cameraIn_);
+                cameraIn_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
+              break;
+            }
+            case 74: {
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000100) != 0)) {
+                subBuilder = cameraOut_.toBuilder();
+              }
+              cameraOut_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cameraOut_);
+                cameraOut_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
+              break;
+            }
+            case 82: {
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000200) != 0)) {
+                subBuilder = voiceIn_.toBuilder();
+              }
+              voiceIn_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(voiceIn_);
+                voiceIn_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000200;
+              break;
+            }
+            case 90: {
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000400) != 0)) {
+                subBuilder = voiceOut_.toBuilder();
+              }
+              voiceOut_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(voiceOut_);
+                voiceOut_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000400;
+              break;
+            }
+            case 98: {
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000800) != 0)) {
+                subBuilder = getPersoConf_.toBuilder();
+              }
+              getPersoConf_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(getPersoConf_);
+                getPersoConf_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000800;
+              break;
+            }
+            case 106: {
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00001000) != 0)) {
+                subBuilder = attendeeSessionHeartbeat_.toBuilder();
+              }
+              attendeeSessionHeartbeat_ = input.readMessage(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attendeeSessionHeartbeat_);
+                attendeeSessionHeartbeat_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00001000;
               break;
             }
             default: {
@@ -1968,6 +3904,190 @@ public final class JRoomProtos {
       return attendeeAuth_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.getDefaultInstance() : attendeeAuth_;
     }
 
+    public static final int SCREEN_IN_FIELD_NUMBER = 6;
+    private com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse screenIn_;
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+     * @return Whether the screenIn field is set.
+     */
+    public boolean hasScreenIn() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+     * @return The screenIn.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse getScreenIn() {
+      return screenIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.getDefaultInstance() : screenIn_;
+    }
+    /**
+     * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponseOrBuilder getScreenInOrBuilder() {
+      return screenIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.getDefaultInstance() : screenIn_;
+    }
+
+    public static final int SCREEN_OUT_FIELD_NUMBER = 7;
+    private com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse screenOut_;
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+     * @return Whether the screenOut field is set.
+     */
+    public boolean hasScreenOut() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+     * @return The screenOut.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse getScreenOut() {
+      return screenOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.getDefaultInstance() : screenOut_;
+    }
+    /**
+     * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponseOrBuilder getScreenOutOrBuilder() {
+      return screenOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.getDefaultInstance() : screenOut_;
+    }
+
+    public static final int CAMERA_IN_FIELD_NUMBER = 8;
+    private com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse cameraIn_;
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+     * @return Whether the cameraIn field is set.
+     */
+    public boolean hasCameraIn() {
+      return ((bitField0_ & 0x00000080) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+     * @return The cameraIn.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse getCameraIn() {
+      return cameraIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.getDefaultInstance() : cameraIn_;
+    }
+    /**
+     * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponseOrBuilder getCameraInOrBuilder() {
+      return cameraIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.getDefaultInstance() : cameraIn_;
+    }
+
+    public static final int CAMERA_OUT_FIELD_NUMBER = 9;
+    private com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse cameraOut_;
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+     * @return Whether the cameraOut field is set.
+     */
+    public boolean hasCameraOut() {
+      return ((bitField0_ & 0x00000100) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+     * @return The cameraOut.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse getCameraOut() {
+      return cameraOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.getDefaultInstance() : cameraOut_;
+    }
+    /**
+     * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponseOrBuilder getCameraOutOrBuilder() {
+      return cameraOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.getDefaultInstance() : cameraOut_;
+    }
+
+    public static final int VOICE_IN_FIELD_NUMBER = 10;
+    private com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse voiceIn_;
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+     * @return Whether the voiceIn field is set.
+     */
+    public boolean hasVoiceIn() {
+      return ((bitField0_ & 0x00000200) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+     * @return The voiceIn.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse getVoiceIn() {
+      return voiceIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.getDefaultInstance() : voiceIn_;
+    }
+    /**
+     * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponseOrBuilder getVoiceInOrBuilder() {
+      return voiceIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.getDefaultInstance() : voiceIn_;
+    }
+
+    public static final int VOICE_OUT_FIELD_NUMBER = 11;
+    private com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse voiceOut_;
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+     * @return Whether the voiceOut field is set.
+     */
+    public boolean hasVoiceOut() {
+      return ((bitField0_ & 0x00000400) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+     * @return The voiceOut.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse getVoiceOut() {
+      return voiceOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.getDefaultInstance() : voiceOut_;
+    }
+    /**
+     * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponseOrBuilder getVoiceOutOrBuilder() {
+      return voiceOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.getDefaultInstance() : voiceOut_;
+    }
+
+    public static final int GET_PERSO_CONF_FIELD_NUMBER = 12;
+    private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse getPersoConf_;
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+     * @return Whether the getPersoConf field is set.
+     */
+    public boolean hasGetPersoConf() {
+      return ((bitField0_ & 0x00000800) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+     * @return The getPersoConf.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse getGetPersoConf() {
+      return getPersoConf_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.getDefaultInstance() : getPersoConf_;
+    }
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponseOrBuilder getGetPersoConfOrBuilder() {
+      return getPersoConf_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.getDefaultInstance() : getPersoConf_;
+    }
+
+    public static final int ATTENDEE_SESSION_HEARTBEAT_FIELD_NUMBER = 13;
+    private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse attendeeSessionHeartbeat_;
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+     * @return Whether the attendeeSessionHeartbeat field is set.
+     */
+    public boolean hasAttendeeSessionHeartbeat() {
+      return ((bitField0_ & 0x00001000) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+     * @return The attendeeSessionHeartbeat.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse getAttendeeSessionHeartbeat() {
+      return attendeeSessionHeartbeat_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.getDefaultInstance() : attendeeSessionHeartbeat_;
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponseOrBuilder getAttendeeSessionHeartbeatOrBuilder() {
+      return attendeeSessionHeartbeat_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.getDefaultInstance() : attendeeSessionHeartbeat_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1997,6 +4117,30 @@ public final class JRoomProtos {
       if (((bitField0_ & 0x00000010) != 0)) {
         output.writeMessage(5, getAttendeeAuth());
       }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        output.writeMessage(6, getScreenIn());
+      }
+      if (((bitField0_ & 0x00000040) != 0)) {
+        output.writeMessage(7, getScreenOut());
+      }
+      if (((bitField0_ & 0x00000080) != 0)) {
+        output.writeMessage(8, getCameraIn());
+      }
+      if (((bitField0_ & 0x00000100) != 0)) {
+        output.writeMessage(9, getCameraOut());
+      }
+      if (((bitField0_ & 0x00000200) != 0)) {
+        output.writeMessage(10, getVoiceIn());
+      }
+      if (((bitField0_ & 0x00000400) != 0)) {
+        output.writeMessage(11, getVoiceOut());
+      }
+      if (((bitField0_ & 0x00000800) != 0)) {
+        output.writeMessage(12, getGetPersoConf());
+      }
+      if (((bitField0_ & 0x00001000) != 0)) {
+        output.writeMessage(13, getAttendeeSessionHeartbeat());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2025,6 +4169,38 @@ public final class JRoomProtos {
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getAttendeeAuth());
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getScreenIn());
+      }
+      if (((bitField0_ & 0x00000040) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getScreenOut());
+      }
+      if (((bitField0_ & 0x00000080) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getCameraIn());
+      }
+      if (((bitField0_ & 0x00000100) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getCameraOut());
+      }
+      if (((bitField0_ & 0x00000200) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, getVoiceIn());
+      }
+      if (((bitField0_ & 0x00000400) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getVoiceOut());
+      }
+      if (((bitField0_ & 0x00000800) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, getGetPersoConf());
+      }
+      if (((bitField0_ & 0x00001000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, getAttendeeSessionHeartbeat());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2065,6 +4241,46 @@ public final class JRoomProtos {
         if (!getAttendeeAuth()
             .equals(other.getAttendeeAuth())) return false;
       }
+      if (hasScreenIn() != other.hasScreenIn()) return false;
+      if (hasScreenIn()) {
+        if (!getScreenIn()
+            .equals(other.getScreenIn())) return false;
+      }
+      if (hasScreenOut() != other.hasScreenOut()) return false;
+      if (hasScreenOut()) {
+        if (!getScreenOut()
+            .equals(other.getScreenOut())) return false;
+      }
+      if (hasCameraIn() != other.hasCameraIn()) return false;
+      if (hasCameraIn()) {
+        if (!getCameraIn()
+            .equals(other.getCameraIn())) return false;
+      }
+      if (hasCameraOut() != other.hasCameraOut()) return false;
+      if (hasCameraOut()) {
+        if (!getCameraOut()
+            .equals(other.getCameraOut())) return false;
+      }
+      if (hasVoiceIn() != other.hasVoiceIn()) return false;
+      if (hasVoiceIn()) {
+        if (!getVoiceIn()
+            .equals(other.getVoiceIn())) return false;
+      }
+      if (hasVoiceOut() != other.hasVoiceOut()) return false;
+      if (hasVoiceOut()) {
+        if (!getVoiceOut()
+            .equals(other.getVoiceOut())) return false;
+      }
+      if (hasGetPersoConf() != other.hasGetPersoConf()) return false;
+      if (hasGetPersoConf()) {
+        if (!getGetPersoConf()
+            .equals(other.getGetPersoConf())) return false;
+      }
+      if (hasAttendeeSessionHeartbeat() != other.hasAttendeeSessionHeartbeat()) return false;
+      if (hasAttendeeSessionHeartbeat()) {
+        if (!getAttendeeSessionHeartbeat()
+            .equals(other.getAttendeeSessionHeartbeat())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2095,6 +4311,38 @@ public final class JRoomProtos {
       if (hasAttendeeAuth()) {
         hash = (37 * hash) + ATTENDEE_AUTH_FIELD_NUMBER;
         hash = (53 * hash) + getAttendeeAuth().hashCode();
+      }
+      if (hasScreenIn()) {
+        hash = (37 * hash) + SCREEN_IN_FIELD_NUMBER;
+        hash = (53 * hash) + getScreenIn().hashCode();
+      }
+      if (hasScreenOut()) {
+        hash = (37 * hash) + SCREEN_OUT_FIELD_NUMBER;
+        hash = (53 * hash) + getScreenOut().hashCode();
+      }
+      if (hasCameraIn()) {
+        hash = (37 * hash) + CAMERA_IN_FIELD_NUMBER;
+        hash = (53 * hash) + getCameraIn().hashCode();
+      }
+      if (hasCameraOut()) {
+        hash = (37 * hash) + CAMERA_OUT_FIELD_NUMBER;
+        hash = (53 * hash) + getCameraOut().hashCode();
+      }
+      if (hasVoiceIn()) {
+        hash = (37 * hash) + VOICE_IN_FIELD_NUMBER;
+        hash = (53 * hash) + getVoiceIn().hashCode();
+      }
+      if (hasVoiceOut()) {
+        hash = (37 * hash) + VOICE_OUT_FIELD_NUMBER;
+        hash = (53 * hash) + getVoiceOut().hashCode();
+      }
+      if (hasGetPersoConf()) {
+        hash = (37 * hash) + GET_PERSO_CONF_FIELD_NUMBER;
+        hash = (53 * hash) + getGetPersoConf().hashCode();
+      }
+      if (hasAttendeeSessionHeartbeat()) {
+        hash = (37 * hash) + ATTENDEE_SESSION_HEARTBEAT_FIELD_NUMBER;
+        hash = (53 * hash) + getAttendeeSessionHeartbeat().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2232,6 +4480,14 @@ public final class JRoomProtos {
           getJoinConferenceAuthFieldBuilder();
           getAttendeeRegisterFieldBuilder();
           getAttendeeAuthFieldBuilder();
+          getScreenInFieldBuilder();
+          getScreenOutFieldBuilder();
+          getCameraInFieldBuilder();
+          getCameraOutFieldBuilder();
+          getVoiceInFieldBuilder();
+          getVoiceOutFieldBuilder();
+          getGetPersoConfFieldBuilder();
+          getAttendeeSessionHeartbeatFieldBuilder();
         }
       }
       @java.lang.Override
@@ -2263,6 +4519,54 @@ public final class JRoomProtos {
           attendeeAuthBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (screenInBuilder_ == null) {
+          screenIn_ = null;
+        } else {
+          screenInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (screenOutBuilder_ == null) {
+          screenOut_ = null;
+        } else {
+          screenOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (cameraInBuilder_ == null) {
+          cameraIn_ = null;
+        } else {
+          cameraInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        if (cameraOutBuilder_ == null) {
+          cameraOut_ = null;
+        } else {
+          cameraOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        if (voiceInBuilder_ == null) {
+          voiceIn_ = null;
+        } else {
+          voiceInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        if (voiceOutBuilder_ == null) {
+          voiceOut_ = null;
+        } else {
+          voiceOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000400);
+        if (getPersoConfBuilder_ == null) {
+          getPersoConf_ = null;
+        } else {
+          getPersoConfBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000800);
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          attendeeSessionHeartbeat_ = null;
+        } else {
+          attendeeSessionHeartbeatBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -2327,6 +4631,70 @@ public final class JRoomProtos {
           }
           to_bitField0_ |= 0x00000010;
         }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          if (screenInBuilder_ == null) {
+            result.screenIn_ = screenIn_;
+          } else {
+            result.screenIn_ = screenInBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000020;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          if (screenOutBuilder_ == null) {
+            result.screenOut_ = screenOut_;
+          } else {
+            result.screenOut_ = screenOutBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000040;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          if (cameraInBuilder_ == null) {
+            result.cameraIn_ = cameraIn_;
+          } else {
+            result.cameraIn_ = cameraInBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000080;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          if (cameraOutBuilder_ == null) {
+            result.cameraOut_ = cameraOut_;
+          } else {
+            result.cameraOut_ = cameraOutBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000100;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          if (voiceInBuilder_ == null) {
+            result.voiceIn_ = voiceIn_;
+          } else {
+            result.voiceIn_ = voiceInBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000200;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          if (voiceOutBuilder_ == null) {
+            result.voiceOut_ = voiceOut_;
+          } else {
+            result.voiceOut_ = voiceOutBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000400;
+        }
+        if (((from_bitField0_ & 0x00000800) != 0)) {
+          if (getPersoConfBuilder_ == null) {
+            result.getPersoConf_ = getPersoConf_;
+          } else {
+            result.getPersoConf_ = getPersoConfBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000800;
+        }
+        if (((from_bitField0_ & 0x00001000) != 0)) {
+          if (attendeeSessionHeartbeatBuilder_ == null) {
+            result.attendeeSessionHeartbeat_ = attendeeSessionHeartbeat_;
+          } else {
+            result.attendeeSessionHeartbeat_ = attendeeSessionHeartbeatBuilder_.build();
+          }
+          to_bitField0_ |= 0x00001000;
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2390,6 +4758,30 @@ public final class JRoomProtos {
         }
         if (other.hasAttendeeAuth()) {
           mergeAttendeeAuth(other.getAttendeeAuth());
+        }
+        if (other.hasScreenIn()) {
+          mergeScreenIn(other.getScreenIn());
+        }
+        if (other.hasScreenOut()) {
+          mergeScreenOut(other.getScreenOut());
+        }
+        if (other.hasCameraIn()) {
+          mergeCameraIn(other.getCameraIn());
+        }
+        if (other.hasCameraOut()) {
+          mergeCameraOut(other.getCameraOut());
+        }
+        if (other.hasVoiceIn()) {
+          mergeVoiceIn(other.getVoiceIn());
+        }
+        if (other.hasVoiceOut()) {
+          mergeVoiceOut(other.getVoiceOut());
+        }
+        if (other.hasGetPersoConf()) {
+          mergeGetPersoConf(other.getGetPersoConf());
+        }
+        if (other.hasAttendeeSessionHeartbeat()) {
+          mergeAttendeeSessionHeartbeat(other.getAttendeeSessionHeartbeat());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2994,6 +5386,966 @@ public final class JRoomProtos {
         }
         return attendeeAuthBuilder_;
       }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse screenIn_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponseOrBuilder> screenInBuilder_;
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       * @return Whether the screenIn field is set.
+       */
+      public boolean hasScreenIn() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       * @return The screenIn.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse getScreenIn() {
+        if (screenInBuilder_ == null) {
+          return screenIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.getDefaultInstance() : screenIn_;
+        } else {
+          return screenInBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       */
+      public Builder setScreenIn(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse value) {
+        if (screenInBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          screenIn_ = value;
+          onChanged();
+        } else {
+          screenInBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       */
+      public Builder setScreenIn(
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.Builder builderForValue) {
+        if (screenInBuilder_ == null) {
+          screenIn_ = builderForValue.build();
+          onChanged();
+        } else {
+          screenInBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       */
+      public Builder mergeScreenIn(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse value) {
+        if (screenInBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) != 0) &&
+              screenIn_ != null &&
+              screenIn_ != com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.getDefaultInstance()) {
+            screenIn_ =
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.newBuilder(screenIn_).mergeFrom(value).buildPartial();
+          } else {
+            screenIn_ = value;
+          }
+          onChanged();
+        } else {
+          screenInBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       */
+      public Builder clearScreenIn() {
+        if (screenInBuilder_ == null) {
+          screenIn_ = null;
+          onChanged();
+        } else {
+          screenInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.Builder getScreenInBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getScreenInFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponseOrBuilder getScreenInOrBuilder() {
+        if (screenInBuilder_ != null) {
+          return screenInBuilder_.getMessageOrBuilder();
+        } else {
+          return screenIn_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.getDefaultInstance() : screenIn_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenIncomingResponse screen_in = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponseOrBuilder> 
+          getScreenInFieldBuilder() {
+        if (screenInBuilder_ == null) {
+          screenInBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponseOrBuilder>(
+                  getScreenIn(),
+                  getParentForChildren(),
+                  isClean());
+          screenIn_ = null;
+        }
+        return screenInBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse screenOut_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponseOrBuilder> screenOutBuilder_;
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       * @return Whether the screenOut field is set.
+       */
+      public boolean hasScreenOut() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       * @return The screenOut.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse getScreenOut() {
+        if (screenOutBuilder_ == null) {
+          return screenOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.getDefaultInstance() : screenOut_;
+        } else {
+          return screenOutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       */
+      public Builder setScreenOut(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse value) {
+        if (screenOutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          screenOut_ = value;
+          onChanged();
+        } else {
+          screenOutBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       */
+      public Builder setScreenOut(
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.Builder builderForValue) {
+        if (screenOutBuilder_ == null) {
+          screenOut_ = builderForValue.build();
+          onChanged();
+        } else {
+          screenOutBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       */
+      public Builder mergeScreenOut(com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse value) {
+        if (screenOutBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) != 0) &&
+              screenOut_ != null &&
+              screenOut_ != com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.getDefaultInstance()) {
+            screenOut_ =
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.newBuilder(screenOut_).mergeFrom(value).buildPartial();
+          } else {
+            screenOut_ = value;
+          }
+          onChanged();
+        } else {
+          screenOutBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       */
+      public Builder clearScreenOut() {
+        if (screenOutBuilder_ == null) {
+          screenOut_ = null;
+          onChanged();
+        } else {
+          screenOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.Builder getScreenOutBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return getScreenOutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponseOrBuilder getScreenOutOrBuilder() {
+        if (screenOutBuilder_ != null) {
+          return screenOutBuilder_.getMessageOrBuilder();
+        } else {
+          return screenOut_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.getDefaultInstance() : screenOut_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomScreenOutgoingResponse screen_out = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponseOrBuilder> 
+          getScreenOutFieldBuilder() {
+        if (screenOutBuilder_ == null) {
+          screenOutBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponseOrBuilder>(
+                  getScreenOut(),
+                  getParentForChildren(),
+                  isClean());
+          screenOut_ = null;
+        }
+        return screenOutBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse cameraIn_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponseOrBuilder> cameraInBuilder_;
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       * @return Whether the cameraIn field is set.
+       */
+      public boolean hasCameraIn() {
+        return ((bitField0_ & 0x00000080) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       * @return The cameraIn.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse getCameraIn() {
+        if (cameraInBuilder_ == null) {
+          return cameraIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.getDefaultInstance() : cameraIn_;
+        } else {
+          return cameraInBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       */
+      public Builder setCameraIn(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse value) {
+        if (cameraInBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          cameraIn_ = value;
+          onChanged();
+        } else {
+          cameraInBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       */
+      public Builder setCameraIn(
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.Builder builderForValue) {
+        if (cameraInBuilder_ == null) {
+          cameraIn_ = builderForValue.build();
+          onChanged();
+        } else {
+          cameraInBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       */
+      public Builder mergeCameraIn(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse value) {
+        if (cameraInBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) != 0) &&
+              cameraIn_ != null &&
+              cameraIn_ != com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.getDefaultInstance()) {
+            cameraIn_ =
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.newBuilder(cameraIn_).mergeFrom(value).buildPartial();
+          } else {
+            cameraIn_ = value;
+          }
+          onChanged();
+        } else {
+          cameraInBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       */
+      public Builder clearCameraIn() {
+        if (cameraInBuilder_ == null) {
+          cameraIn_ = null;
+          onChanged();
+        } else {
+          cameraInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.Builder getCameraInBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getCameraInFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponseOrBuilder getCameraInOrBuilder() {
+        if (cameraInBuilder_ != null) {
+          return cameraInBuilder_.getMessageOrBuilder();
+        } else {
+          return cameraIn_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.getDefaultInstance() : cameraIn_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraIncomingResponse camera_in = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponseOrBuilder> 
+          getCameraInFieldBuilder() {
+        if (cameraInBuilder_ == null) {
+          cameraInBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraIncomingResponseOrBuilder>(
+                  getCameraIn(),
+                  getParentForChildren(),
+                  isClean());
+          cameraIn_ = null;
+        }
+        return cameraInBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse cameraOut_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponseOrBuilder> cameraOutBuilder_;
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       * @return Whether the cameraOut field is set.
+       */
+      public boolean hasCameraOut() {
+        return ((bitField0_ & 0x00000100) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       * @return The cameraOut.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse getCameraOut() {
+        if (cameraOutBuilder_ == null) {
+          return cameraOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.getDefaultInstance() : cameraOut_;
+        } else {
+          return cameraOutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       */
+      public Builder setCameraOut(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse value) {
+        if (cameraOutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          cameraOut_ = value;
+          onChanged();
+        } else {
+          cameraOutBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       */
+      public Builder setCameraOut(
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.Builder builderForValue) {
+        if (cameraOutBuilder_ == null) {
+          cameraOut_ = builderForValue.build();
+          onChanged();
+        } else {
+          cameraOutBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       */
+      public Builder mergeCameraOut(com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse value) {
+        if (cameraOutBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) != 0) &&
+              cameraOut_ != null &&
+              cameraOut_ != com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.getDefaultInstance()) {
+            cameraOut_ =
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.newBuilder(cameraOut_).mergeFrom(value).buildPartial();
+          } else {
+            cameraOut_ = value;
+          }
+          onChanged();
+        } else {
+          cameraOutBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       */
+      public Builder clearCameraOut() {
+        if (cameraOutBuilder_ == null) {
+          cameraOut_ = null;
+          onChanged();
+        } else {
+          cameraOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.Builder getCameraOutBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return getCameraOutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponseOrBuilder getCameraOutOrBuilder() {
+        if (cameraOutBuilder_ != null) {
+          return cameraOutBuilder_.getMessageOrBuilder();
+        } else {
+          return cameraOut_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.getDefaultInstance() : cameraOut_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomCameraOutgoingResponse camera_out = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponseOrBuilder> 
+          getCameraOutFieldBuilder() {
+        if (cameraOutBuilder_ == null) {
+          cameraOutBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.JRoomCameraOutgoingResponseOrBuilder>(
+                  getCameraOut(),
+                  getParentForChildren(),
+                  isClean());
+          cameraOut_ = null;
+        }
+        return cameraOutBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse voiceIn_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponseOrBuilder> voiceInBuilder_;
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       * @return Whether the voiceIn field is set.
+       */
+      public boolean hasVoiceIn() {
+        return ((bitField0_ & 0x00000200) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       * @return The voiceIn.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse getVoiceIn() {
+        if (voiceInBuilder_ == null) {
+          return voiceIn_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.getDefaultInstance() : voiceIn_;
+        } else {
+          return voiceInBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       */
+      public Builder setVoiceIn(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse value) {
+        if (voiceInBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          voiceIn_ = value;
+          onChanged();
+        } else {
+          voiceInBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       */
+      public Builder setVoiceIn(
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.Builder builderForValue) {
+        if (voiceInBuilder_ == null) {
+          voiceIn_ = builderForValue.build();
+          onChanged();
+        } else {
+          voiceInBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       */
+      public Builder mergeVoiceIn(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse value) {
+        if (voiceInBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) != 0) &&
+              voiceIn_ != null &&
+              voiceIn_ != com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.getDefaultInstance()) {
+            voiceIn_ =
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.newBuilder(voiceIn_).mergeFrom(value).buildPartial();
+          } else {
+            voiceIn_ = value;
+          }
+          onChanged();
+        } else {
+          voiceInBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       */
+      public Builder clearVoiceIn() {
+        if (voiceInBuilder_ == null) {
+          voiceIn_ = null;
+          onChanged();
+        } else {
+          voiceInBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.Builder getVoiceInBuilder() {
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return getVoiceInFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponseOrBuilder getVoiceInOrBuilder() {
+        if (voiceInBuilder_ != null) {
+          return voiceInBuilder_.getMessageOrBuilder();
+        } else {
+          return voiceIn_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.getDefaultInstance() : voiceIn_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceIncomingResponse voice_in = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponseOrBuilder> 
+          getVoiceInFieldBuilder() {
+        if (voiceInBuilder_ == null) {
+          voiceInBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceIncomingResponseOrBuilder>(
+                  getVoiceIn(),
+                  getParentForChildren(),
+                  isClean());
+          voiceIn_ = null;
+        }
+        return voiceInBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse voiceOut_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponseOrBuilder> voiceOutBuilder_;
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       * @return Whether the voiceOut field is set.
+       */
+      public boolean hasVoiceOut() {
+        return ((bitField0_ & 0x00000400) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       * @return The voiceOut.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse getVoiceOut() {
+        if (voiceOutBuilder_ == null) {
+          return voiceOut_ == null ? com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.getDefaultInstance() : voiceOut_;
+        } else {
+          return voiceOutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       */
+      public Builder setVoiceOut(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse value) {
+        if (voiceOutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          voiceOut_ = value;
+          onChanged();
+        } else {
+          voiceOutBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       */
+      public Builder setVoiceOut(
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.Builder builderForValue) {
+        if (voiceOutBuilder_ == null) {
+          voiceOut_ = builderForValue.build();
+          onChanged();
+        } else {
+          voiceOutBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       */
+      public Builder mergeVoiceOut(com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse value) {
+        if (voiceOutBuilder_ == null) {
+          if (((bitField0_ & 0x00000400) != 0) &&
+              voiceOut_ != null &&
+              voiceOut_ != com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.getDefaultInstance()) {
+            voiceOut_ =
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.newBuilder(voiceOut_).mergeFrom(value).buildPartial();
+          } else {
+            voiceOut_ = value;
+          }
+          onChanged();
+        } else {
+          voiceOutBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       */
+      public Builder clearVoiceOut() {
+        if (voiceOutBuilder_ == null) {
+          voiceOut_ = null;
+          onChanged();
+        } else {
+          voiceOutBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000400);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.Builder getVoiceOutBuilder() {
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return getVoiceOutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponseOrBuilder getVoiceOutOrBuilder() {
+        if (voiceOutBuilder_ != null) {
+          return voiceOutBuilder_.getMessageOrBuilder();
+        } else {
+          return voiceOut_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.getDefaultInstance() : voiceOut_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomVoiceOutgoingResponse voice_out = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponseOrBuilder> 
+          getVoiceOutFieldBuilder() {
+        if (voiceOutBuilder_ == null) {
+          voiceOutBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.JRoomVoiceOutgoingResponseOrBuilder>(
+                  getVoiceOut(),
+                  getParentForChildren(),
+                  isClean());
+          voiceOut_ = null;
+        }
+        return voiceOutBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse getPersoConf_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponseOrBuilder> getPersoConfBuilder_;
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       * @return Whether the getPersoConf field is set.
+       */
+      public boolean hasGetPersoConf() {
+        return ((bitField0_ & 0x00000800) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       * @return The getPersoConf.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse getGetPersoConf() {
+        if (getPersoConfBuilder_ == null) {
+          return getPersoConf_ == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.getDefaultInstance() : getPersoConf_;
+        } else {
+          return getPersoConfBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       */
+      public Builder setGetPersoConf(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse value) {
+        if (getPersoConfBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          getPersoConf_ = value;
+          onChanged();
+        } else {
+          getPersoConfBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       */
+      public Builder setGetPersoConf(
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.Builder builderForValue) {
+        if (getPersoConfBuilder_ == null) {
+          getPersoConf_ = builderForValue.build();
+          onChanged();
+        } else {
+          getPersoConfBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       */
+      public Builder mergeGetPersoConf(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse value) {
+        if (getPersoConfBuilder_ == null) {
+          if (((bitField0_ & 0x00000800) != 0) &&
+              getPersoConf_ != null &&
+              getPersoConf_ != com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.getDefaultInstance()) {
+            getPersoConf_ =
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.newBuilder(getPersoConf_).mergeFrom(value).buildPartial();
+          } else {
+            getPersoConf_ = value;
+          }
+          onChanged();
+        } else {
+          getPersoConfBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       */
+      public Builder clearGetPersoConf() {
+        if (getPersoConfBuilder_ == null) {
+          getPersoConf_ = null;
+          onChanged();
+        } else {
+          getPersoConfBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000800);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.Builder getGetPersoConfBuilder() {
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return getGetPersoConfFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponseOrBuilder getGetPersoConfOrBuilder() {
+        if (getPersoConfBuilder_ != null) {
+          return getPersoConfBuilder_.getMessageOrBuilder();
+        } else {
+          return getPersoConf_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.getDefaultInstance() : getPersoConf_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse get_perso_conf = 12;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponseOrBuilder> 
+          getGetPersoConfFieldBuilder() {
+        if (getPersoConfBuilder_ == null) {
+          getPersoConfBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponseOrBuilder>(
+                  getGetPersoConf(),
+                  getParentForChildren(),
+                  isClean());
+          getPersoConf_ = null;
+        }
+        return getPersoConfBuilder_;
+      }
+
+      private com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse attendeeSessionHeartbeat_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponseOrBuilder> attendeeSessionHeartbeatBuilder_;
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       * @return Whether the attendeeSessionHeartbeat field is set.
+       */
+      public boolean hasAttendeeSessionHeartbeat() {
+        return ((bitField0_ & 0x00001000) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       * @return The attendeeSessionHeartbeat.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse getAttendeeSessionHeartbeat() {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          return attendeeSessionHeartbeat_ == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.getDefaultInstance() : attendeeSessionHeartbeat_;
+        } else {
+          return attendeeSessionHeartbeatBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       */
+      public Builder setAttendeeSessionHeartbeat(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse value) {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attendeeSessionHeartbeat_ = value;
+          onChanged();
+        } else {
+          attendeeSessionHeartbeatBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       */
+      public Builder setAttendeeSessionHeartbeat(
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.Builder builderForValue) {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          attendeeSessionHeartbeat_ = builderForValue.build();
+          onChanged();
+        } else {
+          attendeeSessionHeartbeatBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       */
+      public Builder mergeAttendeeSessionHeartbeat(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse value) {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          if (((bitField0_ & 0x00001000) != 0) &&
+              attendeeSessionHeartbeat_ != null &&
+              attendeeSessionHeartbeat_ != com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.getDefaultInstance()) {
+            attendeeSessionHeartbeat_ =
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.newBuilder(attendeeSessionHeartbeat_).mergeFrom(value).buildPartial();
+          } else {
+            attendeeSessionHeartbeat_ = value;
+          }
+          onChanged();
+        } else {
+          attendeeSessionHeartbeatBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       */
+      public Builder clearAttendeeSessionHeartbeat() {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          attendeeSessionHeartbeat_ = null;
+          onChanged();
+        } else {
+          attendeeSessionHeartbeatBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00001000);
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.Builder getAttendeeSessionHeartbeatBuilder() {
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return getAttendeeSessionHeartbeatFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponseOrBuilder getAttendeeSessionHeartbeatOrBuilder() {
+        if (attendeeSessionHeartbeatBuilder_ != null) {
+          return attendeeSessionHeartbeatBuilder_.getMessageOrBuilder();
+        } else {
+          return attendeeSessionHeartbeat_ == null ?
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.getDefaultInstance() : attendeeSessionHeartbeat_;
+        }
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponseOrBuilder> 
+          getAttendeeSessionHeartbeatFieldBuilder() {
+        if (attendeeSessionHeartbeatBuilder_ == null) {
+          attendeeSessionHeartbeatBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.Builder, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponseOrBuilder>(
+                  getAttendeeSessionHeartbeat(),
+                  getParentForChildren(),
+                  isClean());
+          attendeeSessionHeartbeat_ = null;
+        }
+        return attendeeSessionHeartbeatBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3070,48 +6422,85 @@ public final class JRoomProtos {
       "Room.proto\022\005jroom\032:com/caporal7/jroom/co" +
       "mmon/java/proto/JRoomConference.proto\0328c" +
       "om/caporal7/jroom/common/java/proto/JRoo" +
-      "mAttendee.proto\"\265\002\n\014JRoomRequest\022\"\n\004type" +
-      "\030\001 \001(\0162\013.jroom.Type:\007INVALID\022D\n\024join_con" +
-      "ference_prob\030\002 \001(\0132&.jroom.JRoomJoinConf" +
-      "erenceProbeRequest\022C\n\024join_conference_au" +
-      "th\030\003 \001(\0132%.jroom.JRoomJoinConferenceAuth" +
-      "Request\022>\n\021attendee_register\030\004 \001(\0132#.jro" +
-      "om.JRoomAttendeeRegisterRequest\0226\n\ratten" +
-      "dee_auth\030\005 \001(\0132\037.jroom.JRoomAttendeeAuth" +
-      "Request\"\272\002\n\rJRoomResponse\022\"\n\004type\030\001 \001(\0162" +
-      "\013.jroom.Type:\007INVALID\022E\n\024join_conference" +
-      "_prob\030\002 \001(\0132\'.jroom.JRoomJoinConferenceP" +
-      "robeResponse\022D\n\024join_conference_auth\030\003 \001" +
-      "(\0132&.jroom.JRoomJoinConferenceAuthRespon" +
-      "se\022?\n\021attendee_register\030\004 \001(\0132$.jroom.JR" +
-      "oomAttendeeRegisterResponse\0227\n\rattendee_" +
-      "auth\030\005 \001(\0132 .jroom.JRoomAttendeeAuthResp" +
-      "onse*l\n\004Type\022\013\n\007INVALID\020\000\022\030\n\024JOIN_CONFER" +
-      "ENCE_PROB\020\001\022\030\n\024JOIN_CONFERENCE_AUTH\020\002\022\020\n" +
-      "\014ATTENDEE_REG\020\003\022\021\n\rATTENDEE_AUTH\020\004B4\n%co" +
-      "m.caporal7.jroom.common.java.protocB\013JRo" +
-      "omProtos"
+      "mAttendee.proto\0326com/caporal7/jroom/comm" +
+      "on/java/proto/JRoomScreen.proto\0326com/cap" +
+      "oral7/jroom/common/java/proto/JRoomCamer" +
+      "a.proto\0325com/caporal7/jroom/common/java/" +
+      "proto/JRoomVoice.proto\"\213\006\n\014JRoomRequest\022" +
+      "\"\n\004type\030\001 \001(\0162\013.jroom.Type:\007INVALID\022D\n\024j" +
+      "oin_conference_prob\030\002 \001(\0132&.jroom.JRoomJ" +
+      "oinConferenceProbeRequest\022C\n\024join_confer" +
+      "ence_auth\030\003 \001(\0132%.jroom.JRoomJoinConfere" +
+      "nceAuthRequest\022>\n\021attendee_register\030\004 \001(" +
+      "\0132#.jroom.JRoomAttendeeRegisterRequest\0226" +
+      "\n\rattendee_auth\030\005 \001(\0132\037.jroom.JRoomAtten" +
+      "deeAuthRequest\0224\n\tscreen_in\030\006 \001(\0132!.jroo" +
+      "m.JRoomScreenIncomingRequest\0225\n\nscreen_o" +
+      "ut\030\007 \001(\0132!.jroom.JRoomScreenOutgoingRequ" +
+      "est\0224\n\tcamera_in\030\010 \001(\0132!.jroom.JRoomCame" +
+      "raIncomingRequest\0225\n\ncamera_out\030\t \001(\0132!." +
+      "jroom.JRoomCameraOutgoingRequest\0222\n\010voic" +
+      "e_in\030\n \001(\0132 .jroom.JRoomVoiceIncomingReq" +
+      "uest\0223\n\tvoice_out\030\013 \001(\0132 .jroom.JRoomVoi" +
+      "ceOutgoingRequest\022@\n\016get_perso_conf\030\014 \001(" +
+      "\0132(.jroom.JRoomGetPersonalConferenceRequ" +
+      "est\022O\n\032attendee_session_heartbeat\030\r \001(\0132" +
+      "+.jroom.JRoomAttendeeSessionHeartbeatReq" +
+      "uest\"\230\006\n\rJRoomResponse\022\"\n\004type\030\001 \001(\0162\013.j" +
+      "room.Type:\007INVALID\022E\n\024join_conference_pr" +
+      "ob\030\002 \001(\0132\'.jroom.JRoomJoinConferenceProb" +
+      "eResponse\022D\n\024join_conference_auth\030\003 \001(\0132" +
+      "&.jroom.JRoomJoinConferenceAuthResponse\022" +
+      "?\n\021attendee_register\030\004 \001(\0132$.jroom.JRoom" +
+      "AttendeeRegisterResponse\0227\n\rattendee_aut" +
+      "h\030\005 \001(\0132 .jroom.JRoomAttendeeAuthRespons" +
+      "e\0225\n\tscreen_in\030\006 \001(\0132\".jroom.JRoomScreen" +
+      "IncomingResponse\0226\n\nscreen_out\030\007 \001(\0132\".j" +
+      "room.JRoomScreenOutgoingResponse\0225\n\tcame" +
+      "ra_in\030\010 \001(\0132\".jroom.JRoomCameraIncomingR" +
+      "esponse\0226\n\ncamera_out\030\t \001(\0132\".jroom.JRoo" +
+      "mCameraOutgoingResponse\0223\n\010voice_in\030\n \001(" +
+      "\0132!.jroom.JRoomVoiceIncomingResponse\0224\n\t" +
+      "voice_out\030\013 \001(\0132!.jroom.JRoomVoiceOutgoi" +
+      "ngResponse\022A\n\016get_perso_conf\030\014 \001(\0132).jro" +
+      "om.JRoomGetPersonalConferenceResponse\022P\n" +
+      "\032attendee_session_heartbeat\030\r \001(\0132,.jroo" +
+      "m.JRoomAttendeeSessionHeartbeatResponse*" +
+      "\204\002\n\004Type\022\013\n\007INVALID\020\000\022\030\n\024JOIN_CONFERENCE" +
+      "_PROB\020\001\022\030\n\024JOIN_CONFERENCE_AUTH\020\002\022\020\n\014ATT" +
+      "ENDEE_REG\020\003\022\021\n\rATTENDEE_AUTH\020\004\022\r\n\tSCREEN" +
+      "_IN\020\005\022\016\n\nSCREEN_OUT\020\006\022\r\n\tCAMERA_IN\020\007\022\016\n\n" +
+      "CAMERA_OUT\020\010\022\014\n\010VOICE_IN\020\t\022\r\n\tVOICE_OUT\020" +
+      "\n\022\033\n\027GET_PERSONAL_CONFERENCE\020\013\022\036\n\032ATTEND" +
+      "EE_SESSION_HEARTBEAT\020\014B4\n%com.caporal7.j" +
+      "room.common.java.protocB\013JRoomProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.getDescriptor(),
           com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.getDescriptor(),
+          com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.getDescriptor(),
+          com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.getDescriptor(),
+          com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.getDescriptor(),
         });
     internal_static_jroom_JRoomRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_jroom_JRoomRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_jroom_JRoomRequest_descriptor,
-        new java.lang.String[] { "Type", "JoinConferenceProb", "JoinConferenceAuth", "AttendeeRegister", "AttendeeAuth", });
+        new java.lang.String[] { "Type", "JoinConferenceProb", "JoinConferenceAuth", "AttendeeRegister", "AttendeeAuth", "ScreenIn", "ScreenOut", "CameraIn", "CameraOut", "VoiceIn", "VoiceOut", "GetPersoConf", "AttendeeSessionHeartbeat", });
     internal_static_jroom_JRoomResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_jroom_JRoomResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_jroom_JRoomResponse_descriptor,
-        new java.lang.String[] { "Type", "JoinConferenceProb", "JoinConferenceAuth", "AttendeeRegister", "AttendeeAuth", });
+        new java.lang.String[] { "Type", "JoinConferenceProb", "JoinConferenceAuth", "AttendeeRegister", "AttendeeAuth", "ScreenIn", "ScreenOut", "CameraIn", "CameraOut", "VoiceIn", "VoiceOut", "GetPersoConf", "AttendeeSessionHeartbeat", });
     com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.getDescriptor();
     com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.getDescriptor();
+    com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.getDescriptor();
+    com.caporal7.jroom.common.java.protoc.JRoomCameraProtos.getDescriptor();
+    com.caporal7.jroom.common.java.protoc.JRoomVoiceProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -66,3 +66,23 @@ message JRoomJoinConferenceAuthResponse {
   optional string access_token = 2;
 }
 
+/* Get Personal Conference request */
+message JRoomGetPersonalConferenceRequest {
+  optional int32 registered_attendee_id = 1;
+  optional string session_cookie = 2;
+}
+
+/* Get Personal Conference response */
+message JRoomGetPersonalConferenceResponse {
+  /* Get Personal Conference response type */
+  enum ResponseType {
+    INVALID_REQUEST = 0;
+    SESSION_INVALID_OR_EXPIRED = 1;
+    SUCCESS = 2;
+  }
+
+  optional ResponseType response = 1 [default = INVALID_REQUEST];
+  optional int32 conference_id = 2;
+  optional int32 password = 3;
+}
+

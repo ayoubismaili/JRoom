@@ -49,5 +49,10 @@ public class JRoomUtils {
         }
         return sb.toString();
     }
+    
+    public static int getNewConferencePassword() {
+        int password = secureRandom.nextInt(999999);
+        return password;
+    }
 }
 

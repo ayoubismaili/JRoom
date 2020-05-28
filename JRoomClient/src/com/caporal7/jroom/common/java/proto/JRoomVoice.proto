@@ -1,0 +1,87 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2020 Ayoub Ismaili <ayoubismaili1@gmail.com>.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+syntax = "proto2";
+
+package jroom;
+
+option java_package = "com.caporal7.jroom.common.java.protoc";
+option java_outer_classname = "JRoomVoiceProtos";
+
+/* Incoming Voice request */
+message JRoomVoiceIncomingRequest {
+  optional int32 conference_id = 1;
+  optional string guest_attendee_guid = 2;
+  optional int32 registered_attendee_id = 3;
+  optional bool is_guest = 4;
+  optional string session_cookie = 5;      /* Session cookie in case of a registered attendee*/
+  optional string access_token = 6;        /* Access token to the conference */
+}
+
+/* Incoming Voice response */
+message JRoomVoiceIncomingResponse {
+  /* Incoming Voice response type */
+  enum ResponseType {
+    INVALID_REQUEST         = 0;
+    INVALID_CONFERENCE_ID   = 1;
+    NO_SUCH_ATTENDEE        = 2;
+    SESSION_EXPIRED         = 3;
+    INVALID_ACCESS_TOKEN    = 4;
+    TOO_MANY_REQUESTS       = 5;
+    SUCCESS                 = 6;
+  }
+
+  optional ResponseType type = 1 [default = INVALID_REQUEST];
+  optional bytes data = 2;
+  repeated string guest_talkers_guid = 3;
+  repeated int32 registered_talkers_id = 4;
+  repeated string talkers_name = 5;
+}
+
+/* Outgoing Voice request */
+message JRoomVoiceOutgoingRequest {
+  optional int32 conference_id = 1;
+  optional string guest_attendee_guid = 2;
+  optional int32 registered_attendee_id = 3;
+  optional bool is_guest = 4;
+  optional string session_cookie = 5;      /* Session cookie in case of a registered attendee*/
+  optional string access_token = 6;        /* Access token to the conference */
+  optional bytes data = 7;
+}
+
+/* Outgoing Voice response */
+message JRoomVoiceOutgoingResponse {
+  /* Outgoing Voice response type */
+  enum ResponseType {
+    INVALID_REQUEST       = 0;
+    INVALID_CONFERENCE_ID = 1;
+    NO_SUCH_ATTENDEE      = 2;
+    SESSION_EXPIRED       = 3;
+    INVALID_ACCESS_TOKEN  = 4;
+    TOO_MANY_REQUESTS     = 5;
+    SUCCESS               = 6;
+  }
+
+  optional ResponseType type = 1 [default = INVALID_REQUEST];
+}

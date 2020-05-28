@@ -24,20 +24,38 @@
 
 package com.caporal7.jroom.client.java;
 
+import com.caporal7.jroom.client.java.dao.AttendeeDao;
+import com.caporal7.jroom.common.java.JRoomSettings;
+import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.commons.configuration2.XMLConfiguration;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/join-conference.fxml"));
-        primaryStage.setTitle("Joindre une réunion JRoom");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        /* Perform a session heartbeat, and autologin if successful */
+        XMLConfiguration config = JRoomSettings.getSettings();
+        AttendeeDao dao = new  AttendeeDao();
+        int registeredAttendeeId = config.getInt("registered-attendee-id", 0);
+        String sessionCookie = config.getString("session-cookie", "");
+        JRoomAttendeeSessionHeartbeatResponse.ResponseType type = dao.sessionHeartbeat(registeredAttendeeId, sessionCookie);
+        if (type != JRoomAttendeeSessionHeartbeatResponse.ResponseType.SUCCESS) {
+            Parent root = FXMLLoader.load(getClass().getResource("../resources/view/join-conference.fxml"));
+            primaryStage.setTitle("Joindre une réunion JRoom");
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        } else {
+            Parent root = FXMLLoader.load(getClass().getResource("../resources/view/principal-interface.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("JRoom");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
     }
 
     public static void main(String[] args) {

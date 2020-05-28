@@ -34,6 +34,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Conference.findByActive", query = "SELECT c FROM Conference c WHERE c.active = :active")})
 public class Conference implements Serializable {
 
+    @OneToMany(mappedBy = "personalConferenceId")
+    private Collection<RegisteredAttendee> registeredAttendeeCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -161,6 +164,14 @@ public class Conference implements Serializable {
     @Override
     public String toString() {
         return "com.caporal7.jroom.common.java.jpa.Conference[ id=" + id + " ]";
+    }
+
+    public Collection<RegisteredAttendee> getRegisteredAttendeeCollection() {
+        return registeredAttendeeCollection;
+    }
+
+    public void setRegisteredAttendeeCollection(Collection<RegisteredAttendee> registeredAttendeeCollection) {
+        this.registeredAttendeeCollection = registeredAttendeeCollection;
     }
     
 }

@@ -3,5 +3,6 @@
   <host>127.0.0.1</host>
   <port>8803</port>
   <use-ssl>false</use-ssl>
-  <session-cookie>0DB1826C0FC37068453F281A8BF8D737CA4798D84BBAD1F4CB</session-cookie>
+  <registered-attendee-id>4</registered-attendee-id>
+  <session-cookie>FD0ED41616DBF8B53826380E6D82442D64FE12EA42B11D4036</session-cookie>
 </configuration>

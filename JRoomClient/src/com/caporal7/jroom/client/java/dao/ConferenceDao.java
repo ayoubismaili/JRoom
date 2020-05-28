@@ -26,8 +26,10 @@ package com.caporal7.jroom.client.java.dao;
 
 import com.caporal7.jroom.client.java.services.JRoomClient;
 import com.caporal7.jroom.common.java.JRoomException;
+import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest;
+import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthRequest;
-import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType;
+import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceProbeResponse.ProbeResponseType;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos;
@@ -47,13 +49,13 @@ public class ConferenceDao {
     
     public ProbeResponseType probe(int conferenceId) 
             throws IOException, JRoomException {
-        JRoomJoinConferenceProbeRequest probRequest = 
+        JRoomJoinConferenceProbeRequest innerRequest = 
                 JRoomJoinConferenceProbeRequest.newBuilder()
                 .setConferenceId(conferenceId)
                 .build();
         JRoomRequest request = JRoomRequest.newBuilder()
                 .setType(JRoomProtos.Type.JOIN_CONFERENCE_PROB)
-                .setJoinConferenceProb(probRequest)
+                .setJoinConferenceProb(innerRequest)
                 .build();
         byte[] requestBytes = request.toByteArray();     
         byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
@@ -73,9 +75,9 @@ public class ConferenceDao {
         return response.getJoinConferenceProb().getResponse();
     }
     
-    public AuthResponseType auth(int conferenceId, int password, boolean isGuest, String sessionCookie) 
+    public JRoomJoinConferenceAuthResponse auth(int conferenceId, int password, boolean isGuest, String sessionCookie) 
             throws IOException, JRoomException {
-        JRoomJoinConferenceAuthRequest authRequest = 
+        JRoomJoinConferenceAuthRequest innerRequest = 
                 JRoomJoinConferenceAuthRequest.newBuilder()
                 .setConferenceId(conferenceId)
                 .setPassword(password)
@@ -84,7 +86,7 @@ public class ConferenceDao {
                 .build();
         JRoomRequest request = JRoomRequest.newBuilder()
                 .setType(JRoomProtos.Type.JOIN_CONFERENCE_AUTH)
-                .setJoinConferenceAuth(authRequest)
+                .setJoinConferenceAuth(innerRequest)
                 .build();
         byte[] requestBytes = request.toByteArray();     
         byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
@@ -101,6 +103,36 @@ public class ConferenceDao {
         if (response.getType() != JRoomProtos.Type.JOIN_CONFERENCE_AUTH) {
             throw new JRoomException("Invalid response");
         }
-        return response.getJoinConferenceAuth().getResponse();
+        return response.getJoinConferenceAuth();
+    }
+    
+    public JRoomGetPersonalConferenceResponse getPersonalConference(
+            int registeredAttendeeId, String sessionCookie) 
+                throws IOException, JRoomException {
+        JRoomGetPersonalConferenceRequest innerRequest = 
+                JRoomGetPersonalConferenceRequest.newBuilder()
+                .setRegisteredAttendeeId(registeredAttendeeId)
+                .setSessionCookie(sessionCookie)
+                .build();
+        JRoomRequest request = JRoomRequest.newBuilder()
+                .setType(JRoomProtos.Type.GET_PERSONAL_CONFERENCE)
+                .setGetPersoConf(innerRequest)
+                .build();
+        byte[] requestBytes = request.toByteArray();     
+        byte[] lengthBytes = JRoomUtils.convertIntToBytes(requestBytes.length);
+        
+        client.write(lengthBytes);
+        client.write(requestBytes);
+        client.flush();
+        
+        lengthBytes = client.readNBytes(4);
+        int length = JRoomUtils.convertBytesToInt(lengthBytes);
+        byte[] responseBytes = client.readNBytes(length);
+        
+        JRoomResponse response = JRoomResponse.parseFrom(responseBytes);
+        if (response.getType() != JRoomProtos.Type.GET_PERSONAL_CONFERENCE) {
+            throw new JRoomException("Invalid response");
+        }
+        return response.getGetPersoConf();
     }
 }

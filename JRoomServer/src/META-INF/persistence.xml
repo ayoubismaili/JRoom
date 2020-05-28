@@ -7,10 +7,11 @@
     <class>com.caporal7.jroom.common.java.jpa.DataStream</class>
     <class>com.caporal7.jroom.common.java.jpa.GuestAttendee</class>
     <class>com.caporal7.jroom.common.java.jpa.Avatar</class>
-    <class>com.caporal7.jroom.common.java.jpa.RegisteredAttendee</class>
     <class>com.caporal7.jroom.common.java.jpa.Session</class>
     <class>com.caporal7.jroom.common.java.jpa.Message</class>
     <class>com.caporal7.jroom.common.java.jpa.Conference</class>
+    <class>com.caporal7.jroom.common.java.jpa.RegisteredAttendee</class>
+    <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.10.10.10:3306/JRoomDB?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="jroom"/>

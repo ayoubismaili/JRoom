@@ -27,6 +27,9 @@ syntax = "proto2";
 package jroom;
 import "com/caporal7/jroom/common/java/proto/JRoomConference.proto";
 import "com/caporal7/jroom/common/java/proto/JRoomAttendee.proto";
+import "com/caporal7/jroom/common/java/proto/JRoomScreen.proto";
+import "com/caporal7/jroom/common/java/proto/JRoomCamera.proto";
+import "com/caporal7/jroom/common/java/proto/JRoomVoice.proto";
 
 option java_package = "com.caporal7.jroom.common.java.protoc";
 option java_outer_classname = "JRoomProtos";
@@ -38,6 +41,14 @@ enum Type {
   JOIN_CONFERENCE_AUTH = 2;
   ATTENDEE_REG         = 3;
   ATTENDEE_AUTH        = 4;
+  SCREEN_IN            = 5;
+  SCREEN_OUT           = 6;
+  CAMERA_IN            = 7;
+  CAMERA_OUT           = 8;
+  VOICE_IN             = 9;
+  VOICE_OUT            = 10;
+  GET_PERSONAL_CONFERENCE = 11;
+  ATTENDEE_SESSION_HEARTBEAT = 12;
 }
 
 /* Message request */
@@ -49,6 +60,14 @@ message JRoomRequest {
   optional JRoomJoinConferenceAuthRequest join_conference_auth = 3;
   optional JRoomAttendeeRegisterRequest attendee_register = 4;
   optional JRoomAttendeeAuthRequest attendee_auth = 5;
+  optional JRoomScreenIncomingRequest screen_in = 6;
+  optional JRoomScreenOutgoingRequest screen_out = 7;
+  optional JRoomCameraIncomingRequest camera_in = 8;
+  optional JRoomCameraOutgoingRequest camera_out = 9;
+  optional JRoomVoiceIncomingRequest voice_in = 10;
+  optional JRoomVoiceOutgoingRequest voice_out = 11;
+  optional JRoomGetPersonalConferenceRequest get_perso_conf = 12;
+  optional JRoomAttendeeSessionHeartbeatRequest attendee_session_heartbeat = 13;
 }
 
 /* Message response */
@@ -60,4 +79,12 @@ message JRoomResponse {
   optional JRoomJoinConferenceAuthResponse join_conference_auth = 3;
   optional JRoomAttendeeRegisterResponse attendee_register = 4;
   optional JRoomAttendeeAuthResponse attendee_auth = 5;
+  optional JRoomScreenIncomingResponse screen_in = 6;
+  optional JRoomScreenOutgoingResponse screen_out = 7;
+  optional JRoomCameraIncomingResponse camera_in = 8;
+  optional JRoomCameraOutgoingResponse camera_out = 9;
+  optional JRoomVoiceIncomingResponse voice_in = 10;
+  optional JRoomVoiceOutgoingResponse voice_out = 11;
+  optional JRoomGetPersonalConferenceResponse get_perso_conf = 12;
+  optional JRoomAttendeeSessionHeartbeatResponse attendee_session_heartbeat = 13;
 }

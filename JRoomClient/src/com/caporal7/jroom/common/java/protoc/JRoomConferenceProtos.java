@@ -2908,6 +2908,1552 @@ public final class JRoomConferenceProtos {
 
   }
 
+  public interface JRoomGetPersonalConferenceRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:jroom.JRoomGetPersonalConferenceRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 registered_attendee_id = 1;</code>
+     * @return Whether the registeredAttendeeId field is set.
+     */
+    boolean hasRegisteredAttendeeId();
+    /**
+     * <code>optional int32 registered_attendee_id = 1;</code>
+     * @return The registeredAttendeeId.
+     */
+    int getRegisteredAttendeeId();
+
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return Whether the sessionCookie field is set.
+     */
+    boolean hasSessionCookie();
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return The sessionCookie.
+     */
+    java.lang.String getSessionCookie();
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return The bytes for sessionCookie.
+     */
+    com.google.protobuf.ByteString
+        getSessionCookieBytes();
+  }
+  /**
+   * <pre>
+   * Get Personal Conference request 
+   * </pre>
+   *
+   * Protobuf type {@code jroom.JRoomGetPersonalConferenceRequest}
+   */
+  public  static final class JRoomGetPersonalConferenceRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:jroom.JRoomGetPersonalConferenceRequest)
+      JRoomGetPersonalConferenceRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use JRoomGetPersonalConferenceRequest.newBuilder() to construct.
+    private JRoomGetPersonalConferenceRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private JRoomGetPersonalConferenceRequest() {
+      sessionCookie_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new JRoomGetPersonalConferenceRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private JRoomGetPersonalConferenceRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              registeredAttendeeId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              sessionCookie_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.class, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int REGISTERED_ATTENDEE_ID_FIELD_NUMBER = 1;
+    private int registeredAttendeeId_;
+    /**
+     * <code>optional int32 registered_attendee_id = 1;</code>
+     * @return Whether the registeredAttendeeId field is set.
+     */
+    public boolean hasRegisteredAttendeeId() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional int32 registered_attendee_id = 1;</code>
+     * @return The registeredAttendeeId.
+     */
+    public int getRegisteredAttendeeId() {
+      return registeredAttendeeId_;
+    }
+
+    public static final int SESSION_COOKIE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object sessionCookie_;
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return Whether the sessionCookie field is set.
+     */
+    public boolean hasSessionCookie() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return The sessionCookie.
+     */
+    public java.lang.String getSessionCookie() {
+      java.lang.Object ref = sessionCookie_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sessionCookie_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return The bytes for sessionCookie.
+     */
+    public com.google.protobuf.ByteString
+        getSessionCookieBytes() {
+      java.lang.Object ref = sessionCookie_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionCookie_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt32(1, registeredAttendeeId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sessionCookie_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, registeredAttendeeId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sessionCookie_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest)) {
+        return super.equals(obj);
+      }
+      com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest other = (com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest) obj;
+
+      if (hasRegisteredAttendeeId() != other.hasRegisteredAttendeeId()) return false;
+      if (hasRegisteredAttendeeId()) {
+        if (getRegisteredAttendeeId()
+            != other.getRegisteredAttendeeId()) return false;
+      }
+      if (hasSessionCookie() != other.hasSessionCookie()) return false;
+      if (hasSessionCookie()) {
+        if (!getSessionCookie()
+            .equals(other.getSessionCookie())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRegisteredAttendeeId()) {
+        hash = (37 * hash) + REGISTERED_ATTENDEE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getRegisteredAttendeeId();
+      }
+      if (hasSessionCookie()) {
+        hash = (37 * hash) + SESSION_COOKIE_FIELD_NUMBER;
+        hash = (53 * hash) + getSessionCookie().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Get Personal Conference request 
+     * </pre>
+     *
+     * Protobuf type {@code jroom.JRoomGetPersonalConferenceRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:jroom.JRoomGetPersonalConferenceRequest)
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.class, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.Builder.class);
+      }
+
+      // Construct using com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        registeredAttendeeId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        sessionCookie_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest getDefaultInstanceForType() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest build() {
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest buildPartial() {
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest result = new com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.registeredAttendeeId_ = registeredAttendeeId_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.sessionCookie_ = sessionCookie_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest) {
+          return mergeFrom((com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest other) {
+        if (other == com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest.getDefaultInstance()) return this;
+        if (other.hasRegisteredAttendeeId()) {
+          setRegisteredAttendeeId(other.getRegisteredAttendeeId());
+        }
+        if (other.hasSessionCookie()) {
+          bitField0_ |= 0x00000002;
+          sessionCookie_ = other.sessionCookie_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int registeredAttendeeId_ ;
+      /**
+       * <code>optional int32 registered_attendee_id = 1;</code>
+       * @return Whether the registeredAttendeeId field is set.
+       */
+      public boolean hasRegisteredAttendeeId() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 1;</code>
+       * @return The registeredAttendeeId.
+       */
+      public int getRegisteredAttendeeId() {
+        return registeredAttendeeId_;
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 1;</code>
+       * @param value The registeredAttendeeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegisteredAttendeeId(int value) {
+        bitField0_ |= 0x00000001;
+        registeredAttendeeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegisteredAttendeeId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        registeredAttendeeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sessionCookie_ = "";
+      /**
+       * <code>optional string session_cookie = 2;</code>
+       * @return Whether the sessionCookie field is set.
+       */
+      public boolean hasSessionCookie() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional string session_cookie = 2;</code>
+       * @return The sessionCookie.
+       */
+      public java.lang.String getSessionCookie() {
+        java.lang.Object ref = sessionCookie_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            sessionCookie_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string session_cookie = 2;</code>
+       * @return The bytes for sessionCookie.
+       */
+      public com.google.protobuf.ByteString
+          getSessionCookieBytes() {
+        java.lang.Object ref = sessionCookie_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionCookie_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string session_cookie = 2;</code>
+       * @param value The sessionCookie to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCookie(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        sessionCookie_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string session_cookie = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionCookie() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        sessionCookie_ = getDefaultInstance().getSessionCookie();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string session_cookie = 2;</code>
+       * @param value The bytes for sessionCookie to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCookieBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        sessionCookie_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:jroom.JRoomGetPersonalConferenceRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:jroom.JRoomGetPersonalConferenceRequest)
+    private static final com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest();
+    }
+
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<JRoomGetPersonalConferenceRequest>
+        PARSER = new com.google.protobuf.AbstractParser<JRoomGetPersonalConferenceRequest>() {
+      @java.lang.Override
+      public JRoomGetPersonalConferenceRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new JRoomGetPersonalConferenceRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<JRoomGetPersonalConferenceRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JRoomGetPersonalConferenceRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface JRoomGetPersonalConferenceResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:jroom.JRoomGetPersonalConferenceResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse.ResponseType response = 1 [default = INVALID_REQUEST];</code>
+     * @return Whether the response field is set.
+     */
+    boolean hasResponse();
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse.ResponseType response = 1 [default = INVALID_REQUEST];</code>
+     * @return The response.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType getResponse();
+
+    /**
+     * <code>optional int32 conference_id = 2;</code>
+     * @return Whether the conferenceId field is set.
+     */
+    boolean hasConferenceId();
+    /**
+     * <code>optional int32 conference_id = 2;</code>
+     * @return The conferenceId.
+     */
+    int getConferenceId();
+
+    /**
+     * <code>optional int32 password = 3;</code>
+     * @return Whether the password field is set.
+     */
+    boolean hasPassword();
+    /**
+     * <code>optional int32 password = 3;</code>
+     * @return The password.
+     */
+    int getPassword();
+  }
+  /**
+   * <pre>
+   * Get Personal Conference response 
+   * </pre>
+   *
+   * Protobuf type {@code jroom.JRoomGetPersonalConferenceResponse}
+   */
+  public  static final class JRoomGetPersonalConferenceResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:jroom.JRoomGetPersonalConferenceResponse)
+      JRoomGetPersonalConferenceResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use JRoomGetPersonalConferenceResponse.newBuilder() to construct.
+    private JRoomGetPersonalConferenceResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private JRoomGetPersonalConferenceResponse() {
+      response_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new JRoomGetPersonalConferenceResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private JRoomGetPersonalConferenceResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType value = com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                response_ = rawValue;
+              }
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              conferenceId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              password_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.class, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.Builder.class);
+    }
+
+    /**
+     * <pre>
+     * Get Personal Conference response type 
+     * </pre>
+     *
+     * Protobuf enum {@code jroom.JRoomGetPersonalConferenceResponse.ResponseType}
+     */
+    public enum ResponseType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>INVALID_REQUEST = 0;</code>
+       */
+      INVALID_REQUEST(0),
+      /**
+       * <code>SESSION_INVALID_OR_EXPIRED = 1;</code>
+       */
+      SESSION_INVALID_OR_EXPIRED(1),
+      /**
+       * <code>SUCCESS = 2;</code>
+       */
+      SUCCESS(2),
+      ;
+
+      /**
+       * <code>INVALID_REQUEST = 0;</code>
+       */
+      public static final int INVALID_REQUEST_VALUE = 0;
+      /**
+       * <code>SESSION_INVALID_OR_EXPIRED = 1;</code>
+       */
+      public static final int SESSION_INVALID_OR_EXPIRED_VALUE = 1;
+      /**
+       * <code>SUCCESS = 2;</code>
+       */
+      public static final int SUCCESS_VALUE = 2;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static ResponseType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static ResponseType forNumber(int value) {
+        switch (value) {
+          case 0: return INVALID_REQUEST;
+          case 1: return SESSION_INVALID_OR_EXPIRED;
+          case 2: return SUCCESS;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<ResponseType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          ResponseType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<ResponseType>() {
+              public ResponseType findValueByNumber(int number) {
+                return ResponseType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final ResponseType[] VALUES = values();
+
+      public static ResponseType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private ResponseType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:jroom.JRoomGetPersonalConferenceResponse.ResponseType)
+    }
+
+    private int bitField0_;
+    public static final int RESPONSE_FIELD_NUMBER = 1;
+    private int response_;
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse.ResponseType response = 1 [default = INVALID_REQUEST];</code>
+     * @return Whether the response field is set.
+     */
+    public boolean hasResponse() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomGetPersonalConferenceResponse.ResponseType response = 1 [default = INVALID_REQUEST];</code>
+     * @return The response.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType getResponse() {
+      @SuppressWarnings("deprecation")
+      com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType result = com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType.valueOf(response_);
+      return result == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType.INVALID_REQUEST : result;
+    }
+
+    public static final int CONFERENCE_ID_FIELD_NUMBER = 2;
+    private int conferenceId_;
+    /**
+     * <code>optional int32 conference_id = 2;</code>
+     * @return Whether the conferenceId field is set.
+     */
+    public boolean hasConferenceId() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional int32 conference_id = 2;</code>
+     * @return The conferenceId.
+     */
+    public int getConferenceId() {
+      return conferenceId_;
+    }
+
+    public static final int PASSWORD_FIELD_NUMBER = 3;
+    private int password_;
+    /**
+     * <code>optional int32 password = 3;</code>
+     * @return Whether the password field is set.
+     */
+    public boolean hasPassword() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional int32 password = 3;</code>
+     * @return The password.
+     */
+    public int getPassword() {
+      return password_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeEnum(1, response_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeInt32(2, conferenceId_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeInt32(3, password_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, response_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, conferenceId_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, password_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse)) {
+        return super.equals(obj);
+      }
+      com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse other = (com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse) obj;
+
+      if (hasResponse() != other.hasResponse()) return false;
+      if (hasResponse()) {
+        if (response_ != other.response_) return false;
+      }
+      if (hasConferenceId() != other.hasConferenceId()) return false;
+      if (hasConferenceId()) {
+        if (getConferenceId()
+            != other.getConferenceId()) return false;
+      }
+      if (hasPassword() != other.hasPassword()) return false;
+      if (hasPassword()) {
+        if (getPassword()
+            != other.getPassword()) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasResponse()) {
+        hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + response_;
+      }
+      if (hasConferenceId()) {
+        hash = (37 * hash) + CONFERENCE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getConferenceId();
+      }
+      if (hasPassword()) {
+        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+        hash = (53 * hash) + getPassword();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Get Personal Conference response 
+     * </pre>
+     *
+     * Protobuf type {@code jroom.JRoomGetPersonalConferenceResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:jroom.JRoomGetPersonalConferenceResponse)
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.class, com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.Builder.class);
+      }
+
+      // Construct using com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        response_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        conferenceId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        password_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.internal_static_jroom_JRoomGetPersonalConferenceResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse getDefaultInstanceForType() {
+        return com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse build() {
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse buildPartial() {
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse result = new com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.response_ = response_;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.conferenceId_ = conferenceId_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.password_ = password_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse) {
+          return mergeFrom((com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse other) {
+        if (other == com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.getDefaultInstance()) return this;
+        if (other.hasResponse()) {
+          setResponse(other.getResponse());
+        }
+        if (other.hasConferenceId()) {
+          setConferenceId(other.getConferenceId());
+        }
+        if (other.hasPassword()) {
+          setPassword(other.getPassword());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int response_ = 0;
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse.ResponseType response = 1 [default = INVALID_REQUEST];</code>
+       * @return Whether the response field is set.
+       */
+      public boolean hasResponse() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse.ResponseType response = 1 [default = INVALID_REQUEST];</code>
+       * @return The response.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType getResponse() {
+        @SuppressWarnings("deprecation")
+        com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType result = com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType.valueOf(response_);
+        return result == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType.INVALID_REQUEST : result;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse.ResponseType response = 1 [default = INVALID_REQUEST];</code>
+       * @param value The response to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResponse(com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse.ResponseType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        response_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomGetPersonalConferenceResponse.ResponseType response = 1 [default = INVALID_REQUEST];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResponse() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        response_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int conferenceId_ ;
+      /**
+       * <code>optional int32 conference_id = 2;</code>
+       * @return Whether the conferenceId field is set.
+       */
+      public boolean hasConferenceId() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional int32 conference_id = 2;</code>
+       * @return The conferenceId.
+       */
+      public int getConferenceId() {
+        return conferenceId_;
+      }
+      /**
+       * <code>optional int32 conference_id = 2;</code>
+       * @param value The conferenceId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setConferenceId(int value) {
+        bitField0_ |= 0x00000002;
+        conferenceId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 conference_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearConferenceId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        conferenceId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int password_ ;
+      /**
+       * <code>optional int32 password = 3;</code>
+       * @return Whether the password field is set.
+       */
+      public boolean hasPassword() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional int32 password = 3;</code>
+       * @return The password.
+       */
+      public int getPassword() {
+        return password_;
+      }
+      /**
+       * <code>optional int32 password = 3;</code>
+       * @param value The password to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPassword(int value) {
+        bitField0_ |= 0x00000004;
+        password_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 password = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPassword() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        password_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:jroom.JRoomGetPersonalConferenceResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:jroom.JRoomGetPersonalConferenceResponse)
+    private static final com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse();
+    }
+
+    public static com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<JRoomGetPersonalConferenceResponse>
+        PARSER = new com.google.protobuf.AbstractParser<JRoomGetPersonalConferenceResponse>() {
+      @java.lang.Override
+      public JRoomGetPersonalConferenceResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new JRoomGetPersonalConferenceResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<JRoomGetPersonalConferenceResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JRoomGetPersonalConferenceResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_jroom_JRoomJoinConferenceProbeRequest_descriptor;
   private static final 
@@ -2928,6 +4474,16 @@ public final class JRoomConferenceProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_jroom_JRoomJoinConferenceAuthResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_jroom_JRoomGetPersonalConferenceRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_jroom_JRoomGetPersonalConferenceRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_jroom_JRoomGetPersonalConferenceResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_jroom_JRoomGetPersonalConferenceResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2952,9 +4508,17 @@ public final class JRoomConferenceProtos {
       ".JRoomJoinConferenceAuthResponse.AuthRes" +
       "ponseType:\nINVALID_ID\022\024\n\014access_token\030\002 " +
       "\001(\t\"A\n\020AuthResponseType\022\016\n\nINVALID_ID\020\000\022" +
-      "\020\n\014INVALID_PASS\020\001\022\013\n\007SUCCESS\020\002B>\n%com.ca" +
-      "poral7.jroom.common.java.protocB\025JRoomCo" +
-      "nferenceProtos"
+      "\020\n\014INVALID_PASS\020\001\022\013\n\007SUCCESS\020\002\"[\n!JRoomG" +
+      "etPersonalConferenceRequest\022\036\n\026registere" +
+      "d_attendee_id\030\001 \001(\005\022\026\n\016session_cookie\030\002 " +
+      "\001(\t\"\372\001\n\"JRoomGetPersonalConferenceRespon" +
+      "se\022Y\n\010response\030\001 \001(\01626.jroom.JRoomGetPer" +
+      "sonalConferenceResponse.ResponseType:\017IN" +
+      "VALID_REQUEST\022\025\n\rconference_id\030\002 \001(\005\022\020\n\010" +
+      "password\030\003 \001(\005\"P\n\014ResponseType\022\023\n\017INVALI" +
+      "D_REQUEST\020\000\022\036\n\032SESSION_INVALID_OR_EXPIRE" +
+      "D\020\001\022\013\n\007SUCCESS\020\002B>\n%com.caporal7.jroom.c" +
+      "ommon.java.protocB\025JRoomConferenceProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2984,6 +4548,18 @@ public final class JRoomConferenceProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_jroom_JRoomJoinConferenceAuthResponse_descriptor,
         new java.lang.String[] { "Response", "AccessToken", });
+    internal_static_jroom_JRoomGetPersonalConferenceRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_jroom_JRoomGetPersonalConferenceRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_jroom_JRoomGetPersonalConferenceRequest_descriptor,
+        new java.lang.String[] { "RegisteredAttendeeId", "SessionCookie", });
+    internal_static_jroom_JRoomGetPersonalConferenceResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_jroom_JRoomGetPersonalConferenceResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_jroom_JRoomGetPersonalConferenceResponse_descriptor,
+        new java.lang.String[] { "Response", "ConferenceId", "Password", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

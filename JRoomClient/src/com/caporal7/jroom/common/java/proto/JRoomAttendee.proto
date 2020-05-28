@@ -65,6 +65,26 @@ message JRoomAttendeeAuthResponse {
   }
 
   optional ResponseType type = 1 [default = INVALID_REQUEST];
+  optional int32 registered_attendee_id = 2;
+  optional string session_cookie = 3;
+}
+
+/* Attendee session heartbeat request */
+message JRoomAttendeeSessionHeartbeatRequest {
+  optional int32 registered_attendee_id = 1;
   optional string session_cookie = 2;
+}
+
+/* Attendee session heartbeat response */
+message JRoomAttendeeSessionHeartbeatResponse {
+  /* Attendee authentication response type */
+  enum ResponseType {
+    INVALID_REQUEST    = 0;
+    SESSION_INVALID_OR_EXPIRED = 1;
+    SUCCESS            = 2;
+    TOO_MANY_REQUESTS  = 3;
+  }
+
+  optional ResponseType type = 1 [default = INVALID_REQUEST];
 }
 

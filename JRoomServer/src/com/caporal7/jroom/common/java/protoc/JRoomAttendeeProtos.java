@@ -2269,17 +2269,28 @@ public final class JRoomAttendeeProtos {
     com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.ResponseType getType();
 
     /**
-     * <code>optional string session_cookie = 2;</code>
+     * <code>optional int32 registered_attendee_id = 2;</code>
+     * @return Whether the registeredAttendeeId field is set.
+     */
+    boolean hasRegisteredAttendeeId();
+    /**
+     * <code>optional int32 registered_attendee_id = 2;</code>
+     * @return The registeredAttendeeId.
+     */
+    int getRegisteredAttendeeId();
+
+    /**
+     * <code>optional string session_cookie = 3;</code>
      * @return Whether the sessionCookie field is set.
      */
     boolean hasSessionCookie();
     /**
-     * <code>optional string session_cookie = 2;</code>
+     * <code>optional string session_cookie = 3;</code>
      * @return The sessionCookie.
      */
     java.lang.String getSessionCookie();
     /**
-     * <code>optional string session_cookie = 2;</code>
+     * <code>optional string session_cookie = 3;</code>
      * @return The bytes for sessionCookie.
      */
     com.google.protobuf.ByteString
@@ -2349,9 +2360,14 @@ public final class JRoomAttendeeProtos {
               }
               break;
             }
-            case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+            case 16: {
               bitField0_ |= 0x00000002;
+              registeredAttendeeId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
               sessionCookie_ = bs;
               break;
             }
@@ -2525,17 +2541,34 @@ public final class JRoomAttendeeProtos {
       return result == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse.ResponseType.INVALID_REQUEST : result;
     }
 
-    public static final int SESSION_COOKIE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object sessionCookie_;
+    public static final int REGISTERED_ATTENDEE_ID_FIELD_NUMBER = 2;
+    private int registeredAttendeeId_;
     /**
-     * <code>optional string session_cookie = 2;</code>
-     * @return Whether the sessionCookie field is set.
+     * <code>optional int32 registered_attendee_id = 2;</code>
+     * @return Whether the registeredAttendeeId field is set.
      */
-    public boolean hasSessionCookie() {
+    public boolean hasRegisteredAttendeeId() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional string session_cookie = 2;</code>
+     * <code>optional int32 registered_attendee_id = 2;</code>
+     * @return The registeredAttendeeId.
+     */
+    public int getRegisteredAttendeeId() {
+      return registeredAttendeeId_;
+    }
+
+    public static final int SESSION_COOKIE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object sessionCookie_;
+    /**
+     * <code>optional string session_cookie = 3;</code>
+     * @return Whether the sessionCookie field is set.
+     */
+    public boolean hasSessionCookie() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string session_cookie = 3;</code>
      * @return The sessionCookie.
      */
     public java.lang.String getSessionCookie() {
@@ -2553,7 +2586,7 @@ public final class JRoomAttendeeProtos {
       }
     }
     /**
-     * <code>optional string session_cookie = 2;</code>
+     * <code>optional string session_cookie = 3;</code>
      * @return The bytes for sessionCookie.
      */
     public com.google.protobuf.ByteString
@@ -2588,7 +2621,10 @@ public final class JRoomAttendeeProtos {
         output.writeEnum(1, type_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sessionCookie_);
+        output.writeInt32(2, registeredAttendeeId_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sessionCookie_);
       }
       unknownFields.writeTo(output);
     }
@@ -2604,7 +2640,11 @@ public final class JRoomAttendeeProtos {
           .computeEnumSize(1, type_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sessionCookie_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, registeredAttendeeId_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sessionCookie_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2625,6 +2665,11 @@ public final class JRoomAttendeeProtos {
       if (hasType()) {
         if (type_ != other.type_) return false;
       }
+      if (hasRegisteredAttendeeId() != other.hasRegisteredAttendeeId()) return false;
+      if (hasRegisteredAttendeeId()) {
+        if (getRegisteredAttendeeId()
+            != other.getRegisteredAttendeeId()) return false;
+      }
       if (hasSessionCookie() != other.hasSessionCookie()) return false;
       if (hasSessionCookie()) {
         if (!getSessionCookie()
@@ -2644,6 +2689,10 @@ public final class JRoomAttendeeProtos {
       if (hasType()) {
         hash = (37 * hash) + TYPE_FIELD_NUMBER;
         hash = (53 * hash) + type_;
+      }
+      if (hasRegisteredAttendeeId()) {
+        hash = (37 * hash) + REGISTERED_ATTENDEE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getRegisteredAttendeeId();
       }
       if (hasSessionCookie()) {
         hash = (37 * hash) + SESSION_COOKIE_FIELD_NUMBER;
@@ -2788,8 +2837,10 @@ public final class JRoomAttendeeProtos {
         super.clear();
         type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        sessionCookie_ = "";
+        registeredAttendeeId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        sessionCookie_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -2823,7 +2874,11 @@ public final class JRoomAttendeeProtos {
         }
         result.type_ = type_;
         if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.registeredAttendeeId_ = registeredAttendeeId_;
           to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.sessionCookie_ = sessionCookie_;
         result.bitField0_ = to_bitField0_;
@@ -2878,8 +2933,11 @@ public final class JRoomAttendeeProtos {
         if (other.hasType()) {
           setType(other.getType());
         }
+        if (other.hasRegisteredAttendeeId()) {
+          setRegisteredAttendeeId(other.getRegisteredAttendeeId());
+        }
         if (other.hasSessionCookie()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           sessionCookie_ = other.sessionCookie_;
           onChanged();
         }
@@ -2951,6 +3009,749 @@ public final class JRoomAttendeeProtos {
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
         type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int registeredAttendeeId_ ;
+      /**
+       * <code>optional int32 registered_attendee_id = 2;</code>
+       * @return Whether the registeredAttendeeId field is set.
+       */
+      public boolean hasRegisteredAttendeeId() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 2;</code>
+       * @return The registeredAttendeeId.
+       */
+      public int getRegisteredAttendeeId() {
+        return registeredAttendeeId_;
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 2;</code>
+       * @param value The registeredAttendeeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegisteredAttendeeId(int value) {
+        bitField0_ |= 0x00000002;
+        registeredAttendeeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegisteredAttendeeId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        registeredAttendeeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sessionCookie_ = "";
+      /**
+       * <code>optional string session_cookie = 3;</code>
+       * @return Whether the sessionCookie field is set.
+       */
+      public boolean hasSessionCookie() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional string session_cookie = 3;</code>
+       * @return The sessionCookie.
+       */
+      public java.lang.String getSessionCookie() {
+        java.lang.Object ref = sessionCookie_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            sessionCookie_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string session_cookie = 3;</code>
+       * @return The bytes for sessionCookie.
+       */
+      public com.google.protobuf.ByteString
+          getSessionCookieBytes() {
+        java.lang.Object ref = sessionCookie_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionCookie_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string session_cookie = 3;</code>
+       * @param value The sessionCookie to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCookie(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sessionCookie_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string session_cookie = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionCookie() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sessionCookie_ = getDefaultInstance().getSessionCookie();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string session_cookie = 3;</code>
+       * @param value The bytes for sessionCookie to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCookieBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sessionCookie_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:jroom.JRoomAttendeeAuthResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:jroom.JRoomAttendeeAuthResponse)
+    private static final com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse();
+    }
+
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<JRoomAttendeeAuthResponse>
+        PARSER = new com.google.protobuf.AbstractParser<JRoomAttendeeAuthResponse>() {
+      @java.lang.Override
+      public JRoomAttendeeAuthResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new JRoomAttendeeAuthResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<JRoomAttendeeAuthResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JRoomAttendeeAuthResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface JRoomAttendeeSessionHeartbeatRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:jroom.JRoomAttendeeSessionHeartbeatRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 registered_attendee_id = 1;</code>
+     * @return Whether the registeredAttendeeId field is set.
+     */
+    boolean hasRegisteredAttendeeId();
+    /**
+     * <code>optional int32 registered_attendee_id = 1;</code>
+     * @return The registeredAttendeeId.
+     */
+    int getRegisteredAttendeeId();
+
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return Whether the sessionCookie field is set.
+     */
+    boolean hasSessionCookie();
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return The sessionCookie.
+     */
+    java.lang.String getSessionCookie();
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return The bytes for sessionCookie.
+     */
+    com.google.protobuf.ByteString
+        getSessionCookieBytes();
+  }
+  /**
+   * <pre>
+   * Attendee session heartbeat request 
+   * </pre>
+   *
+   * Protobuf type {@code jroom.JRoomAttendeeSessionHeartbeatRequest}
+   */
+  public  static final class JRoomAttendeeSessionHeartbeatRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:jroom.JRoomAttendeeSessionHeartbeatRequest)
+      JRoomAttendeeSessionHeartbeatRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use JRoomAttendeeSessionHeartbeatRequest.newBuilder() to construct.
+    private JRoomAttendeeSessionHeartbeatRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private JRoomAttendeeSessionHeartbeatRequest() {
+      sessionCookie_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new JRoomAttendeeSessionHeartbeatRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private JRoomAttendeeSessionHeartbeatRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              registeredAttendeeId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              sessionCookie_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.class, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int REGISTERED_ATTENDEE_ID_FIELD_NUMBER = 1;
+    private int registeredAttendeeId_;
+    /**
+     * <code>optional int32 registered_attendee_id = 1;</code>
+     * @return Whether the registeredAttendeeId field is set.
+     */
+    public boolean hasRegisteredAttendeeId() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional int32 registered_attendee_id = 1;</code>
+     * @return The registeredAttendeeId.
+     */
+    public int getRegisteredAttendeeId() {
+      return registeredAttendeeId_;
+    }
+
+    public static final int SESSION_COOKIE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object sessionCookie_;
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return Whether the sessionCookie field is set.
+     */
+    public boolean hasSessionCookie() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return The sessionCookie.
+     */
+    public java.lang.String getSessionCookie() {
+      java.lang.Object ref = sessionCookie_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sessionCookie_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string session_cookie = 2;</code>
+     * @return The bytes for sessionCookie.
+     */
+    public com.google.protobuf.ByteString
+        getSessionCookieBytes() {
+      java.lang.Object ref = sessionCookie_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionCookie_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt32(1, registeredAttendeeId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sessionCookie_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, registeredAttendeeId_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sessionCookie_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest)) {
+        return super.equals(obj);
+      }
+      com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest other = (com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest) obj;
+
+      if (hasRegisteredAttendeeId() != other.hasRegisteredAttendeeId()) return false;
+      if (hasRegisteredAttendeeId()) {
+        if (getRegisteredAttendeeId()
+            != other.getRegisteredAttendeeId()) return false;
+      }
+      if (hasSessionCookie() != other.hasSessionCookie()) return false;
+      if (hasSessionCookie()) {
+        if (!getSessionCookie()
+            .equals(other.getSessionCookie())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasRegisteredAttendeeId()) {
+        hash = (37 * hash) + REGISTERED_ATTENDEE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getRegisteredAttendeeId();
+      }
+      if (hasSessionCookie()) {
+        hash = (37 * hash) + SESSION_COOKIE_FIELD_NUMBER;
+        hash = (53 * hash) + getSessionCookie().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Attendee session heartbeat request 
+     * </pre>
+     *
+     * Protobuf type {@code jroom.JRoomAttendeeSessionHeartbeatRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:jroom.JRoomAttendeeSessionHeartbeatRequest)
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.class, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.Builder.class);
+      }
+
+      // Construct using com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        registeredAttendeeId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        sessionCookie_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest getDefaultInstanceForType() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest build() {
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest buildPartial() {
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest result = new com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.registeredAttendeeId_ = registeredAttendeeId_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.sessionCookie_ = sessionCookie_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest) {
+          return mergeFrom((com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest other) {
+        if (other == com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest.getDefaultInstance()) return this;
+        if (other.hasRegisteredAttendeeId()) {
+          setRegisteredAttendeeId(other.getRegisteredAttendeeId());
+        }
+        if (other.hasSessionCookie()) {
+          bitField0_ |= 0x00000002;
+          sessionCookie_ = other.sessionCookie_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int registeredAttendeeId_ ;
+      /**
+       * <code>optional int32 registered_attendee_id = 1;</code>
+       * @return Whether the registeredAttendeeId field is set.
+       */
+      public boolean hasRegisteredAttendeeId() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 1;</code>
+       * @return The registeredAttendeeId.
+       */
+      public int getRegisteredAttendeeId() {
+        return registeredAttendeeId_;
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 1;</code>
+       * @param value The registeredAttendeeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegisteredAttendeeId(int value) {
+        bitField0_ |= 0x00000001;
+        registeredAttendeeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegisteredAttendeeId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        registeredAttendeeId_ = 0;
         onChanged();
         return this;
       }
@@ -3051,41 +3852,700 @@ public final class JRoomAttendeeProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:jroom.JRoomAttendeeAuthResponse)
+      // @@protoc_insertion_point(builder_scope:jroom.JRoomAttendeeSessionHeartbeatRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:jroom.JRoomAttendeeAuthResponse)
-    private static final com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:jroom.JRoomAttendeeSessionHeartbeatRequest)
+    private static final com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse();
+      DEFAULT_INSTANCE = new com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest();
     }
 
-    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse getDefaultInstance() {
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<JRoomAttendeeAuthResponse>
-        PARSER = new com.google.protobuf.AbstractParser<JRoomAttendeeAuthResponse>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<JRoomAttendeeSessionHeartbeatRequest>
+        PARSER = new com.google.protobuf.AbstractParser<JRoomAttendeeSessionHeartbeatRequest>() {
       @java.lang.Override
-      public JRoomAttendeeAuthResponse parsePartialFrom(
+      public JRoomAttendeeSessionHeartbeatRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new JRoomAttendeeAuthResponse(input, extensionRegistry);
+        return new JRoomAttendeeSessionHeartbeatRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<JRoomAttendeeAuthResponse> parser() {
+    public static com.google.protobuf.Parser<JRoomAttendeeSessionHeartbeatRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<JRoomAttendeeAuthResponse> getParserForType() {
+    public com.google.protobuf.Parser<JRoomAttendeeSessionHeartbeatRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse getDefaultInstanceForType() {
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface JRoomAttendeeSessionHeartbeatResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:jroom.JRoomAttendeeSessionHeartbeatResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType type = 1 [default = INVALID_REQUEST];</code>
+     * @return Whether the type field is set.
+     */
+    boolean hasType();
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType type = 1 [default = INVALID_REQUEST];</code>
+     * @return The type.
+     */
+    com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType getType();
+  }
+  /**
+   * <pre>
+   * Attendee session heartbeat response 
+   * </pre>
+   *
+   * Protobuf type {@code jroom.JRoomAttendeeSessionHeartbeatResponse}
+   */
+  public  static final class JRoomAttendeeSessionHeartbeatResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:jroom.JRoomAttendeeSessionHeartbeatResponse)
+      JRoomAttendeeSessionHeartbeatResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use JRoomAttendeeSessionHeartbeatResponse.newBuilder() to construct.
+    private JRoomAttendeeSessionHeartbeatResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private JRoomAttendeeSessionHeartbeatResponse() {
+      type_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new JRoomAttendeeSessionHeartbeatResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private JRoomAttendeeSessionHeartbeatResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType value = com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                type_ = rawValue;
+              }
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.class, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.Builder.class);
+    }
+
+    /**
+     * <pre>
+     * Attendee authentication response type 
+     * </pre>
+     *
+     * Protobuf enum {@code jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType}
+     */
+    public enum ResponseType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>INVALID_REQUEST = 0;</code>
+       */
+      INVALID_REQUEST(0),
+      /**
+       * <code>SESSION_INVALID_OR_EXPIRED = 1;</code>
+       */
+      SESSION_INVALID_OR_EXPIRED(1),
+      /**
+       * <code>SUCCESS = 2;</code>
+       */
+      SUCCESS(2),
+      /**
+       * <code>TOO_MANY_REQUESTS = 3;</code>
+       */
+      TOO_MANY_REQUESTS(3),
+      ;
+
+      /**
+       * <code>INVALID_REQUEST = 0;</code>
+       */
+      public static final int INVALID_REQUEST_VALUE = 0;
+      /**
+       * <code>SESSION_INVALID_OR_EXPIRED = 1;</code>
+       */
+      public static final int SESSION_INVALID_OR_EXPIRED_VALUE = 1;
+      /**
+       * <code>SUCCESS = 2;</code>
+       */
+      public static final int SUCCESS_VALUE = 2;
+      /**
+       * <code>TOO_MANY_REQUESTS = 3;</code>
+       */
+      public static final int TOO_MANY_REQUESTS_VALUE = 3;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static ResponseType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static ResponseType forNumber(int value) {
+        switch (value) {
+          case 0: return INVALID_REQUEST;
+          case 1: return SESSION_INVALID_OR_EXPIRED;
+          case 2: return SUCCESS;
+          case 3: return TOO_MANY_REQUESTS;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<ResponseType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          ResponseType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<ResponseType>() {
+              public ResponseType findValueByNumber(int number) {
+                return ResponseType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final ResponseType[] VALUES = values();
+
+      public static ResponseType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private ResponseType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType)
+    }
+
+    private int bitField0_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType type = 1 [default = INVALID_REQUEST];</code>
+     * @return Whether the type field is set.
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType type = 1 [default = INVALID_REQUEST];</code>
+     * @return The type.
+     */
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType getType() {
+      @SuppressWarnings("deprecation")
+      com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType result = com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType.valueOf(type_);
+      return result == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType.INVALID_REQUEST : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeEnum(1, type_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse)) {
+        return super.equals(obj);
+      }
+      com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse other = (com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse) obj;
+
+      if (hasType() != other.hasType()) return false;
+      if (hasType()) {
+        if (type_ != other.type_) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasType()) {
+        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + type_;
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Attendee session heartbeat response 
+     * </pre>
+     *
+     * Protobuf type {@code jroom.JRoomAttendeeSessionHeartbeatResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:jroom.JRoomAttendeeSessionHeartbeatResponse)
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.class, com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.Builder.class);
+      }
+
+      // Construct using com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse getDefaultInstanceForType() {
+        return com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse build() {
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse buildPartial() {
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse result = new com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse) {
+          return mergeFrom((com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse other) {
+        if (other == com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int type_ = 0;
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType type = 1 [default = INVALID_REQUEST];</code>
+       * @return Whether the type field is set.
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType type = 1 [default = INVALID_REQUEST];</code>
+       * @return The type.
+       */
+      public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType getType() {
+        @SuppressWarnings("deprecation")
+        com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType result = com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType.valueOf(type_);
+        return result == null ? com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType.INVALID_REQUEST : result;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType type = 1 [default = INVALID_REQUEST];</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setType(com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse.ResponseType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .jroom.JRoomAttendeeSessionHeartbeatResponse.ResponseType type = 1 [default = INVALID_REQUEST];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:jroom.JRoomAttendeeSessionHeartbeatResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:jroom.JRoomAttendeeSessionHeartbeatResponse)
+    private static final com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse();
+    }
+
+    public static com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<JRoomAttendeeSessionHeartbeatResponse>
+        PARSER = new com.google.protobuf.AbstractParser<JRoomAttendeeSessionHeartbeatResponse>() {
+      @java.lang.Override
+      public JRoomAttendeeSessionHeartbeatResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new JRoomAttendeeSessionHeartbeatResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<JRoomAttendeeSessionHeartbeatResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JRoomAttendeeSessionHeartbeatResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeSessionHeartbeatResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3111,6 +4571,16 @@ public final class JRoomAttendeeProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_jroom_JRoomAttendeeAuthResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3130,14 +4600,23 @@ public final class JRoomAttendeeProtos {
       "T\020\000\022\026\n\022ALREADY_REGISTERED\020\001\022\013\n\007SUCCESS\020\002" +
       "\022\025\n\021TOO_MANY_REQUESTS\020\003\";\n\030JRoomAttendee" +
       "AuthRequest\022\r\n\005email\030\001 \001(\t\022\020\n\010password\030\002" +
-      " \001(\t\"\355\001\n\031JRoomAttendeeAuthResponse\022L\n\004ty" +
+      " \001(\t\"\215\002\n\031JRoomAttendeeAuthResponse\022L\n\004ty" +
       "pe\030\001 \001(\0162-.jroom.JRoomAttendeeAuthRespon" +
-      "se.ResponseType:\017INVALID_REQUEST\022\026\n\016sess" +
-      "ion_cookie\030\002 \001(\t\"j\n\014ResponseType\022\023\n\017INVA" +
-      "LID_REQUEST\020\000\022!\n\035INVALID_EMAIL_AND_OR_PA" +
-      "SSWORD\020\001\022\013\n\007SUCCESS\020\002\022\025\n\021TOO_MANY_REQUES" +
-      "TS\020\003B<\n%com.caporal7.jroom.common.java.p" +
-      "rotocB\023JRoomAttendeeProtos"
+      "se.ResponseType:\017INVALID_REQUEST\022\036\n\026regi" +
+      "stered_attendee_id\030\002 \001(\005\022\026\n\016session_cook" +
+      "ie\030\003 \001(\t\"j\n\014ResponseType\022\023\n\017INVALID_REQU" +
+      "EST\020\000\022!\n\035INVALID_EMAIL_AND_OR_PASSWORD\020\001" +
+      "\022\013\n\007SUCCESS\020\002\022\025\n\021TOO_MANY_REQUESTS\020\003\"^\n$" +
+      "JRoomAttendeeSessionHeartbeatRequest\022\036\n\026" +
+      "registered_attendee_id\030\001 \001(\005\022\026\n\016session_" +
+      "cookie\030\002 \001(\t\"\352\001\n%JRoomAttendeeSessionHea" +
+      "rtbeatResponse\022X\n\004type\030\001 \001(\01629.jroom.JRo" +
+      "omAttendeeSessionHeartbeatResponse.Respo" +
+      "nseType:\017INVALID_REQUEST\"g\n\014ResponseType" +
+      "\022\023\n\017INVALID_REQUEST\020\000\022\036\n\032SESSION_INVALID" +
+      "_OR_EXPIRED\020\001\022\013\n\007SUCCESS\020\002\022\025\n\021TOO_MANY_R" +
+      "EQUESTS\020\003B<\n%com.caporal7.jroom.common.j" +
+      "ava.protocB\023JRoomAttendeeProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3166,7 +4645,19 @@ public final class JRoomAttendeeProtos {
     internal_static_jroom_JRoomAttendeeAuthResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_jroom_JRoomAttendeeAuthResponse_descriptor,
-        new java.lang.String[] { "Type", "SessionCookie", });
+        new java.lang.String[] { "Type", "RegisteredAttendeeId", "SessionCookie", });
+    internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_jroom_JRoomAttendeeSessionHeartbeatRequest_descriptor,
+        new java.lang.String[] { "RegisteredAttendeeId", "SessionCookie", });
+    internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_jroom_JRoomAttendeeSessionHeartbeatResponse_descriptor,
+        new java.lang.String[] { "Type", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

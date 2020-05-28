@@ -35,15 +35,16 @@ import javax.persistence.Table;
     @NamedQuery(name = "Avatar.findByHeight", query = "SELECT a FROM Avatar a WHERE a.height = :height")})
 public class Avatar implements Serializable {
 
+    @Lob
+    @Column(name = "image_blob")
+    private byte[] imageBlob;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Lob
-    @Column(name = "image_blob")
-    private byte[] imageBlob;
     @Basic(optional = false)
     @Column(name = "x")
     private int x;
@@ -154,5 +155,4 @@ public class Avatar implements Serializable {
     public String toString() {
         return "com.caporal7.jroom.common.java.jpa.Avatar[ id=" + id + " ]";
     }
-    
 }

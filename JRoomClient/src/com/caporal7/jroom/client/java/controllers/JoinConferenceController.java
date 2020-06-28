@@ -117,7 +117,7 @@ public class JoinConferenceController {
         
         try {
             JRoomAttendeeAuthResponse response = attendeeDao.auth(
-                    email, password);
+                email, password);
             switch(response.getType())
             {
                 case INVALID_REQUEST: {

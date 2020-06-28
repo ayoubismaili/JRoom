@@ -49,20 +49,23 @@ message JRoomJoinConferenceProbeResponse {
 message JRoomJoinConferenceAuthRequest {
   optional int32 conference_id = 1;
   optional int32 password = 2;
-  optional bool is_guest = 3;
-  optional string session_cookie = 4;
+  optional int32 registered_attendee_id = 3;
+  optional string guest_attendee_guid = 4;
+  optional bool is_guest = 5;
+  optional string session_cookie = 6;
 }
 
 /* Conference authentication response */
 message JRoomJoinConferenceAuthResponse {
   /* Conference authentication response type */
   enum AuthResponseType {
-    INVALID_ID   = 0;
-    INVALID_PASS = 1;
-    SUCCESS      = 2;
+    INVALID_REQUEST = 0;
+    INVALID_ID   = 1;
+    INVALID_PASS = 2;
+    SUCCESS      = 3;
   }
 
-  optional AuthResponseType response = 1 [default = INVALID_ID];
+  optional AuthResponseType response = 1 [default = INVALID_REQUEST];
   optional string access_token = 2;
 }
 

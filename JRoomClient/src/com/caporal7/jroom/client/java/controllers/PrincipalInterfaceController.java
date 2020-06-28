@@ -26,10 +26,8 @@ package com.caporal7.jroom.client.java.controllers;
 
 import com.caporal7.jroom.client.java.dao.ConferenceDao;
 import com.caporal7.jroom.common.java.JRoomSettings;
-import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.ObjectProperty;
@@ -124,8 +122,16 @@ public class PrincipalInterfaceController implements Initializable {
         XMLConfiguration config = JRoomSettings.getSettings();
         int registeredAttendeeId = config.getInt("registered-attendee-id", 0);
         String sessionCookie = config.getString("session-cookie", "");
-        JRoomJoinConferenceAuthResponse response = conferenceDao.auth(conferenceId, password, false, sessionCookie);
+        JRoomJoinConferenceAuthResponse response = conferenceDao.auth(conferenceId, password, registeredAttendeeId, "0", false, sessionCookie);
         switch(response.getResponse()){
+            case INVALID_REQUEST: {
+                ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
+                    alert.setTitle("Requête invalide");
+                    alert.setHeaderText("Requête invalide. Veuillez vérifier puis réessayer.");
+                    alert.showAndWait();
+                break;
+            }
             case INVALID_ID: {
                 ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
                     Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
@@ -146,6 +152,7 @@ public class PrincipalInterfaceController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/view/conference.fxml"));
                 ConferenceController controller = new ConferenceController();
                 controller.setConferenceId(conferenceId);
+                controller.setGuestAttendeeGuid("0");
                 controller.setRegisteredAttendeeId(registeredAttendeeId);
                 controller.setIsGuest(false);
                 controller.setSessionCookie(sessionCookie);

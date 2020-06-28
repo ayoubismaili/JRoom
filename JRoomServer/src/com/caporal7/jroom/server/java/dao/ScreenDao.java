@@ -26,35 +26,34 @@ package com.caporal7.jroom.server.java.dao;
 
 import com.caporal7.jroom.common.java.JRoomException;
 import com.caporal7.jroom.common.java.jpa.Attendance;
-import com.caporal7.jroom.common.java.jpa.RegisteredAttendee;
+import com.caporal7.jroom.common.java.jpa.Conference;
+import com.caporal7.jroom.common.java.jpa.DataStream;
 import com.caporal7.jroom.common.java.jpa.Session;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthRequest;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeAuthResponse;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterRequest;
-import com.caporal7.jroom.common.java.protoc.JRoomAttendeeProtos.JRoomAttendeeRegisterResponse;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomResponse;
-import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenIncomingResponse;
 import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomScreenProtos.JRoomScreenOutgoingResponse;
+import com.caporal7.jroom.common.java.utils.JRoomAttendance;
+import com.caporal7.jroom.common.java.utils.JRoomConference;
+import com.caporal7.jroom.common.java.utils.JRoomConferenceManager;
+import com.caporal7.jroom.common.java.utils.JRoomDataStream;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
 import com.google.protobuf.ByteString;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 public class ScreenDao {
     
-    public static void handleIncoming(JRoomRequest request, Socket socket) throws IOException, JRoomException 
-    {
+    public static void handleIncoming(JRoomRequest request, Socket socket) throws IOException, JRoomException {
         JRoomScreenIncomingRequest innerRequest = request.getScreenIn();
         int conferenceId = innerRequest.getConferenceId();
         boolean isGuest = innerRequest.getIsGuest();
@@ -62,56 +61,58 @@ public class ScreenDao {
         int registeredAttendeeId = innerRequest.getRegisteredAttendeeId();
         String sessionCookie = innerRequest.getSessionCookie();
         String accessToken = innerRequest.getAccessToken();
-        
         EntityManager em = JRoomUtils.getEntityManager();
-        TypedQuery<Attendance> aQuery;
-        if (isGuest) {
-            aQuery = em.createQuery(
-                "SELECT a FROM Attendance AS a WHERE a.conference.id = :conferenceId AND a.guestAttendee.guid = :guid",
-                Attendance.class);
-            aQuery.setParameter("guid", guestAttendeeGuid);
-        } else {
-            aQuery = em.createQuery(
-                "SELECT a FROM Attendance AS a WHERE a.conference.id = :conferenceId AND a.registeredAttendee.id = :id",
-                Attendance.class);
-            aQuery.setParameter("id", registeredAttendeeId);
-        }
-        aQuery.setParameter("conferenceId", conferenceId);
-        List<Attendance> aResults = aQuery.getResultList();
-        
         JRoomScreenIncomingResponse.ResponseType innerResponseType = 
                 JRoomScreenIncomingResponse.ResponseType.INVALID_REQUEST;
-        
-        /* TODO: Check if IP has too many requests status */
-        boolean tooManyRequests = false;
         ByteString bsData = ByteString.EMPTY;
-        if (tooManyRequests) {
-            innerResponseType = JRoomScreenIncomingResponse.ResponseType.TOO_MANY_REQUESTS;
-        } else if (aResults.isEmpty()) {
-            innerResponseType = JRoomScreenIncomingResponse.ResponseType.INVALID_CONFERENCE_ID_OR_NO_SUCH_ATTENDEE;
-        } else {
-            /* Get the Attendance */
-            Attendance a = aResults.get(0);
-            if (!a.getAccessToken().equals(accessToken)) {
-                innerResponseType = JRoomScreenIncomingResponse.ResponseType.INVALID_ACCESS_TOKEN;
-            } else if (!isGuest) {
-                /* Validate the registered user session */
-                TypedQuery<Session> sQuery = em.createQuery(
-                    "SELECT s FROM Session AS s WHERE s.registeredAttendeeId = :registeredAttendeeId AND s.cookie = :session AND s.expired = :expired",
-                    Session.class);
-                sQuery.setParameter("registeredAttendeeId", registeredAttendeeId);
-                sQuery.setParameter("session", sessionCookie);
-                sQuery.setParameter("expired", false);
-                List<Session> sResults = sQuery.getResultList();
-                if (sResults.isEmpty()) {
-                    innerResponseType = JRoomScreenIncomingResponse.ResponseType.SESSION_INVALID_OR_EXPIRED;
-                }
+        System.out.println(guestAttendeeGuid); /* DEBUG */
+        try
+        {
+            JRoomConference jConf = JRoomConferenceManager.findConference(conferenceId);
+            JRoomAttendance jAtt = null;
+            if (isGuest) {
+                jAtt = jConf.findGuestAttendance(guestAttendeeGuid);
             } else {
-                FileInputStream fis = new FileInputStream("C:\\Users\\sphere\\Desktop\\WindowsXP.jpg");
-                bsData = ByteString.readFrom(fis, 1024);
-                fis.close();
-                innerResponseType = JRoomScreenIncomingResponse.ResponseType.SUCCESS;
+                jAtt = jConf.findRegisteredAttendance(registeredAttendeeId);
             }
+            /* TODO: Check if IP has too many requests status */
+            boolean tooManyRequests = false;
+            if (tooManyRequests) {
+                innerResponseType = JRoomScreenIncomingResponse.ResponseType.TOO_MANY_REQUESTS;
+            } else if (isGuest && guestAttendeeGuid.equals("0")) { 
+                /* Usage of "0" as GUID is forbidden because it could allow arbitraty access */
+                innerResponseType = JRoomScreenIncomingResponse.ResponseType.INVALID_REQUEST;
+                System.out.println("Invalid request"); /* DEBUG */
+            } else if (!isGuest && registeredAttendeeId == 0) { 
+                /* Usage of 0 as ID is forbidden because it could allow arbitraty access */
+                innerResponseType = JRoomScreenIncomingResponse.ResponseType.INVALID_REQUEST;
+            } else if (jAtt == null) {
+                innerResponseType = JRoomScreenIncomingResponse.ResponseType.INVALID_CONFERENCE_ID_OR_NO_SUCH_ATTENDEE;
+                System.out.println("Attendance not found"); /* DEBUG */
+            } else {
+                if (!jAtt.getAccessToken().equals(accessToken)) {
+                    innerResponseType = JRoomScreenIncomingResponse.ResponseType.INVALID_ACCESS_TOKEN;
+                    System.out.println("Invalid access token"); /* DEBUG */
+                } else {
+                    innerResponseType = JRoomScreenIncomingResponse.ResponseType.SUCCESS;
+                    System.out.println("Success"); /* DEBUG */
+                }
+            }
+            if (innerResponseType == JRoomScreenIncomingResponse.ResponseType.SUCCESS) {
+                //Bug Fix: We were using the attendance of the actual Attendee, and not the animator attendance
+                JRoomAttendance animatorAttendance = jConf.getAnimatorAttendance();
+                JRoomDataStream ds = animatorAttendance.getScreenStream();
+                byte[] data = ds.pop();
+                if (data == null) {
+                    bsData = ByteString.EMPTY;
+                    System.out.println("Empty"); /* DEBUG */
+                } else {
+                    bsData = ByteString.copyFrom(data);
+                    System.out.println("Got data"); /* DEBUG */
+                }
+            }
+        } catch (Exception ex) {
+            innerResponseType = JRoomScreenIncomingResponse.ResponseType.INTERNAL_ERROR;
         }
         JRoomScreenIncomingResponse innerResponse = JRoomScreenIncomingResponse.newBuilder()
                 .setType(innerResponseType)
@@ -138,52 +139,57 @@ public class ScreenDao {
         String sessionCookie = innerRequest.getSessionCookie();
         String accessToken = innerRequest.getAccessToken();
         byte[] data = innerRequest.getData().toByteArray();
-        
         EntityManager em = JRoomUtils.getEntityManager();
-        TypedQuery<Attendance> aQuery;
-        if (isGuest) {
-            aQuery = em.createQuery(
-                "SELECT a FROM Attendance AS a WHERE a.conference.id = :conferenceId AND a.guestAttendee.guid = :guid",
-                Attendance.class);
-            aQuery.setParameter("guid", guestAttendeeGuid);
-        } else {
-            aQuery = em.createQuery(
-                "SELECT a FROM Attendance AS a WHERE a.conference.id = :conferenceId AND a.registeredAttendee.id = :id",
-                Attendance.class);
-            aQuery.setParameter("id", registeredAttendeeId);
-        }
-        aQuery.setParameter("conferenceId", conferenceId);
-        List<Attendance> aResults = aQuery.getResultList();
-        
         JRoomScreenOutgoingResponse.ResponseType innerResponseType = 
                 JRoomScreenOutgoingResponse.ResponseType.INVALID_REQUEST;
-        
-        /* TODO: Check if IP has too many requests status */
-        boolean tooManyRequests = false;
-        if (tooManyRequests) {
-            innerResponseType = JRoomScreenOutgoingResponse.ResponseType.TOO_MANY_REQUESTS;
-        } else if (aResults.isEmpty()) {
-            innerResponseType = JRoomScreenOutgoingResponse.ResponseType.INVALID_CONFERENCE_ID_OR_NO_SUCH_ATTENDEE;
-        } else {
-            /* Get the Attendance */
-            Attendance a = aResults.get(0);
-            if (!a.getAccessToken().equals(accessToken)) {
-                innerResponseType = JRoomScreenOutgoingResponse.ResponseType.INVALID_ACCESS_TOKEN;
-            } else if (!isGuest) {
-                /* Validate the registered user session */
-                TypedQuery<Session> sQuery = em.createQuery(
-                    "SELECT s FROM Session AS s WHERE s.registeredAttendeeId = :registeredAttendeeId AND s.cookie = :session AND s.expired = :expired",
-                    Session.class);
-                sQuery.setParameter("registeredAttendeeId", registeredAttendeeId);
-                sQuery.setParameter("session", sessionCookie);
-                sQuery.setParameter("expired", false);
-                List<Session> sResults = sQuery.getResultList();
-                if (sResults.isEmpty()) {
-                    innerResponseType = JRoomScreenOutgoingResponse.ResponseType.SESSION_INVALID_OR_EXPIRED;
-                }
+        try
+        {
+            JRoomConference jConf = JRoomConferenceManager.findConference(conferenceId);
+            JRoomAttendance jAtt = null;
+            if (isGuest) {
+                jAtt = jConf.findGuestAttendance(guestAttendeeGuid);
             } else {
-                innerResponseType = JRoomScreenOutgoingResponse.ResponseType.SUCCESS;
+                jAtt = jConf.findRegisteredAttendance(registeredAttendeeId);
             }
+            /* TODO: Check if IP has too many requests status */
+            boolean tooManyRequests = false;
+            if (tooManyRequests) {
+                innerResponseType = JRoomScreenOutgoingResponse.ResponseType.TOO_MANY_REQUESTS;
+            } else if (isGuest && guestAttendeeGuid.equals("0")) { 
+                /* Usage of "0" as GUID is forbidden because it could allow arbitraty access */
+                innerResponseType = JRoomScreenOutgoingResponse.ResponseType.INVALID_REQUEST;
+            } else if (!isGuest && registeredAttendeeId == 0) { 
+                /* Usage of 0 as ID is forbidden because it could allow arbitraty access */
+                innerResponseType = JRoomScreenOutgoingResponse.ResponseType.INVALID_REQUEST;
+            } else if (jAtt == null) {
+                innerResponseType = JRoomScreenOutgoingResponse.ResponseType.INVALID_CONFERENCE_ID_OR_NO_SUCH_ATTENDEE;
+            } else {
+                if (!jAtt.getAccessToken().equals(accessToken)) {
+                    innerResponseType = JRoomScreenOutgoingResponse.ResponseType.INVALID_ACCESS_TOKEN;
+                } else  {
+                    innerResponseType = JRoomScreenOutgoingResponse.ResponseType.SUCCESS;
+                }
+            }
+            if (innerResponseType == JRoomScreenOutgoingResponse.ResponseType.SUCCESS) {
+                /* Check if the data is coming from the real animator */
+                //TypedQuery<Conference> cQuery;
+                boolean isAnimator = false;
+                if (isGuest) {
+                    isAnimator = jConf.getAnimatorAttendance().getGuestAttendeeGuid().equals(guestAttendeeGuid);
+                } else {
+                    isAnimator = jConf.getAnimatorAttendance().getRegisteredAttendeeId() == registeredAttendeeId;
+                }
+                if (isAnimator) {
+                    /* The user is the real animator, let's store the received data */
+                    jConf.getAnimatorAttendance().getScreenStream().push(data);
+                } else {
+                    /* Data is not coming from real attendee, let's discard it */
+                    innerResponseType = JRoomScreenOutgoingResponse.ResponseType.ACCESS_DENIED;
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            innerResponseType = JRoomScreenOutgoingResponse.ResponseType.INTERNAL_ERROR;
         }
         JRoomScreenOutgoingResponse innerResponse = JRoomScreenOutgoingResponse.newBuilder()
                 .setType(innerResponseType)

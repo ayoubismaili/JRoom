@@ -41,7 +41,7 @@ public class JRoomSettings {
     public static final int DEFAULT_PORT = 8803;
     public static final boolean DEFAULT_USE_SSL = false;
     /* XML configuration file */
-    public static String CONFIG_XML = "config.xml";
+    public static String CONFIG_XML = "C:\\config.xml";
     
     private static XMLConfiguration xmlConfig = null;
     

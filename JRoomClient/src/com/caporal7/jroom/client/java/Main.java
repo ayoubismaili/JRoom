@@ -31,6 +31,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.apache.commons.configuration2.XMLConfiguration;
 
@@ -40,7 +43,18 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         /* Perform a session heartbeat, and autologin if successful */
         XMLConfiguration config = JRoomSettings.getSettings();
-        AttendeeDao dao = new  AttendeeDao();
+        AttendeeDao dao = null;
+        try {
+            dao = new  AttendeeDao();
+        } catch (Exception e) {
+            ButtonType btnQuit = new ButtonType("Quitter", ButtonBar.ButtonData.OK_DONE);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "", btnQuit);
+                alert.setTitle("Serveur indisponible");
+                alert.setHeaderText("Le serveur demandé est actuellement indisponible (spécifié au niveau du config.xml). Veuillez vérifier puis réessayer.");
+                alert.showAndWait();
+            return;
+        }
+        
         int registeredAttendeeId = config.getInt("registered-attendee-id", 0);
         String sessionCookie = config.getString("session-cookie", "");
         JRoomAttendeeSessionHeartbeatResponse.ResponseType type = dao.sessionHeartbeat(registeredAttendeeId, sessionCookie);

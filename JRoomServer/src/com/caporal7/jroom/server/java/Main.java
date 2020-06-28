@@ -5,11 +5,8 @@
  */
 package com.caporal7.jroom.server.java;
 
-import com.caporal7.jroom.common.java.jpa.Conference;
+import com.caporal7.jroom.common.java.utils.JRoomConferenceManager;
 import com.caporal7.jroom.server.java.services.JRoomServer;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -23,6 +20,10 @@ public class Main {
     public static void main(String[] args) {
         try
         {
+            /* Load caching system */
+            System.out.println("[+] Loading caching system");
+            JRoomConferenceManager.load();
+            System.out.println("[+] Caching system loaded");
             JRoomServer appServer = new JRoomServer();
             appServer.loopForever();
         } catch(Exception ex) {

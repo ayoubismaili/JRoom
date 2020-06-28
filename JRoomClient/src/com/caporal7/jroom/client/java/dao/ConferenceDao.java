@@ -75,12 +75,17 @@ public class ConferenceDao {
         return response.getJoinConferenceProb().getResponse();
     }
     
-    public JRoomJoinConferenceAuthResponse auth(int conferenceId, int password, boolean isGuest, String sessionCookie) 
-            throws IOException, JRoomException {
+    public JRoomJoinConferenceAuthResponse auth(
+        int conferenceId, int password, int registeredAttendeeId, 
+        String guestAttendeeGuid, boolean isGuest, String sessionCookie) 
+            throws IOException, JRoomException 
+    {
         JRoomJoinConferenceAuthRequest innerRequest = 
                 JRoomJoinConferenceAuthRequest.newBuilder()
                 .setConferenceId(conferenceId)
                 .setPassword(password)
+                .setRegisteredAttendeeId(registeredAttendeeId)
+                .setGuestAttendeeGuid(guestAttendeeGuid)
                 .setIsGuest(isGuest)
                 .setSessionCookie(sessionCookie)
                 .build();

@@ -1209,28 +1209,56 @@ public final class JRoomConferenceProtos {
     int getPassword();
 
     /**
-     * <code>optional bool is_guest = 3;</code>
+     * <code>optional int32 registered_attendee_id = 3;</code>
+     * @return Whether the registeredAttendeeId field is set.
+     */
+    boolean hasRegisteredAttendeeId();
+    /**
+     * <code>optional int32 registered_attendee_id = 3;</code>
+     * @return The registeredAttendeeId.
+     */
+    int getRegisteredAttendeeId();
+
+    /**
+     * <code>optional string guest_attendee_guid = 4;</code>
+     * @return Whether the guestAttendeeGuid field is set.
+     */
+    boolean hasGuestAttendeeGuid();
+    /**
+     * <code>optional string guest_attendee_guid = 4;</code>
+     * @return The guestAttendeeGuid.
+     */
+    java.lang.String getGuestAttendeeGuid();
+    /**
+     * <code>optional string guest_attendee_guid = 4;</code>
+     * @return The bytes for guestAttendeeGuid.
+     */
+    com.google.protobuf.ByteString
+        getGuestAttendeeGuidBytes();
+
+    /**
+     * <code>optional bool is_guest = 5;</code>
      * @return Whether the isGuest field is set.
      */
     boolean hasIsGuest();
     /**
-     * <code>optional bool is_guest = 3;</code>
+     * <code>optional bool is_guest = 5;</code>
      * @return The isGuest.
      */
     boolean getIsGuest();
 
     /**
-     * <code>optional string session_cookie = 4;</code>
+     * <code>optional string session_cookie = 6;</code>
      * @return Whether the sessionCookie field is set.
      */
     boolean hasSessionCookie();
     /**
-     * <code>optional string session_cookie = 4;</code>
+     * <code>optional string session_cookie = 6;</code>
      * @return The sessionCookie.
      */
     java.lang.String getSessionCookie();
     /**
-     * <code>optional string session_cookie = 4;</code>
+     * <code>optional string session_cookie = 6;</code>
      * @return The bytes for sessionCookie.
      */
     com.google.protobuf.ByteString
@@ -1253,6 +1281,7 @@ public final class JRoomConferenceProtos {
       super(builder);
     }
     private JRoomJoinConferenceAuthRequest() {
+      guestAttendeeGuid_ = "";
       sessionCookie_ = "";
     }
 
@@ -1299,12 +1328,23 @@ public final class JRoomConferenceProtos {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              isGuest_ = input.readBool();
+              registeredAttendeeId_ = input.readInt32();
               break;
             }
             case 34: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000008;
+              guestAttendeeGuid_ = bs;
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              isGuest_ = input.readBool();
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
               sessionCookie_ = bs;
               break;
             }
@@ -1375,34 +1415,96 @@ public final class JRoomConferenceProtos {
       return password_;
     }
 
-    public static final int IS_GUEST_FIELD_NUMBER = 3;
-    private boolean isGuest_;
+    public static final int REGISTERED_ATTENDEE_ID_FIELD_NUMBER = 3;
+    private int registeredAttendeeId_;
     /**
-     * <code>optional bool is_guest = 3;</code>
-     * @return Whether the isGuest field is set.
+     * <code>optional int32 registered_attendee_id = 3;</code>
+     * @return Whether the registeredAttendeeId field is set.
      */
-    public boolean hasIsGuest() {
+    public boolean hasRegisteredAttendeeId() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>optional bool is_guest = 3;</code>
+     * <code>optional int32 registered_attendee_id = 3;</code>
+     * @return The registeredAttendeeId.
+     */
+    public int getRegisteredAttendeeId() {
+      return registeredAttendeeId_;
+    }
+
+    public static final int GUEST_ATTENDEE_GUID_FIELD_NUMBER = 4;
+    private volatile java.lang.Object guestAttendeeGuid_;
+    /**
+     * <code>optional string guest_attendee_guid = 4;</code>
+     * @return Whether the guestAttendeeGuid field is set.
+     */
+    public boolean hasGuestAttendeeGuid() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional string guest_attendee_guid = 4;</code>
+     * @return The guestAttendeeGuid.
+     */
+    public java.lang.String getGuestAttendeeGuid() {
+      java.lang.Object ref = guestAttendeeGuid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          guestAttendeeGuid_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string guest_attendee_guid = 4;</code>
+     * @return The bytes for guestAttendeeGuid.
+     */
+    public com.google.protobuf.ByteString
+        getGuestAttendeeGuidBytes() {
+      java.lang.Object ref = guestAttendeeGuid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        guestAttendeeGuid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int IS_GUEST_FIELD_NUMBER = 5;
+    private boolean isGuest_;
+    /**
+     * <code>optional bool is_guest = 5;</code>
+     * @return Whether the isGuest field is set.
+     */
+    public boolean hasIsGuest() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional bool is_guest = 5;</code>
      * @return The isGuest.
      */
     public boolean getIsGuest() {
       return isGuest_;
     }
 
-    public static final int SESSION_COOKIE_FIELD_NUMBER = 4;
+    public static final int SESSION_COOKIE_FIELD_NUMBER = 6;
     private volatile java.lang.Object sessionCookie_;
     /**
-     * <code>optional string session_cookie = 4;</code>
+     * <code>optional string session_cookie = 6;</code>
      * @return Whether the sessionCookie field is set.
      */
     public boolean hasSessionCookie() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
-     * <code>optional string session_cookie = 4;</code>
+     * <code>optional string session_cookie = 6;</code>
      * @return The sessionCookie.
      */
     public java.lang.String getSessionCookie() {
@@ -1420,7 +1522,7 @@ public final class JRoomConferenceProtos {
       }
     }
     /**
-     * <code>optional string session_cookie = 4;</code>
+     * <code>optional string session_cookie = 6;</code>
      * @return The bytes for sessionCookie.
      */
     public com.google.protobuf.ByteString
@@ -1458,10 +1560,16 @@ public final class JRoomConferenceProtos {
         output.writeInt32(2, password_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeBool(3, isGuest_);
+        output.writeInt32(3, registeredAttendeeId_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, sessionCookie_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, guestAttendeeGuid_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeBool(5, isGuest_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, sessionCookie_);
       }
       unknownFields.writeTo(output);
     }
@@ -1482,10 +1590,17 @@ public final class JRoomConferenceProtos {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, isGuest_);
+          .computeInt32Size(3, registeredAttendeeId_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, sessionCookie_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, guestAttendeeGuid_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, isGuest_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, sessionCookie_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1511,6 +1626,16 @@ public final class JRoomConferenceProtos {
       if (hasPassword()) {
         if (getPassword()
             != other.getPassword()) return false;
+      }
+      if (hasRegisteredAttendeeId() != other.hasRegisteredAttendeeId()) return false;
+      if (hasRegisteredAttendeeId()) {
+        if (getRegisteredAttendeeId()
+            != other.getRegisteredAttendeeId()) return false;
+      }
+      if (hasGuestAttendeeGuid() != other.hasGuestAttendeeGuid()) return false;
+      if (hasGuestAttendeeGuid()) {
+        if (!getGuestAttendeeGuid()
+            .equals(other.getGuestAttendeeGuid())) return false;
       }
       if (hasIsGuest() != other.hasIsGuest()) return false;
       if (hasIsGuest()) {
@@ -1540,6 +1665,14 @@ public final class JRoomConferenceProtos {
       if (hasPassword()) {
         hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
         hash = (53 * hash) + getPassword();
+      }
+      if (hasRegisteredAttendeeId()) {
+        hash = (37 * hash) + REGISTERED_ATTENDEE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getRegisteredAttendeeId();
+      }
+      if (hasGuestAttendeeGuid()) {
+        hash = (37 * hash) + GUEST_ATTENDEE_GUID_FIELD_NUMBER;
+        hash = (53 * hash) + getGuestAttendeeGuid().hashCode();
       }
       if (hasIsGuest()) {
         hash = (37 * hash) + IS_GUEST_FIELD_NUMBER;
@@ -1691,10 +1824,14 @@ public final class JRoomConferenceProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         password_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        isGuest_ = false;
+        registeredAttendeeId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        sessionCookie_ = "";
+        guestAttendeeGuid_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
+        isGuest_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        sessionCookie_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -1732,11 +1869,19 @@ public final class JRoomConferenceProtos {
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.isGuest_ = isGuest_;
+          result.registeredAttendeeId_ = registeredAttendeeId_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
           to_bitField0_ |= 0x00000008;
+        }
+        result.guestAttendeeGuid_ = guestAttendeeGuid_;
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.isGuest_ = isGuest_;
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          to_bitField0_ |= 0x00000020;
         }
         result.sessionCookie_ = sessionCookie_;
         result.bitField0_ = to_bitField0_;
@@ -1794,11 +1939,19 @@ public final class JRoomConferenceProtos {
         if (other.hasPassword()) {
           setPassword(other.getPassword());
         }
+        if (other.hasRegisteredAttendeeId()) {
+          setRegisteredAttendeeId(other.getRegisteredAttendeeId());
+        }
+        if (other.hasGuestAttendeeGuid()) {
+          bitField0_ |= 0x00000008;
+          guestAttendeeGuid_ = other.guestAttendeeGuid_;
+          onChanged();
+        }
         if (other.hasIsGuest()) {
           setIsGuest(other.getIsGuest());
         }
         if (other.hasSessionCookie()) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000020;
           sessionCookie_ = other.sessionCookie_;
           onChanged();
         }
@@ -1906,38 +2059,159 @@ public final class JRoomConferenceProtos {
         return this;
       }
 
-      private boolean isGuest_ ;
+      private int registeredAttendeeId_ ;
       /**
-       * <code>optional bool is_guest = 3;</code>
-       * @return Whether the isGuest field is set.
+       * <code>optional int32 registered_attendee_id = 3;</code>
+       * @return Whether the registeredAttendeeId field is set.
        */
-      public boolean hasIsGuest() {
+      public boolean hasRegisteredAttendeeId() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>optional bool is_guest = 3;</code>
+       * <code>optional int32 registered_attendee_id = 3;</code>
+       * @return The registeredAttendeeId.
+       */
+      public int getRegisteredAttendeeId() {
+        return registeredAttendeeId_;
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 3;</code>
+       * @param value The registeredAttendeeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegisteredAttendeeId(int value) {
+        bitField0_ |= 0x00000004;
+        registeredAttendeeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 registered_attendee_id = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegisteredAttendeeId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        registeredAttendeeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object guestAttendeeGuid_ = "";
+      /**
+       * <code>optional string guest_attendee_guid = 4;</code>
+       * @return Whether the guestAttendeeGuid field is set.
+       */
+      public boolean hasGuestAttendeeGuid() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional string guest_attendee_guid = 4;</code>
+       * @return The guestAttendeeGuid.
+       */
+      public java.lang.String getGuestAttendeeGuid() {
+        java.lang.Object ref = guestAttendeeGuid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            guestAttendeeGuid_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string guest_attendee_guid = 4;</code>
+       * @return The bytes for guestAttendeeGuid.
+       */
+      public com.google.protobuf.ByteString
+          getGuestAttendeeGuidBytes() {
+        java.lang.Object ref = guestAttendeeGuid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          guestAttendeeGuid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string guest_attendee_guid = 4;</code>
+       * @param value The guestAttendeeGuid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGuestAttendeeGuid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        guestAttendeeGuid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string guest_attendee_guid = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGuestAttendeeGuid() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        guestAttendeeGuid_ = getDefaultInstance().getGuestAttendeeGuid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string guest_attendee_guid = 4;</code>
+       * @param value The bytes for guestAttendeeGuid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGuestAttendeeGuidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        guestAttendeeGuid_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean isGuest_ ;
+      /**
+       * <code>optional bool is_guest = 5;</code>
+       * @return Whether the isGuest field is set.
+       */
+      public boolean hasIsGuest() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>optional bool is_guest = 5;</code>
        * @return The isGuest.
        */
       public boolean getIsGuest() {
         return isGuest_;
       }
       /**
-       * <code>optional bool is_guest = 3;</code>
+       * <code>optional bool is_guest = 5;</code>
        * @param value The isGuest to set.
        * @return This builder for chaining.
        */
       public Builder setIsGuest(boolean value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         isGuest_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bool is_guest = 3;</code>
+       * <code>optional bool is_guest = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearIsGuest() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         isGuest_ = false;
         onChanged();
         return this;
@@ -1945,14 +2219,14 @@ public final class JRoomConferenceProtos {
 
       private java.lang.Object sessionCookie_ = "";
       /**
-       * <code>optional string session_cookie = 4;</code>
+       * <code>optional string session_cookie = 6;</code>
        * @return Whether the sessionCookie field is set.
        */
       public boolean hasSessionCookie() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
-       * <code>optional string session_cookie = 4;</code>
+       * <code>optional string session_cookie = 6;</code>
        * @return The sessionCookie.
        */
       public java.lang.String getSessionCookie() {
@@ -1970,7 +2244,7 @@ public final class JRoomConferenceProtos {
         }
       }
       /**
-       * <code>optional string session_cookie = 4;</code>
+       * <code>optional string session_cookie = 6;</code>
        * @return The bytes for sessionCookie.
        */
       public com.google.protobuf.ByteString
@@ -1987,7 +2261,7 @@ public final class JRoomConferenceProtos {
         }
       }
       /**
-       * <code>optional string session_cookie = 4;</code>
+       * <code>optional string session_cookie = 6;</code>
        * @param value The sessionCookie to set.
        * @return This builder for chaining.
        */
@@ -1996,23 +2270,23 @@ public final class JRoomConferenceProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000020;
         sessionCookie_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string session_cookie = 4;</code>
+       * <code>optional string session_cookie = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearSessionCookie() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000020);
         sessionCookie_ = getDefaultInstance().getSessionCookie();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string session_cookie = 4;</code>
+       * <code>optional string session_cookie = 6;</code>
        * @param value The bytes for sessionCookie to set.
        * @return This builder for chaining.
        */
@@ -2021,7 +2295,7 @@ public final class JRoomConferenceProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000020;
         sessionCookie_ = value;
         onChanged();
         return this;
@@ -2084,12 +2358,12 @@ public final class JRoomConferenceProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_ID];</code>
+     * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_REQUEST];</code>
      * @return Whether the response field is set.
      */
     boolean hasResponse();
     /**
-     * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_ID];</code>
+     * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_REQUEST];</code>
      * @return The response.
      */
     com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType getResponse();
@@ -2223,31 +2497,39 @@ public final class JRoomConferenceProtos {
     public enum AuthResponseType
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>INVALID_ID = 0;</code>
+       * <code>INVALID_REQUEST = 0;</code>
        */
-      INVALID_ID(0),
+      INVALID_REQUEST(0),
       /**
-       * <code>INVALID_PASS = 1;</code>
+       * <code>INVALID_ID = 1;</code>
        */
-      INVALID_PASS(1),
+      INVALID_ID(1),
       /**
-       * <code>SUCCESS = 2;</code>
+       * <code>INVALID_PASS = 2;</code>
        */
-      SUCCESS(2),
+      INVALID_PASS(2),
+      /**
+       * <code>SUCCESS = 3;</code>
+       */
+      SUCCESS(3),
       ;
 
       /**
-       * <code>INVALID_ID = 0;</code>
+       * <code>INVALID_REQUEST = 0;</code>
        */
-      public static final int INVALID_ID_VALUE = 0;
+      public static final int INVALID_REQUEST_VALUE = 0;
       /**
-       * <code>INVALID_PASS = 1;</code>
+       * <code>INVALID_ID = 1;</code>
        */
-      public static final int INVALID_PASS_VALUE = 1;
+      public static final int INVALID_ID_VALUE = 1;
       /**
-       * <code>SUCCESS = 2;</code>
+       * <code>INVALID_PASS = 2;</code>
        */
-      public static final int SUCCESS_VALUE = 2;
+      public static final int INVALID_PASS_VALUE = 2;
+      /**
+       * <code>SUCCESS = 3;</code>
+       */
+      public static final int SUCCESS_VALUE = 3;
 
 
       public final int getNumber() {
@@ -2270,9 +2552,10 @@ public final class JRoomConferenceProtos {
        */
       public static AuthResponseType forNumber(int value) {
         switch (value) {
-          case 0: return INVALID_ID;
-          case 1: return INVALID_PASS;
-          case 2: return SUCCESS;
+          case 0: return INVALID_REQUEST;
+          case 1: return INVALID_ID;
+          case 2: return INVALID_PASS;
+          case 3: return SUCCESS;
           default: return null;
         }
       }
@@ -2326,20 +2609,20 @@ public final class JRoomConferenceProtos {
     public static final int RESPONSE_FIELD_NUMBER = 1;
     private int response_;
     /**
-     * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_ID];</code>
+     * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_REQUEST];</code>
      * @return Whether the response field is set.
      */
     public boolean hasResponse() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_ID];</code>
+     * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_REQUEST];</code>
      * @return The response.
      */
     public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType getResponse() {
       @SuppressWarnings("deprecation")
       com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType result = com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType.valueOf(response_);
-      return result == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType.INVALID_ID : result;
+      return result == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType.INVALID_REQUEST : result;
     }
 
     public static final int ACCESS_TOKEN_FIELD_NUMBER = 2;
@@ -2732,23 +3015,23 @@ public final class JRoomConferenceProtos {
 
       private int response_ = 0;
       /**
-       * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_ID];</code>
+       * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_REQUEST];</code>
        * @return Whether the response field is set.
        */
       public boolean hasResponse() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_ID];</code>
+       * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_REQUEST];</code>
        * @return The response.
        */
       public com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType getResponse() {
         @SuppressWarnings("deprecation")
         com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType result = com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType.valueOf(response_);
-        return result == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType.INVALID_ID : result;
+        return result == null ? com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConferenceAuthResponse.AuthResponseType.INVALID_REQUEST : result;
       }
       /**
-       * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_ID];</code>
+       * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_REQUEST];</code>
        * @param value The response to set.
        * @return This builder for chaining.
        */
@@ -2762,7 +3045,7 @@ public final class JRoomConferenceProtos {
         return this;
       }
       /**
-       * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_ID];</code>
+       * <code>optional .jroom.JRoomJoinConferenceAuthResponse.AuthResponseType response = 1 [default = INVALID_REQUEST];</code>
        * @return This builder for chaining.
        */
       public Builder clearResponse() {
@@ -4500,25 +4783,28 @@ public final class JRoomConferenceProtos {
       "se\022W\n\010response\030\001 \001(\01629.jroom.JRoomJoinCo" +
       "nferenceProbeResponse.ProbeResponseType:" +
       "\nINVALID_ID\"0\n\021ProbeResponseType\022\016\n\nINVA" +
-      "LID_ID\020\000\022\013\n\007SUCCESS\020\001\"s\n\036JRoomJoinConfer" +
-      "enceAuthRequest\022\025\n\rconference_id\030\001 \001(\005\022\020" +
-      "\n\010password\030\002 \001(\005\022\020\n\010is_guest\030\003 \001(\010\022\026\n\016se" +
-      "ssion_cookie\030\004 \001(\t\"\321\001\n\037JRoomJoinConferen" +
-      "ceAuthResponse\022U\n\010response\030\001 \001(\01627.jroom" +
-      ".JRoomJoinConferenceAuthResponse.AuthRes" +
-      "ponseType:\nINVALID_ID\022\024\n\014access_token\030\002 " +
-      "\001(\t\"A\n\020AuthResponseType\022\016\n\nINVALID_ID\020\000\022" +
-      "\020\n\014INVALID_PASS\020\001\022\013\n\007SUCCESS\020\002\"[\n!JRoomG" +
-      "etPersonalConferenceRequest\022\036\n\026registere" +
-      "d_attendee_id\030\001 \001(\005\022\026\n\016session_cookie\030\002 " +
-      "\001(\t\"\372\001\n\"JRoomGetPersonalConferenceRespon" +
-      "se\022Y\n\010response\030\001 \001(\01626.jroom.JRoomGetPer" +
-      "sonalConferenceResponse.ResponseType:\017IN" +
-      "VALID_REQUEST\022\025\n\rconference_id\030\002 \001(\005\022\020\n\010" +
-      "password\030\003 \001(\005\"P\n\014ResponseType\022\023\n\017INVALI" +
-      "D_REQUEST\020\000\022\036\n\032SESSION_INVALID_OR_EXPIRE" +
-      "D\020\001\022\013\n\007SUCCESS\020\002B>\n%com.caporal7.jroom.c" +
-      "ommon.java.protocB\025JRoomConferenceProtos"
+      "LID_ID\020\000\022\013\n\007SUCCESS\020\001\"\260\001\n\036JRoomJoinConfe" +
+      "renceAuthRequest\022\025\n\rconference_id\030\001 \001(\005\022" +
+      "\020\n\010password\030\002 \001(\005\022\036\n\026registered_attendee" +
+      "_id\030\003 \001(\005\022\033\n\023guest_attendee_guid\030\004 \001(\t\022\020" +
+      "\n\010is_guest\030\005 \001(\010\022\026\n\016session_cookie\030\006 \001(\t" +
+      "\"\353\001\n\037JRoomJoinConferenceAuthResponse\022Z\n\010" +
+      "response\030\001 \001(\01627.jroom.JRoomJoinConferen" +
+      "ceAuthResponse.AuthResponseType:\017INVALID" +
+      "_REQUEST\022\024\n\014access_token\030\002 \001(\t\"V\n\020AuthRe" +
+      "sponseType\022\023\n\017INVALID_REQUEST\020\000\022\016\n\nINVAL" +
+      "ID_ID\020\001\022\020\n\014INVALID_PASS\020\002\022\013\n\007SUCCESS\020\003\"[" +
+      "\n!JRoomGetPersonalConferenceRequest\022\036\n\026r" +
+      "egistered_attendee_id\030\001 \001(\005\022\026\n\016session_c" +
+      "ookie\030\002 \001(\t\"\372\001\n\"JRoomGetPersonalConferen" +
+      "ceResponse\022Y\n\010response\030\001 \001(\01626.jroom.JRo" +
+      "omGetPersonalConferenceResponse.Response" +
+      "Type:\017INVALID_REQUEST\022\025\n\rconference_id\030\002" +
+      " \001(\005\022\020\n\010password\030\003 \001(\005\"P\n\014ResponseType\022\023" +
+      "\n\017INVALID_REQUEST\020\000\022\036\n\032SESSION_INVALID_O" +
+      "R_EXPIRED\020\001\022\013\n\007SUCCESS\020\002B>\n%com.caporal7" +
+      ".jroom.common.java.protocB\025JRoomConferen" +
+      "ceProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4541,7 +4827,7 @@ public final class JRoomConferenceProtos {
     internal_static_jroom_JRoomJoinConferenceAuthRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_jroom_JRoomJoinConferenceAuthRequest_descriptor,
-        new java.lang.String[] { "ConferenceId", "Password", "IsGuest", "SessionCookie", });
+        new java.lang.String[] { "ConferenceId", "Password", "RegisteredAttendeeId", "GuestAttendeeGuid", "IsGuest", "SessionCookie", });
     internal_static_jroom_JRoomJoinConferenceAuthResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_jroom_JRoomJoinConferenceAuthResponse_fieldAccessorTable = new

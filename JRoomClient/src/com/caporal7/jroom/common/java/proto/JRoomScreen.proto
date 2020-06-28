@@ -49,6 +49,7 @@ message JRoomScreenIncomingResponse {
     INVALID_ACCESS_TOKEN  = 3;
     TOO_MANY_REQUESTS     = 4;
     SUCCESS               = 5;
+    INTERNAL_ERROR        = 6;
   }
 
   optional ResponseType type = 1 [default = INVALID_REQUEST];
@@ -61,7 +62,7 @@ message JRoomScreenOutgoingRequest {
   optional string guest_attendee_guid = 2;
   optional int32 registered_attendee_id = 3;
   optional bool is_guest = 4;
-  optional string session_cookie = 5;      /* Session cookie in case of a registered attendee*/
+  optional string session_cookie = 5;      /* Session cookie in case of a registered attendee */
   optional string access_token = 6;        /* Access token to the conference */
   optional bytes data = 7;
 }
@@ -76,6 +77,9 @@ message JRoomScreenOutgoingResponse {
     INVALID_ACCESS_TOKEN  = 3;
     TOO_MANY_REQUESTS     = 4;
     SUCCESS               = 5;
+    ACCESS_DENIED         = 6;
+    DATASTREAM_NOT_FOUND  = 7;
+    INTERNAL_ERROR        = 8;
   }
 
   optional ResponseType type = 1 [default = INVALID_REQUEST];

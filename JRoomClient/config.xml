@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
-  <host>127.0.0.1</host>
+  <host>192.168.1.201</host>
   <port>8803</port>
   <use-ssl>false</use-ssl>
-  <registered-attendee-id>4</registered-attendee-id>
-  <session-cookie>FD0ED41616DBF8B53826380E6D82442D64FE12EA42B11D4036</session-cookie>
+  <registered-attendee-id>5</registered-attendee-id>
+  <session-cookie>CF99ECF616BFFA8094B6F47E2A0C96684632F7192335EEBC94</session-cookie>
 </configuration>

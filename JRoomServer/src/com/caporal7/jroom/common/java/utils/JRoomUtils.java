@@ -50,6 +50,16 @@ public class JRoomUtils {
         return sb.toString();
     }
     
+    public static String getNewAccessToken() {
+        byte[] bytes = new byte[25];
+        secureRandom.nextBytes(bytes);
+        StringBuffer sb = new StringBuffer(50);
+        for (byte b : bytes) {
+            sb.append(String.format("%02X", b));
+        }
+        return sb.toString();
+    }
+    
     public static int getNewConferencePassword() {
         int password = secureRandom.nextInt(999999);
         return password;

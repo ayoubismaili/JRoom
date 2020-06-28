@@ -57,7 +57,8 @@ public class JRoomServer {
                     try {
                         handleConnection(socket);
                     } catch (Exception ex) {
-                        System.out.println(ex.getMessage());
+                        System.out.println("In JRoomServer.java: Handle Connection Error: " + ex.getMessage());
+                        ex.printStackTrace();
                     }
                 }
             };

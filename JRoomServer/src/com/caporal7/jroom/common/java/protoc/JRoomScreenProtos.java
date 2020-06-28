@@ -1525,6 +1525,10 @@ public final class JRoomScreenProtos {
        * <code>SUCCESS = 5;</code>
        */
       SUCCESS(5),
+      /**
+       * <code>INTERNAL_ERROR = 6;</code>
+       */
+      INTERNAL_ERROR(6),
       ;
 
       /**
@@ -1551,6 +1555,10 @@ public final class JRoomScreenProtos {
        * <code>SUCCESS = 5;</code>
        */
       public static final int SUCCESS_VALUE = 5;
+      /**
+       * <code>INTERNAL_ERROR = 6;</code>
+       */
+      public static final int INTERNAL_ERROR_VALUE = 6;
 
 
       public final int getNumber() {
@@ -1579,6 +1587,7 @@ public final class JRoomScreenProtos {
           case 3: return INVALID_ACCESS_TOKEN;
           case 4: return TOO_MANY_REQUESTS;
           case 5: return SUCCESS;
+          case 6: return INTERNAL_ERROR;
           default: return null;
         }
       }
@@ -2197,7 +2206,7 @@ public final class JRoomScreenProtos {
 
     /**
      * <pre>
-     * Session cookie in case of a registered attendee
+     * Session cookie in case of a registered attendee 
      * </pre>
      *
      * <code>optional string session_cookie = 5;</code>
@@ -2206,7 +2215,7 @@ public final class JRoomScreenProtos {
     boolean hasSessionCookie();
     /**
      * <pre>
-     * Session cookie in case of a registered attendee
+     * Session cookie in case of a registered attendee 
      * </pre>
      *
      * <code>optional string session_cookie = 5;</code>
@@ -2215,7 +2224,7 @@ public final class JRoomScreenProtos {
     java.lang.String getSessionCookie();
     /**
      * <pre>
-     * Session cookie in case of a registered attendee
+     * Session cookie in case of a registered attendee 
      * </pre>
      *
      * <code>optional string session_cookie = 5;</code>
@@ -2489,7 +2498,7 @@ public final class JRoomScreenProtos {
     private volatile java.lang.Object sessionCookie_;
     /**
      * <pre>
-     * Session cookie in case of a registered attendee
+     * Session cookie in case of a registered attendee 
      * </pre>
      *
      * <code>optional string session_cookie = 5;</code>
@@ -2500,7 +2509,7 @@ public final class JRoomScreenProtos {
     }
     /**
      * <pre>
-     * Session cookie in case of a registered attendee
+     * Session cookie in case of a registered attendee 
      * </pre>
      *
      * <code>optional string session_cookie = 5;</code>
@@ -2522,7 +2531,7 @@ public final class JRoomScreenProtos {
     }
     /**
      * <pre>
-     * Session cookie in case of a registered attendee
+     * Session cookie in case of a registered attendee 
      * </pre>
      *
      * <code>optional string session_cookie = 5;</code>
@@ -3286,7 +3295,7 @@ public final class JRoomScreenProtos {
       private java.lang.Object sessionCookie_ = "";
       /**
        * <pre>
-       * Session cookie in case of a registered attendee
+       * Session cookie in case of a registered attendee 
        * </pre>
        *
        * <code>optional string session_cookie = 5;</code>
@@ -3297,7 +3306,7 @@ public final class JRoomScreenProtos {
       }
       /**
        * <pre>
-       * Session cookie in case of a registered attendee
+       * Session cookie in case of a registered attendee 
        * </pre>
        *
        * <code>optional string session_cookie = 5;</code>
@@ -3319,7 +3328,7 @@ public final class JRoomScreenProtos {
       }
       /**
        * <pre>
-       * Session cookie in case of a registered attendee
+       * Session cookie in case of a registered attendee 
        * </pre>
        *
        * <code>optional string session_cookie = 5;</code>
@@ -3340,7 +3349,7 @@ public final class JRoomScreenProtos {
       }
       /**
        * <pre>
-       * Session cookie in case of a registered attendee
+       * Session cookie in case of a registered attendee 
        * </pre>
        *
        * <code>optional string session_cookie = 5;</code>
@@ -3359,7 +3368,7 @@ public final class JRoomScreenProtos {
       }
       /**
        * <pre>
-       * Session cookie in case of a registered attendee
+       * Session cookie in case of a registered attendee 
        * </pre>
        *
        * <code>optional string session_cookie = 5;</code>
@@ -3373,7 +3382,7 @@ public final class JRoomScreenProtos {
       }
       /**
        * <pre>
-       * Session cookie in case of a registered attendee
+       * Session cookie in case of a registered attendee 
        * </pre>
        *
        * <code>optional string session_cookie = 5;</code>
@@ -3734,6 +3743,18 @@ public final class JRoomScreenProtos {
        * <code>SUCCESS = 5;</code>
        */
       SUCCESS(5),
+      /**
+       * <code>ACCESS_DENIED = 6;</code>
+       */
+      ACCESS_DENIED(6),
+      /**
+       * <code>DATASTREAM_NOT_FOUND = 7;</code>
+       */
+      DATASTREAM_NOT_FOUND(7),
+      /**
+       * <code>INTERNAL_ERROR = 8;</code>
+       */
+      INTERNAL_ERROR(8),
       ;
 
       /**
@@ -3760,6 +3781,18 @@ public final class JRoomScreenProtos {
        * <code>SUCCESS = 5;</code>
        */
       public static final int SUCCESS_VALUE = 5;
+      /**
+       * <code>ACCESS_DENIED = 6;</code>
+       */
+      public static final int ACCESS_DENIED_VALUE = 6;
+      /**
+       * <code>DATASTREAM_NOT_FOUND = 7;</code>
+       */
+      public static final int DATASTREAM_NOT_FOUND_VALUE = 7;
+      /**
+       * <code>INTERNAL_ERROR = 8;</code>
+       */
+      public static final int INTERNAL_ERROR_VALUE = 8;
 
 
       public final int getNumber() {
@@ -3788,6 +3821,9 @@ public final class JRoomScreenProtos {
           case 3: return INVALID_ACCESS_TOKEN;
           case 4: return TOO_MANY_REQUESTS;
           case 5: return SUCCESS;
+          case 6: return ACCESS_DENIED;
+          case 7: return DATASTREAM_NOT_FOUND;
+          case 8: return INTERNAL_ERROR;
           default: return null;
         }
       }
@@ -4303,28 +4339,30 @@ public final class JRoomScreenProtos {
       "\023guest_attendee_guid\030\002 \001(\t\022\036\n\026registered" +
       "_attendee_id\030\003 \001(\005\022\020\n\010is_guest\030\004 \001(\010\022\026\n\016" +
       "session_cookie\030\005 \001(\t\022\024\n\014access_token\030\006 \001" +
-      "(\t\"\256\002\n\033JRoomScreenIncomingResponse\022N\n\004ty" +
+      "(\t\"\302\002\n\033JRoomScreenIncomingResponse\022N\n\004ty" +
       "pe\030\001 \001(\0162/.jroom.JRoomScreenIncomingResp" +
       "onse.ResponseType:\017INVALID_REQUEST\022\014\n\004da" +
-      "ta\030\002 \001(\014\"\260\001\n\014ResponseType\022\023\n\017INVALID_REQ" +
+      "ta\030\002 \001(\014\"\304\001\n\014ResponseType\022\023\n\017INVALID_REQ" +
       "UEST\020\000\022-\n)INVALID_CONFERENCE_ID_OR_NO_SU" +
       "CH_ATTENDEE\020\001\022\036\n\032SESSION_INVALID_OR_EXPI" +
       "RED\020\002\022\030\n\024INVALID_ACCESS_TOKEN\020\003\022\025\n\021TOO_M" +
-      "ANY_REQUESTS\020\004\022\013\n\007SUCCESS\020\005\"\276\001\n\032JRoomScr" +
-      "eenOutgoingRequest\022\025\n\rconference_id\030\001 \001(" +
-      "\005\022\033\n\023guest_attendee_guid\030\002 \001(\t\022\036\n\026regist" +
-      "ered_attendee_id\030\003 \001(\005\022\020\n\010is_guest\030\004 \001(\010" +
-      "\022\026\n\016session_cookie\030\005 \001(\t\022\024\n\014access_token" +
-      "\030\006 \001(\t\022\014\n\004data\030\007 \001(\014\"\240\002\n\033JRoomScreenOutg" +
-      "oingResponse\022N\n\004type\030\001 \001(\0162/.jroom.JRoom" +
-      "ScreenOutgoingResponse.ResponseType:\017INV" +
-      "ALID_REQUEST\"\260\001\n\014ResponseType\022\023\n\017INVALID" +
-      "_REQUEST\020\000\022-\n)INVALID_CONFERENCE_ID_OR_N" +
-      "O_SUCH_ATTENDEE\020\001\022\036\n\032SESSION_INVALID_OR_" +
-      "EXPIRED\020\002\022\030\n\024INVALID_ACCESS_TOKEN\020\003\022\025\n\021T" +
-      "OO_MANY_REQUESTS\020\004\022\013\n\007SUCCESS\020\005B:\n%com.c" +
-      "aporal7.jroom.common.java.protocB\021JRoomS" +
-      "creenProtos"
+      "ANY_REQUESTS\020\004\022\013\n\007SUCCESS\020\005\022\022\n\016INTERNAL_" +
+      "ERROR\020\006\"\276\001\n\032JRoomScreenOutgoingRequest\022\025" +
+      "\n\rconference_id\030\001 \001(\005\022\033\n\023guest_attendee_" +
+      "guid\030\002 \001(\t\022\036\n\026registered_attendee_id\030\003 \001" +
+      "(\005\022\020\n\010is_guest\030\004 \001(\010\022\026\n\016session_cookie\030\005" +
+      " \001(\t\022\024\n\014access_token\030\006 \001(\t\022\014\n\004data\030\007 \001(\014" +
+      "\"\341\002\n\033JRoomScreenOutgoingResponse\022N\n\004type" +
+      "\030\001 \001(\0162/.jroom.JRoomScreenOutgoingRespon" +
+      "se.ResponseType:\017INVALID_REQUEST\"\361\001\n\014Res" +
+      "ponseType\022\023\n\017INVALID_REQUEST\020\000\022-\n)INVALI" +
+      "D_CONFERENCE_ID_OR_NO_SUCH_ATTENDEE\020\001\022\036\n" +
+      "\032SESSION_INVALID_OR_EXPIRED\020\002\022\030\n\024INVALID" +
+      "_ACCESS_TOKEN\020\003\022\025\n\021TOO_MANY_REQUESTS\020\004\022\013" +
+      "\n\007SUCCESS\020\005\022\021\n\rACCESS_DENIED\020\006\022\030\n\024DATAST" +
+      "REAM_NOT_FOUND\020\007\022\022\n\016INTERNAL_ERROR\020\010B:\n%" +
+      "com.caporal7.jroom.common.java.protocB\021J" +
+      "RoomScreenProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

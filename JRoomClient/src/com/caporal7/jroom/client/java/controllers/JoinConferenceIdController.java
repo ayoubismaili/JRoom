@@ -41,6 +41,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.apache.commons.configuration2.XMLConfiguration;
 
 public class JoinConferenceIdController {
 
@@ -106,9 +107,21 @@ public class JoinConferenceIdController {
             {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/view/join-conference-password.fxml"));
                 
+                XMLConfiguration config = JRoomSettings.getSettings();
+                int registeredAttendeeId = config.getInt("registered-attendee-id", 0);
+                String guestAttendeeGuid = config.getString("guest-attendee-id", java.util.UUID.randomUUID().toString());
+                String sessionCookie = config.getString("session-cookie", "<null>");
+                /* If session cookie does not exist, we are talking about a guest */
+                boolean isGuest = true;
+                if (!sessionCookie.equals("<null>")) {
+                    isGuest = false;
+                }
                 JoinConferencePasswordController controller = new JoinConferencePasswordController();
                 controller.setConferenceId(conferenceId);
-                controller.setIsGuest(true);
+                controller.setIsGuest(isGuest);
+                controller.setSessionCookie(sessionCookie);
+                controller.setRegisteredAttendeeId(registeredAttendeeId);
+                controller.setGuestAttendeeGuid(guestAttendeeGuid);
                 loader.setController(controller);
                 Parent root = loader.load();
                 

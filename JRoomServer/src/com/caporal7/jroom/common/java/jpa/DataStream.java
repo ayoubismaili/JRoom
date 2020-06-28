@@ -1,7 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The MIT License
+ *
+ * Copyright 2020 JavaDev1.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package com.caporal7.jroom.common.java.jpa;
 
@@ -14,6 +32,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -21,7 +40,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Ayoub Ismaili <ayoubismaili1@gmail.com>
+ * @author JavaDev1
  */
 @Entity
 @Table(name = "data_stream")
@@ -29,7 +48,6 @@ import javax.persistence.Table;
     @NamedQuery(name = "DataStream.findAll", query = "SELECT d FROM DataStream d"),
     @NamedQuery(name = "DataStream.findById", query = "SELECT d FROM DataStream d WHERE d.id = :id"),
     @NamedQuery(name = "DataStream.findByType", query = "SELECT d FROM DataStream d WHERE d.type = :type"),
-    @NamedQuery(name = "DataStream.findBySocketReferenceId", query = "SELECT d FROM DataStream d WHERE d.socketReferenceId = :socketReferenceId"),
     @NamedQuery(name = "DataStream.findByFormat", query = "SELECT d FROM DataStream d WHERE d.format = :format"),
     @NamedQuery(name = "DataStream.findByWidth", query = "SELECT d FROM DataStream d WHERE d.width = :width"),
     @NamedQuery(name = "DataStream.findByHeight", query = "SELECT d FROM DataStream d WHERE d.height = :height")})
@@ -41,20 +59,17 @@ public class DataStream implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
     @Column(name = "type")
-    private int type;
-    @Basic(optional = false)
-    @Column(name = "socket_reference_id")
-    private int socketReferenceId;
+    private Integer type;
+    @Lob
+    @Column(name = "data")
+    private byte[] data;
     @Column(name = "format")
     private String format;
-    @Basic(optional = false)
     @Column(name = "width")
-    private int width;
-    @Basic(optional = false)
+    private Integer width;
     @Column(name = "height")
-    private int height;
+    private Integer height;
     @JoinColumns({
         @JoinColumn(name = "conference_id", referencedColumnName = "conference_id"),
         @JoinColumn(name = "guest_attendee_guid", referencedColumnName = "guest_attendee_guid"),
@@ -69,14 +84,6 @@ public class DataStream implements Serializable {
         this.id = id;
     }
 
-    public DataStream(Integer id, int type, int socketReferenceId, int width, int height) {
-        this.id = id;
-        this.type = type;
-        this.socketReferenceId = socketReferenceId;
-        this.width = width;
-        this.height = height;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -85,20 +92,20 @@ public class DataStream implements Serializable {
         this.id = id;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
-    public int getSocketReferenceId() {
-        return socketReferenceId;
+    public byte[] getData() {
+        return data;
     }
 
-    public void setSocketReferenceId(int socketReferenceId) {
-        this.socketReferenceId = socketReferenceId;
+    public void setData(byte[] data) {
+        this.data = data;
     }
 
     public String getFormat() {
@@ -109,19 +116,19 @@ public class DataStream implements Serializable {
         this.format = format;
     }
 
-    public int getWidth() {
+    public Integer getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(Integer width) {
         this.width = width;
     }
 
-    public int getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 

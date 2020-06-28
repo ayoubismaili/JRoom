@@ -28,6 +28,10 @@ import com.caporal7.jroom.common.java.JRoomException;
 import com.caporal7.jroom.common.java.jpa.Attendance;
 import com.caporal7.jroom.common.java.jpa.AttendancePK;
 import com.caporal7.jroom.common.java.jpa.Conference;
+import com.caporal7.jroom.common.java.jpa.DataStream;
+import com.caporal7.jroom.common.java.jpa.Discussion;
+import com.caporal7.jroom.common.java.jpa.GuestAttendee;
+import com.caporal7.jroom.common.java.jpa.RegisteredAttendee;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomGetPersonalConferenceResponse;
@@ -39,6 +43,9 @@ import com.caporal7.jroom.common.java.protoc.JRoomConferenceProtos.JRoomJoinConf
 import com.caporal7.jroom.common.java.protoc.JRoomProtos;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomRequest;
 import com.caporal7.jroom.common.java.protoc.JRoomProtos.JRoomResponse;
+import com.caporal7.jroom.common.java.utils.JRoomAttendance;
+import com.caporal7.jroom.common.java.utils.JRoomConference;
+import com.caporal7.jroom.common.java.utils.JRoomConferenceManager;
 import com.caporal7.jroom.common.java.utils.JRoomUtils;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -46,6 +53,7 @@ import java.net.Socket;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 public class ConferenceDao {
@@ -80,34 +88,131 @@ public class ConferenceDao {
         os.write(responseBytes);
     }
     
-    public static void handleAuth(JRoomRequest request, Socket socket) throws IOException, JRoomException 
+    public static void handleAuth(JRoomRequest request, Socket socket) 
+        throws IOException, JRoomException 
     {
         JRoomJoinConferenceAuthRequest innerRequest = request.getJoinConferenceAuth();
         int conferenceId = innerRequest.getConferenceId();
         int password = innerRequest.getPassword();
         boolean isGuest = innerRequest.getIsGuest();
-        //int registeredAttendeeId = ...
-        //String guestAttendeeGuid = ...
+        int registeredAttendeeId = innerRequest.getRegisteredAttendeeId();
+        String guestAttendeeGuid = innerRequest.getGuestAttendeeGuid();
         EntityManager em = JRoomUtils.getEntityManager();
-        Conference conference = em.find(Conference.class, conferenceId);
-        AuthResponseType innerResponseType = AuthResponseType.INVALID_ID;
-        if (conference != null)
+       
+        TypedQuery<Conference> query;
+        // TODO: Implement bruteforce guard
+        query = em.createQuery(
+            "SELECT c FROM Conference AS c WHERE c.id = :id AND c.password = :password",
+            Conference.class);
+        query.setParameter("id", conferenceId);
+        query.setParameter("password", password);
+        List<Conference> results = query.getResultList();
+        AuthResponseType innerResponseType = AuthResponseType.INVALID_REQUEST;
+        String accessToken = "";
+        if (results.size() > 0)
         {
-            if (conference.getPassword() != password) {
-                innerResponseType = AuthResponseType.INVALID_PASS;
-                // TODO: Implement bruteforce guard
-            } else if (!conference.getActive()) {
+            Conference conference = results.get(0);
+            if (!conference.getActive()) {
                 innerResponseType = AuthResponseType.INVALID_ID;
             } else {
-                /* Create an Attendance in the Conference for the actual Attendee */
+                /* Create an Attendance in the Conference for the actual Attendee if it does not exist */
                 AttendancePK pk = new AttendancePK();
+                if (isGuest) {
+                    registeredAttendeeId = 0;
+                } else {
+                    guestAttendeeGuid = "0";
+                }
                 pk.setConferenceId(conferenceId);
-                
-                Attendance att = new Attendance();
+                pk.setRegisteredAttendeeId(registeredAttendeeId);
+                pk.setGuestAttendeeGuid(guestAttendeeGuid);
+                TypedQuery<Attendance> query2 = em.createQuery(
+                    "SELECT a FROM Attendance AS a WHERE a.attendancePK.conferenceId = :conferenceId AND a.attendancePK.registeredAttendeeId = :registeredAttendeeId AND a.attendancePK.guestAttendeeGuid = :guestAttendeeGuid",
+                    Attendance.class);
+                query2.setParameter("conferenceId", conferenceId);
+                query2.setParameter("registeredAttendeeId", registeredAttendeeId);
+                query2.setParameter("guestAttendeeGuid", guestAttendeeGuid);
+                List<Attendance> results2 = query2.getResultList();
+                if (results2.size() > 0) {
+                    accessToken = results2.get(0).getAccessToken();
+                    //System.out.println("Damn, why this ?");
+                } else {
+                    /* If guest, try to persist the GUID */
+                    if (isGuest) {
+                        System.out.println("=================== BGEIN GUEST REGISTER");
+                        try {
+                            GuestAttendee ga = new GuestAttendee(guestAttendeeGuid);
+                            
+                            EntityTransaction et = em.getTransaction();
+                            et.begin();
+                            em.persist(ga);
+                            et.commit();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                            System.out.println("Exception while registering GuestAttendee");
+                        }
+                        System.out.println("=================== END GUEST REGISTER");
+                    }
+                    Attendance att = new Attendance();
+                    att.setAttendancePK(pk);
+                    accessToken = JRoomUtils.getNewAccessToken();
+                    att.setAccessToken(accessToken);
+                    em.getTransaction().begin();
+                    /* Create 3 DataStreams for the actual Attendance */
+                    DataStream screenDs = new DataStream();
+                    DataStream voiceDs = new DataStream();
+                    DataStream cameraDs = new DataStream();
+                    em.persist(screenDs);
+                    em.persist(voiceDs);
+                    em.persist(cameraDs);
+                    em.getTransaction().commit();
+                    /* Create the Attendance */
+                    em.getTransaction().begin();
+                    att.setScreenStreamId(screenDs.getId());
+                    att.setVoiceStreamId(voiceDs.getId());
+                    att.setCameraStreamId(cameraDs.getId());
+                    em.persist(att);
+                    em.getTransaction().commit();
+                    /* Update the cache system */
+                    JRoomConference jConf = JRoomConferenceManager.findConference(conferenceId);
+                    if (jConf == null) {
+                        int confId = conference.getId();
+                        int confPassword = conference.getPassword();
+                        int confOwnerId = -1;
+                        RegisteredAttendee owner = conference.getOwnerId();
+                        if (owner != null) {
+                            confOwnerId = owner.getId();
+                        }
+                        int confDiscussionId = -1;
+                        Discussion discussion = conference.getDiscussionId();
+                        if (discussion != null) {
+                            confDiscussionId = discussion.getId();
+                        }
+                        int confRegisteredAnimatorId = -1;
+                        RegisteredAttendee registeredAnimator = conference.getRegisteredAnimatorId();
+                        if (registeredAnimator != null) {
+                            confRegisteredAnimatorId = registeredAnimator.getId();
+                        }
+                        String confGuestAnimatorGuid = null;
+                        GuestAttendee guestAnimator = conference.getGuestAnimatorGuid();
+                        if (guestAnimator != null) {
+                            confGuestAnimatorGuid = guestAnimator.getGuid();
+                        }
+                        jConf = new JRoomConference(confId, confPassword, 
+                                confOwnerId, confDiscussionId, confRegisteredAnimatorId, 
+                                confGuestAnimatorGuid);
+                        JRoomConferenceManager.addConference(jConf);
+                    }
+                    JRoomAttendance ja = new JRoomAttendance(registeredAttendeeId, 
+                            guestAttendeeGuid, accessToken, voiceDs.getId(), 
+                            cameraDs.getId(), screenDs.getId());
+                    jConf.addAttendance(ja);
+                }
+                innerResponseType = AuthResponseType.SUCCESS;
             }
         }
         JRoomJoinConferenceAuthResponse authResponse = 
                 JRoomJoinConferenceAuthResponse.newBuilder()
+                .setAccessToken(accessToken)
                 .setResponse(innerResponseType)
                 .build();
         JRoomResponse response = JRoomResponse.newBuilder()

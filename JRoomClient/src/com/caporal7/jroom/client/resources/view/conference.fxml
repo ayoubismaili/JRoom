@@ -35,7 +35,7 @@
                         <Pane prefHeight="39.0" prefWidth="926.0" />
                         <Pane prefHeight="39.0" prefWidth="212.0">
                            <children>
-                              <Button alignment="CENTER" layoutX="15.0" layoutY="7.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="182.0" text="Passer en mode plein écran" />
+                              <Button alignment="CENTER" disable="true" layoutX="15.0" layoutY="7.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="182.0" text="Passer en mode plein écran" />
                            </children>
                         </Pane>
                      </children>
@@ -44,8 +44,8 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="78.0" prefWidth="248.0" spacing="5.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="114.0" text="Rejoindre l'audio" />
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="115.0" text="Démarrer vidéo" />
+                              <Button disable="true" mnemonicParsing="false" prefHeight="58.0" prefWidth="114.0" text="Rejoindre l'audio" />
+                              <Button fx:id="btnStartScreen" mnemonicParsing="false" onMouseClicked="#btnStartScreenClick" prefHeight="58.0" prefWidth="115.0" text="Arrêter vidéo" />
                            </children>
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
@@ -53,17 +53,17 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="78.0" prefWidth="555.0" spacing="5.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Sécurité" />
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="92.0" text="Participants" />
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Converser" />
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="112.0" text="Partager l'écran" />
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Enregistrer" />
-                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Réactions" />
+                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Sécurité" visible="false" />
+                              <Button disable="true" mnemonicParsing="false" prefHeight="58.0" prefWidth="92.0" text="Participants" />
+                              <Button disable="true" mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Converser" />
+                              <Button fx:id="btnShareScreen" mnemonicParsing="false" onMouseClicked="#btnShareScreenClick" prefHeight="58.0" prefWidth="112.0" text="Partager l'écran" />
+                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Enregistrer" visible="false" />
+                              <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="80.0" text="Réactions" visible="false" />
                            </children>
                         </HBox>
                         <Pane prefHeight="78.0" prefWidth="99.0">
                            <children>
-                              <Button alignment="CENTER" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="Fin" />
+                              <Button fx:id="btnFin" alignment="CENTER" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#btnFinClick" prefHeight="25.0" prefWidth="51.0" text="Fin" />
                            </children>
                         </Pane>
                      </children>

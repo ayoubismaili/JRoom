@@ -4,16 +4,16 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.caporal7.jroom.common.java.jpa.Discussion</class>
     <class>com.caporal7.jroom.common.java.jpa.Attendance</class>
-    <class>com.caporal7.jroom.common.java.jpa.DataStream</class>
     <class>com.caporal7.jroom.common.java.jpa.GuestAttendee</class>
     <class>com.caporal7.jroom.common.java.jpa.Avatar</class>
     <class>com.caporal7.jroom.common.java.jpa.Session</class>
     <class>com.caporal7.jroom.common.java.jpa.Message</class>
     <class>com.caporal7.jroom.common.java.jpa.Conference</class>
     <class>com.caporal7.jroom.common.java.jpa.RegisteredAttendee</class>
+    <class>com.caporal7.jroom.common.java.jpa.DataStream</class>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.10.10.10:3306/JRoomDB?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.202:3306/JRoomDB?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="jroom"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="jroom"/>

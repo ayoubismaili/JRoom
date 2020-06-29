@@ -44,6 +44,7 @@ import java.net.Socket;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 public class AttendeeDao {
@@ -71,8 +72,9 @@ public class AttendeeDao {
         } else if (!results.isEmpty()) {
             innerResponseType = JRoomAttendeeRegisterResponse.ResponseType.ALREADY_REGISTERED;
         } else { 
+            EntityTransaction et = em.getTransaction();
+            et.begin();
             /* Create personal Conference for later use */
-            em.getTransaction().begin();
             Conference c = new Conference();
             c.setPassword(JRoomUtils.getNewConferencePassword());
             c.setActive(true);
@@ -82,9 +84,12 @@ public class AttendeeDao {
             ra.setEmail(email);
             ra.setPassword(password);
             ra.setPersonalConferenceId(c);
-            
             em.persist(ra);
-            em.getTransaction().commit();
+            /* Update Conference - Set default Owner and Animator */
+            c.setOwnerId(ra);
+            c.setRegisteredAnimatorId(ra);
+            em.merge(c);
+            et.commit();
             innerResponseType = JRoomAttendeeRegisterResponse.ResponseType.SUCCESS;
         }
         JRoomAttendeeRegisterResponse innerResponse = JRoomAttendeeRegisterResponse.newBuilder()

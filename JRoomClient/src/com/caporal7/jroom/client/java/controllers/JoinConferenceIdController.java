@@ -105,7 +105,7 @@ public class JoinConferenceIdController {
             }
             case SUCCESS:
             {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/view/join-conference-password.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/caporal7/jroom/client/resources/view/join-conference-password.fxml"));
                 
                 XMLConfiguration config = JRoomSettings.getSettings();
                 int registeredAttendeeId = config.getInt("registered-attendee-id", 0);

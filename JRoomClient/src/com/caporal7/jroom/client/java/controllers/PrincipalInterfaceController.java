@@ -149,7 +149,7 @@ public class PrincipalInterfaceController implements Initializable {
                 break;
             }
             case SUCCESS: {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/view/conference.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/caporal7/jroom/client/resources/view/conference.fxml"));
                 ConferenceController controller = new ConferenceController();
                 controller.setConferenceId(conferenceId);
                 controller.setGuestAttendeeGuid("0");

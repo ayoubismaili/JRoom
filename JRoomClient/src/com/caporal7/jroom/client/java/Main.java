@@ -59,12 +59,12 @@ public class Main extends Application {
         String sessionCookie = config.getString("session-cookie", "");
         JRoomAttendeeSessionHeartbeatResponse.ResponseType type = dao.sessionHeartbeat(registeredAttendeeId, sessionCookie);
         if (type != JRoomAttendeeSessionHeartbeatResponse.ResponseType.SUCCESS) {
-            Parent root = FXMLLoader.load(getClass().getResource("../resources/view/join-conference.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/caporal7/jroom/client/resources/view/join-conference.fxml"));
             primaryStage.setTitle("Joindre une réunion JRoom");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } else {
-            Parent root = FXMLLoader.load(getClass().getResource("../resources/view/principal-interface.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/caporal7/jroom/client/resources/view/principal-interface.fxml"));
             Stage stage = new Stage();
             stage.setTitle("JRoom");
             stage.setScene(new Scene(root));

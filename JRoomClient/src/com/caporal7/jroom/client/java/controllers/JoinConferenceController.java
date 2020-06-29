@@ -91,7 +91,7 @@ public class JoinConferenceController {
     
     @FXML
     private void btnJoinClick(MouseEvent e) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/join-conference-id.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/caporal7/jroom/client/resources/view/join-conference-id.fxml"));
         Stage stage = new Stage();
         stage.setTitle("JRoom");
         stage.setScene(new Scene(root));
@@ -142,7 +142,7 @@ public class JoinConferenceController {
                     config.setProperty("registered-attendee-id", response.getRegisteredAttendeeId());
                     config.setProperty("session-cookie", response.getSessionCookie());
                     
-                    Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/principal-interface.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/caporal7/jroom/client/resources/view/principal-interface.fxml"));
                     Stage stage = new Stage();
                     stage.setTitle("JRoom");
                     stage.setScene(new Scene(root));
@@ -192,7 +192,7 @@ public class JoinConferenceController {
 
     @FXML
     private void hlRegisterClick(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../resources/view/register-attendee.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/caporal7/jroom/client/resources/view/register-attendee.fxml"));
         Stage stage = new Stage();
         stage.setTitle("S'inscrire");
         stage.setScene(new Scene(root));

@@ -107,7 +107,7 @@ public class JoinConferencePasswordController {
                     config.setProperty("session-cookie", getSessionCookie());
                 }
                 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/view/conference.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/caporal7/jroom/client/resources/view/conference.fxml"));
                 ConferenceController controller = new ConferenceController();
                 controller.setConferenceId(conferenceId);
                 if (isIsGuest()) {
